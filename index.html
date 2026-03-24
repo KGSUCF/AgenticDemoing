@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karen Strouse | Telecommunications Consultant</title>
+  <style>
+    :root {
+      --blue:    #0A66C2;
+      --blue-dk: #004182;
+      --blue-lt: #EBF3FB;
+      --gray:    #666;
+      --gray-lt: #F3F2EF;
+      --border:  #E0E0E0;
+      --text:    #1C1C1C;
+      --white:   #FFFFFF;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--gray-lt);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 52px;
+    }
+    nav .nav-name {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--blue-dk);
+      letter-spacing: -.3px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--gray);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      transition: color .2s;
+    }
+    nav a:hover { color: var(--blue); }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    section { padding: 48px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    /* ── HERO ── */
+    #hero {
+      background: linear-gradient(135deg, var(--blue-dk) 0%, var(--blue) 100%);
+      padding: 64px 0 56px;
+      color: var(--white);
+    }
+    #hero .container { display: flex; flex-direction: column; gap: 20px; }
+
+    .hero-top { display: flex; align-items: center; gap: 32px; }
+    .avatar {
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      border: 3px solid rgba(255,255,255,.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+      letter-spacing: -1px;
+    }
+    .hero-text h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -.5px;
+      line-height: 1.15;
+    }
+    .hero-text .tagline {
+      font-size: 16px;
+      opacity: .88;
+      margin-top: 6px;
+      font-weight: 400;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .hero-meta a, .hero-meta span {
+      color: rgba(255,255,255,.85);
+      text-decoration: none;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-meta a:hover { color: var(--white); text-decoration: underline; }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .badge {
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--white);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 32px 36px;
+      margin-bottom: 20px;
+    }
+    .card:last-child { margin-bottom: 0; }
+
+    h2.section-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--blue-dk);
+      margin-bottom: 24px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--blue-lt);
+      letter-spacing: -.3px;
+    }
+
+    /* ── ABOUT ── */
+    #about p {
+      color: #333;
+      line-height: 1.75;
+    }
+
+    /* ── EXPERTISE ── */
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .expertise-item {
+      background: var(--blue-lt);
+      border-left: 4px solid var(--blue);
+      padding: 10px 14px;
+      border-radius: 0 6px 6px 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--blue-dk);
+    }
+
+    /* ── EXPERIENCE ── */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .timeline-item {
+      display: flex;
+      gap: 20px;
+      padding-bottom: 28px;
+      position: relative;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 36px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline-item:last-child::before { display: none; }
+    .timeline-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--blue-lt);
+      border: 2px solid var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+    }
+    .timeline-content h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .timeline-content .org {
+      font-size: 14px;
+      color: var(--blue);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .timeline-content .period {
+      font-size: 13px;
+      color: var(--gray);
+      margin-top: 2px;
+    }
+
+    /* ── ENGAGEMENTS ── */
+    .engagement-group { margin-bottom: 32px; }
+    .engagement-group:last-child { margin-bottom: 0; }
+    .engagement-group h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .engagement-group h3::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      background: var(--blue);
+      border-radius: 2px;
+    }
+    .engagement-list { display: flex; flex-direction: column; gap: 14px; }
+    .engagement-item {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .engagement-item:hover {
+      border-color: var(--blue);
+      box-shadow: 0 2px 8px rgba(10,102,194,.1);
+    }
+    .engagement-item .eng-title {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .engagement-item p {
+      font-size: 13.5px;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-group { margin-bottom: 28px; }
+    .pub-group:last-child { margin-bottom: 0; }
+    .pub-group h3 {
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .pub-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .pub-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .pub-list li::before {
+      content: '▸';
+      color: var(--blue);
+      font-size: 12px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+    .pub-list li span { font-size: 14px; color: #333; line-height: 1.55; }
+    .pub-list li .pub-venue {
+      font-size: 12px;
+      color: var(--gray);
+      display: block;
+      margin-top: 1px;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .edu-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+      background: var(--blue-lt);
+    }
+    .edu-card .degree {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--blue-dk);
+    }
+    .edu-card .field {
+      font-size: 13px;
+      color: var(--blue);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .edu-card .school {
+      font-size: 13px;
+      color: var(--gray);
+      margin-top: 4px;
+    }
+
+    /* ── OTHER WORK ── */
+    .other-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .other-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+      background: var(--white);
+      transition: border-color .2s;
+    }
+    .other-card:hover { border-color: var(--blue); }
+    .other-card .other-type {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+    .other-card .other-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .other-card .other-detail {
+      font-size: 12px;
+      color: var(--gray);
+      margin-top: 4px;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--white); }
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
+      transition: border-color .2s, color .2s;
+      background: var(--gray-lt);
+    }
+    .contact-item:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      background: var(--blue-lt);
+    }
+    .contact-icon { font-size: 18px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--blue-dk);
+      color: rgba(255,255,255,.6);
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav ul { display: none; }
+      .hero-top { flex-direction: column; align-items: flex-start; }
+      .hero-text h1 { font-size: 24px; }
+      .card { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name">Karen Strouse</span>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#engagements">Engagements</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-top">
+      <div class="avatar">KS</div>
+      <div class="hero-text">
+        <h1>Karen Strouse</h1>
+        <p class="tagline">Independent Telecommunications Consultant &amp; Author&nbsp;·&nbsp;30+ Years of Industry Leadership</p>
+      </div>
+    </div>
+    <div class="hero-meta">
+      <span>📍 Fort Lauderdale, FL</span>
+      <a href="tel:9546677889">📞 (954) 667-7889</a>
+      <a href="mailto:kstrouse@karenstrouse.com">✉️ kstrouse@karenstrouse.com</a>
+      <a href="https://www.karenstrouse.com" target="_blank">🌐 karenstrouse.com</a>
+    </div>
+    <div class="hero-badges">
+      <span class="badge">Marketing Strategy</span>
+      <span class="badge">Business Planning</span>
+      <span class="badge">Telecom Consulting</span>
+      <span class="badge">Published Author</span>
+      <span class="badge">Executive Training</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="card">
+      <h2 class="section-title">About</h2>
+      <p>
+        Karen Strouse is an independent telecommunications consultant with more than three decades of experience helping providers navigate competitive markets worldwide. Her engagements span marketing strategy, business planning, mergers and acquisitions, executive education, and organizational redesign — with clients ranging from Fortune 25 carriers to emerging-market wireless startups across Latin America, the Middle East, and Asia.
+      </p>
+      <p style="margin-top:14px;">
+        Before founding her independent practice, Karen served as Consulting Manager at Deloitte &amp; Touche (formerly Touche Ross) and held senior roles at Bell Atlantic and Bell of Pennsylvania. She is the author of three industry books published by Artech House, a frequent contributor to leading telecommunications journals, and a recognized speaker at international industry conferences.
+      </p>
+    </div>
+
+    <!-- Expertise -->
+    <div class="card">
+      <h2 class="section-title">Areas of Expertise</h2>
+      <div class="expertise-grid">
+        <div class="expertise-item">Competitive Marketing</div>
+        <div class="expertise-item">Business Planning &amp; Strategy</div>
+        <div class="expertise-item">Branding &amp; Positioning</div>
+        <div class="expertise-item">Mergers &amp; Acquisitions</div>
+        <div class="expertise-item">Executive Training</div>
+        <div class="expertise-item">Channel Management</div>
+        <div class="expertise-item">Capital Management</div>
+        <div class="expertise-item">Pricing Strategy</div>
+        <div class="expertise-item">Market Segmentation</div>
+        <div class="expertise-item">Business Process Redesign</div>
+        <div class="expertise-item">RFP / Proposal Development</div>
+        <div class="expertise-item">Industry / Regulatory Analysis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="card">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot">💼</div>
+          <div class="timeline-content">
+            <h3>Independent Consultant</h3>
+            <div class="org">Self-Employed</div>
+            <div class="period">1992 – Present</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">🏢</div>
+          <div class="timeline-content">
+            <h3>Consulting Manager</h3>
+            <div class="org">Touche Ross / Deloitte &amp; Touche</div>
+            <div class="period">1987 – 1992</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">📡</div>
+          <div class="timeline-content">
+            <h3>Director, Strategic Planning</h3>
+            <div class="org">Bell Atlantic</div>
+            <div class="period">1974 – 1987</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">💻</div>
+          <div class="timeline-content">
+            <h3>Information Systems Professional</h3>
+            <div class="org">Bell of Pennsylvania</div>
+            <div class="period">1974 – 1987</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENTS -->
+<section id="engagements">
+  <div class="container">
+    <div class="card">
+      <h2 class="section-title">Sample Engagements</h2>
+
+      <div class="engagement-group">
+        <h3>Marketing</h3>
+        <div class="engagement-list">
+          <div class="engagement-item">
+            <div class="eng-title">Seminar in Competitive Marketing</div>
+            <p>Created and led on-site training for a Middle Eastern wireless services provider undergoing transition to a competitive marketplace. Covered planning strategies, business intelligence, pricing, branding, and hands-on business case planning.</p>
+          </div>
+          <div class="engagement-item">
+            <div class="eng-title">Re-Branding Initiative</div>
+            <p>Led the re-branding of a marketing and operations supplier. Conducted competitive analysis, developed a branding strategy emphasizing competitive differentiators, and produced marketing communications promoting a consistent, competitive brand.</p>
+          </div>
+          <div class="engagement-item">
+            <div class="eng-title">Executive Seminar in Marketing Strategies</div>
+            <p>Created and led training for senior-level executives in a Latin American market. Emphasized customer focus in competitive environments and explored pricing, branding, and segmentation strategies for underdeveloped markets.</p>
+          </div>
+          <div class="engagement-item">
+            <div class="eng-title">Seminar in Channel Management</div>
+            <p>Prepared and led training on marketing channel management for a multibillion-dollar Asian telecommunications provider undergoing privatization, including dozens of industry examples from competitive markets.</p>
+          </div>
+          <div class="engagement-item">
+            <div class="eng-title">Business Process Redesign</div>
+            <p>Redesigned the proposal process for a network management software provider to smooth workload, increase proposal quality, and strengthen strategic decision-making.</p>
+          </div>
+          <div class="engagement-item">
+            <div class="eng-title">Executive Marketing Materials</div>
+            <p>Prepared speeches, journal articles, and collateral materials for the CEO of an international telecommunications network provider.</p>
+          </div>
+          <div class="engagement-item">
+            <div class="eng-title">Winning RFP Response</div>
+            <p>Prepared the winning response to a Request for Proposal to supply prepaid phone cards to a major national retailer.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="engagement-group">
+        <h3>Business Planning</h3>
+        <div class="engagement-list">
+          <div class="engagement-item">
+            <div class="eng-title">Merger Planning &amp; Public Offering</div>
+            <p>Prepared the business plan to support the merger of two mid-sized telecommunications companies and take the combined entity public — encompassing business strategy development and implementation planning.</p>
+          </div>
+          <div class="engagement-item">
+            <div class="eng-title">Franchise Business Development</div>
+            <p>Prepared the business plan for a NASDAQ company to expand a successful line of business through franchising, enabling the company to sell a significant line of business and improve its strategic position.</p>
+          </div>
+          <div class="engagement-item">
+            <div class="eng-title">Wireless Division Business Plan</div>
+            <p>Produced the business plan for the wireless subsidiary of a leading public telecommunications provider, which provided the basis for the sale of the division.</p>
+          </div>
+          <div class="engagement-item">
+            <div class="eng-title">Acquisition Analysis</div>
+            <p>Conducted a comprehensive acquisition analysis for an operator services provider, including regulatory briefings, technology assessment, market direction, and evaluation of acquisition candidates for strategic fit.</p>
+          </div>
+          <div class="engagement-item">
+            <div class="eng-title">Investor-Ready Business Plan</div>
+            <p>Produced a business plan for an independent financial services network provider targeting non-technical investors, addressing complex regulatory changes in accessible, persuasive language.</p>
+          </div>
+          <div class="engagement-item">
+            <div class="eng-title">Industry Analysis for State Association</div>
+            <p>Prepared a comprehensive report on regulatory and competitive aspects of the telecommunications industry to alert a state telephone association's members to upcoming strategic and tactical challenges.</p>
+          </div>
+          <div class="engagement-item">
+            <div class="eng-title">Business Planning Process Standardization</div>
+            <p>Standardized the business planning process for an incumbent telecommunications provider and communicated new processes to senior management, including tools to facilitate acquisition decision-making.</p>
+          </div>
+          <div class="engagement-item">
+            <div class="eng-title">Capital Management Reengineering — Fortune 25</div>
+            <p>Conducted a comprehensive review of internal and external capital management practices for a Fortune 25 telecommunications provider, improving investment decision-making processes in an environment of increasing competition and constrained capital.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="container">
+    <div class="card">
+      <h2 class="section-title">Publications &amp; Presentations</h2>
+
+      <div class="pub-group">
+        <h3>Books</h3>
+        <ul class="pub-list">
+          <li>
+            <span>
+              <strong>Customer-Centered Telecommunications Services Marketing</strong>
+              <span class="pub-venue">Artech House, Norwood, MA · August 2004</span>
+            </span>
+          </li>
+          <li>
+            <span>
+              <strong>Strategies for Success in the New Telecommunications Marketplace</strong>
+              <span class="pub-venue">Artech House Publishers, Norwood, MA · January 2001</span>
+            </span>
+          </li>
+          <li>
+            <span>
+              <strong>Marketing Telecommunications Services: New Approaches for a Changing Environment</strong>
+              <span class="pub-venue">Artech House, Norwood, MA · June 1999</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-group">
+        <h3>Selected Articles</h3>
+        <ul class="pub-list">
+          <li><span>Customer-Driven Universal Service <span class="pub-venue">Colombian Telecommunications Magazine</span></span></li>
+          <li><span>Selling the Future: The New Rules of Technology Marketing <span class="pub-venue">Colombian Telecommunications Magazine</span></span></li>
+          <li><span>Dollar Signs: Fundamental Market Changes Call for Fundamental Pricing Changes <span class="pub-venue">Telephony</span></span></li>
+          <li><span>Full Court Press: Can Telecommunications Providers Win Both Justice and Profits? <span class="pub-venue">America's Network</span></span></li>
+          <li><span>Reengineering Telecommunications Policy <span class="pub-venue">Telephony</span></span></li>
+          <li><span>Winner Takes Enough: How To Compete with the Giants and Win <span class="pub-venue">Phone+</span></span></li>
+          <li><span>Planning, Measuring, Managing Market Share <span class="pub-venue">Phone+</span></span></li>
+          <li><span>Weapons of Mass Marketing <span class="pub-venue">Telephony</span></span></li>
+          <li><span>What If Your Office Vanishes? <span class="pub-venue">Industry Week</span></span></li>
+          <li><span>The Importance of Userware <span class="pub-venue">Journal of Information Systems Management</span></span></li>
+        </ul>
+      </div>
+
+      <div class="pub-group">
+        <h3>Conference Presentations</h3>
+        <ul class="pub-list">
+          <li><span>"Customer-Centered VoIP Marketing" <span class="pub-venue">Internet Telephony Conference and Expo East</span></span></li>
+          <li><span>"Customer-Centered Telecommunications Services Marketing" <span class="pub-venue">XI Congreso Nacional y XII Andino de Telecomunicaciones, Cartagena de Indias, Colombia</span></span></li>
+          <li><span>"Positioning New Telecommunications Services for Profit" <span class="pub-venue">Telecommunications Magazine Executive Seminars</span></span></li>
+          <li><span>"Competitive Marketing" <span class="pub-venue">XIV Congreso Nacional y V Andino de Telecomunicaciones y ANDICOM99, Cartagena, Colombia</span></span></li>
+          <li><span>"Adding Real Value to the Telecommunications Network" <span class="pub-venue">Caribbean Telecommunications Council</span></span></li>
+          <li><span>"The New Capital Framework" <span class="pub-venue">Caribbean Telecommunications Council</span></span></li>
+          <li><span>"Benchmarking for Effectiveness" <span class="pub-venue">Human Factors in Call Centers Conference</span></span></li>
+          <li><span>"Telecommunications Disaster Recovery for Airports" <span class="pub-venue">Airports Council International (ACI/InfoTel)</span></span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Other creative work -->
+    <div class="card">
+      <h2 class="section-title">Other Works</h2>
+      <div class="other-grid">
+        <div class="other-card">
+          <div class="other-type">eComic</div>
+          <div class="other-title">We The People: A Guide to American Democracy</div>
+          <div class="other-detail">by Madison Plume · Kindle Direct Publishing, April 2025</div>
+        </div>
+        <div class="other-card">
+          <div class="other-type">eComic</div>
+          <div class="other-title">It's Not You, It's the Economy: Understanding Money, Markets, and Tradeoffs</div>
+          <div class="other-detail">by Madison Plume · Kindle Direct Publishing, August 2025</div>
+        </div>
+        <div class="other-card">
+          <div class="other-type">Book</div>
+          <div class="other-title">The Edges of the Mediterranean</div>
+          <div class="other-detail">Self-published · May 2002</div>
+        </div>
+        <div class="other-card">
+          <div class="other-type">Play / Screenplay</div>
+          <div class="other-title">What You Ask For</div>
+          <div class="other-detail">Unpublished play and screenplay</div>
+        </div>
+        <div class="other-card">
+          <div class="other-type">Screenplay</div>
+          <div class="other-title">Life Lines</div>
+          <div class="other-detail">Unpublished</div>
+        </div>
+        <div class="other-card">
+          <div class="other-type">Online Game</div>
+          <div class="other-title">Citizenship Quest</div>
+          <div class="other-detail">US Naturalization Game · 2026</div>
+        </div>
+        <div class="other-card">
+          <div class="other-type">Sailing Journal</div>
+          <div class="other-title">KarenandArt.com</div>
+          <div class="other-detail">Active archive</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="card">
+      <h2 class="section-title">Education &amp; Credentials</h2>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="degree">MBA</div>
+          <div class="field">Finance</div>
+          <div class="school">Saint Joseph's University<br>Philadelphia, PA</div>
+        </div>
+        <div class="edu-card">
+          <div class="degree">MA</div>
+          <div class="field">Communications</div>
+          <div class="school">Temple University<br>Philadelphia, PA</div>
+        </div>
+        <div class="edu-card">
+          <div class="degree">BA</div>
+          <div class="field">Communications</div>
+          <div class="school">Temple University<br>Philadelphia, PA</div>
+        </div>
+        <div class="edu-card">
+          <div class="degree">Certification</div>
+          <div class="field">Certified Systems Professional</div>
+          <div class="school">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="card">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-row">
+        <a class="contact-item" href="tel:9546677889">
+          <span class="contact-icon">📞</span>
+          <span>(954) 667-7889</span>
+        </a>
+        <a class="contact-item" href="mailto:kstrouse@karenstrouse.com">
+          <span class="contact-icon">✉️</span>
+          <span>kstrouse@karenstrouse.com</span>
+        </a>
+        <a class="contact-item" href="https://www.karenstrouse.com" target="_blank">
+          <span class="contact-icon">🌐</span>
+          <span>karenstrouse.com</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Karen Strouse. All rights reserved.
+</footer>
+
+</body>
+</html>
