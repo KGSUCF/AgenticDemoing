@@ -136,6 +136,45 @@
       line-height: 1.6;
     }
 
+    details {
+      border-top: 2px dashed #e76f51;
+      margin-top: 12px;
+      padding-top: 10px;
+    }
+
+    details summary {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(6px, 0.9vw, 8px);
+      color: #ffe08a;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      outline: none;
+      user-select: none;
+    }
+
+    details summary::before {
+      content: '▶';
+      font-size: 7px;
+      transition: transform 0.2s;
+      display: inline-block;
+    }
+
+    details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    details p {
+      font-family: Georgia, serif;
+      font-size: 13px;
+      color: #b0c4cc;
+      line-height: 1.7;
+      margin-top: 10px;
+      padding-left: 4px;
+    }
+
     /* ── Footer ── */
     footer {
       background: #0f0f1a;
@@ -169,6 +208,10 @@
       <div class="card-body">
         <div class="common-name">Hamadryas Baboon</div>
         <div class="sci-name">Papio hamadryas</div>
+        <details>
+          <summary>Description</summary>
+          <p>A Hamadryas Baboon crouched on a dirt and wood-chip ground, possibly at a zoo. The animal displays the species' characteristic mane of grey-brown fur around the head and shoulders. Its pink-red facial skin is visible as it hunches forward. Leafy greens and scattered food fragments are visible nearby.</p>
+        </details>
       </div>
     </article>
 
@@ -179,6 +222,10 @@
       <div class="card-body">
         <div class="common-name">American Goldfinch</div>
         <div class="sci-name">Spinus tristis</div>
+        <details>
+          <summary>Description</summary>
+          <p>A brilliantly yellow American Goldfinch perched on a slender bare branch against a clear blue sky. The bird is in its vivid breeding plumage, showing the bright lemon-yellow body and black wing typical of the male.</p>
+        </details>
       </div>
     </article>
 
@@ -189,6 +236,10 @@
       <div class="card-body">
         <div class="common-name">Eastern Tiger Swallowtail</div>
         <div class="sci-name">Papilio glaucus</div>
+        <details>
+          <summary>Description</summary>
+          <p>An Eastern Tiger Swallowtail butterfly resting on flowering shrubs. Its large wings display the classic yellow and black tiger-stripe pattern with blue and orange accents near the hindwing tails. The wings are fully spread, revealing the complete pattern.</p>
+        </details>
       </div>
     </article>
 
@@ -199,6 +250,10 @@
       <div class="card-body">
         <div class="common-name">African Bush Elephant</div>
         <div class="sci-name">Loxodonta africana</div>
+        <details>
+          <summary>Description</summary>
+          <p>A young African Bush Elephant walking along a dry dirt road in savanna habitat. The juvenile elephant's wrinkled grey skin, large ears, and downward-curving trunk are prominent. A second elephant is partially visible in the background, and sparse scrub vegetation lines the road.</p>
+        </details>
       </div>
     </article>
 
@@ -209,6 +264,10 @@
       <div class="card-body">
         <div class="common-name">Masai Giraffe</div>
         <div class="sci-name">Giraffa tippelskirchi</div>
+        <details>
+          <summary>Description</summary>
+          <p>A lone Masai Giraffe standing in open African savanna with scattered trees and shrubs. The animal's characteristic irregular, jagged brown patches on a cream background are clearly visible. It stands tall with its long neck raised, surveying the landscape.</p>
+        </details>
       </div>
     </article>
 
@@ -219,6 +278,10 @@
       <div class="card-body">
         <div class="common-name">Paper Wasp</div>
         <div class="sci-name">Polistes sp.</div>
+        <details>
+          <summary>Description</summary>
+          <p>A paper wasp actively subduing a grasshopper on rocky ground. The wasp's yellow-and-black-banded abdomen and orange-tinted wings are visible as it grasps the much larger green grasshopper. This image captures an example of predatory insect behavior in the wild.</p>
+        </details>
       </div>
     </article>
 
@@ -229,6 +292,10 @@
       <div class="card-body">
         <div class="common-name">African Lioness</div>
         <div class="sci-name">Panthera leo</div>
+        <details>
+          <summary>Description</summary>
+          <p>An African lioness sitting on bare, dry ground in a savanna setting. She is caught mid-yawn, her mouth wide open to display her large canine teeth. Her tawny, short-furred coat, muscular build, and alert amber eyes are characteristic of the species.</p>
+        </details>
       </div>
     </article>
 
@@ -239,6 +306,10 @@
       <div class="card-body">
         <div class="common-name">Red Panda</div>
         <div class="sci-name">Ailurus fulgens</div>
+        <details>
+          <summary>Description</summary>
+          <p>A Red Panda resting on a wooden log or fence rail, likely in a zoo enclosure. The animal's distinctive rust-red fur, white-lined ears, and dark underbelly are clearly visible. The Red Panda is often mistaken for a giant panda but is a distinct species in its own family.</p>
+        </details>
       </div>
     </article>
 
@@ -249,6 +320,10 @@
       <div class="card-body">
         <div class="common-name">California Sea Lion</div>
         <div class="sci-name">Zalophus californianus</div>
+        <details>
+          <summary>Description</summary>
+          <p>A California Sea Lion resting on a white sandy beach. The animal is posed in a classic upright posture, balancing on its front flippers with its sleek dark-brown body and whiskered muzzle raised. The background is a flat expanse of pale sand.</p>
+        </details>
       </div>
     </article>
 
