@@ -8,24 +8,11 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-    :root {
-      --sky: #87CEEB;
-      --grass: #4a7c59;
-      --dark-green: #2d5a27;
-      --sun-yellow: #FFD700;
-      --cloud-white: #f0f0f0;
-      --text-dark: #1a1a2e;
-      --card-bg: #fefefe;
-      --accent: #e76f51;
-      --border: #264653;
-    }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       background-color: #1a1a2e;
       font-family: 'Press Start 2P', monospace, sans-serif;
-      color: var(--text-dark);
     }
 
     /* ── Header ── */
@@ -42,37 +29,37 @@
 
     .site-title {
       position: absolute;
-      bottom: 24px;
+      top: 14px;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
       pointer-events: none;
       z-index: 10;
+      white-space: nowrap;
     }
 
     .site-title h1 {
       font-family: 'Press Start 2P', monospace;
-      font-size: clamp(14px, 3vw, 28px);
+      font-size: clamp(13px, 2.8vw, 28px);
       color: #fff;
       text-shadow:
-        3px 3px 0 #000,
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000;
-      white-space: nowrap;
+        3px  3px 0 #c00,
+       -2px -2px 0 #c00,
+        2px -2px 0 #c00,
+       -2px  2px 0 #c00;
       letter-spacing: 2px;
     }
 
     .site-title p {
       font-family: 'Press Start 2P', monospace;
-      font-size: clamp(7px, 1.2vw, 11px);
+      font-size: clamp(6px, 1.1vw, 11px);
       color: #ffe08a;
       text-shadow: 2px 2px 0 #000;
       margin-top: 10px;
       letter-spacing: 1px;
     }
 
-    /* ── Gallery Section ── */
+    /* ── Gallery ── */
     #gallery-section {
       background: #1a1a2e;
       padding: 40px 24px 60px;
@@ -101,7 +88,6 @@
       border: 3px solid #e76f51;
       box-shadow: 4px 4px 0 #000;
       transition: transform 0.1s, box-shadow 0.1s;
-      cursor: default;
       overflow: hidden;
     }
 
@@ -112,7 +98,6 @@
     }
 
     .card-img-wrap {
-      position: relative;
       width: 100%;
       aspect-ratio: 4 / 3;
       overflow: hidden;
@@ -148,46 +133,7 @@
       font-size: clamp(6px, 1vw, 9px);
       color: #a8dadc;
       font-style: italic;
-      margin-bottom: 14px;
       line-height: 1.6;
-    }
-
-    details {
-      border-top: 2px dashed #264653;
-      padding-top: 10px;
-    }
-
-    details summary {
-      font-family: 'Press Start 2P', monospace;
-      font-size: clamp(6px, 0.9vw, 8px);
-      color: #ffe08a;
-      cursor: pointer;
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      outline: none;
-      user-select: none;
-    }
-
-    details summary::before {
-      content: '▶';
-      font-size: 7px;
-      transition: transform 0.2s;
-      display: inline-block;
-    }
-
-    details[open] summary::before {
-      transform: rotate(90deg);
-    }
-
-    details p {
-      font-family: Georgia, serif;
-      font-size: 13px;
-      color: #b0b8c1;
-      line-height: 1.7;
-      margin-top: 10px;
-      padding-left: 4px;
     }
 
     /* ── Footer ── */
@@ -218,136 +164,91 @@
 
     <article class="animal-card">
       <div class="card-img-wrap">
-        <img src="hamadryas_baboon.png"
-             alt="A Hamadryas Baboon crouched on a dirt and wood-chip ground, possibly at a zoo. The animal displays the species' characteristic mane of grey-brown fur around the head and shoulders. Its pink-red facial skin is visible as it hunches forward. Leafy greens and scattered food fragments are visible nearby." />
+        <img src="hamadryas_baboon.png" alt="Hamadryas Baboon" />
       </div>
       <div class="card-body">
         <div class="common-name">Hamadryas Baboon</div>
         <div class="sci-name">Papio hamadryas</div>
-        <details>
-          <summary>Description</summary>
-          <p>A Hamadryas Baboon crouched on a dirt and wood-chip ground, possibly at a zoo. The animal displays the species' characteristic mane of grey-brown fur around the head and shoulders. Its pink-red facial skin is visible as it hunches forward. Leafy greens and scattered food fragments are visible nearby.</p>
-        </details>
       </div>
     </article>
 
     <article class="animal-card">
       <div class="card-img-wrap">
-        <img src="american_goldfinch.png"
-             alt="A brilliantly yellow American Goldfinch perched on a slender bare branch against a clear blue sky. The bird is in its vivid breeding plumage, showing the bright lemon-yellow body and black wing typical of the male." />
+        <img src="american_goldfinch.png" alt="American Goldfinch" />
       </div>
       <div class="card-body">
         <div class="common-name">American Goldfinch</div>
         <div class="sci-name">Spinus tristis</div>
-        <details>
-          <summary>Description</summary>
-          <p>A brilliantly yellow American Goldfinch perched on a slender bare branch against a clear blue sky. The bird is in its vivid breeding plumage, showing the bright lemon-yellow body and black wing typical of the male.</p>
-        </details>
       </div>
     </article>
 
     <article class="animal-card">
       <div class="card-img-wrap">
-        <img src="eastern_tiger_swallowtail.png"
-             alt="An Eastern Tiger Swallowtail butterfly resting on flowering shrubs. Its large wings display the classic yellow and black tiger-stripe pattern with blue and orange accents near the hindwing tails. The wings are fully spread, revealing the complete pattern." />
+        <img src="eastern_tiger_swallowtail.png" alt="Eastern Tiger Swallowtail" />
       </div>
       <div class="card-body">
         <div class="common-name">Eastern Tiger Swallowtail</div>
         <div class="sci-name">Papilio glaucus</div>
-        <details>
-          <summary>Description</summary>
-          <p>An Eastern Tiger Swallowtail butterfly resting on flowering shrubs. Its large wings display the classic yellow and black tiger-stripe pattern with blue and orange accents near the hindwing tails. The wings are fully spread, revealing the complete pattern.</p>
-        </details>
       </div>
     </article>
 
     <article class="animal-card">
       <div class="card-img-wrap">
-        <img src="african_bush_elephant.png"
-             alt="A young African Bush Elephant walking along a dry dirt road in savanna habitat. The juvenile elephant's wrinkled grey skin, large ears, and downward-curving trunk are prominent. A second elephant is partially visible in the background, and sparse scrub vegetation lines the road." />
+        <img src="african_bush_elephant.png" alt="African Bush Elephant" />
       </div>
       <div class="card-body">
         <div class="common-name">African Bush Elephant</div>
         <div class="sci-name">Loxodonta africana</div>
-        <details>
-          <summary>Description</summary>
-          <p>A young African Bush Elephant walking along a dry dirt road in savanna habitat. The juvenile elephant's wrinkled grey skin, large ears, and downward-curving trunk are prominent. A second elephant is partially visible in the background, and sparse scrub vegetation lines the road.</p>
-        </details>
       </div>
     </article>
 
     <article class="animal-card">
       <div class="card-img-wrap">
-        <img src="masai_giraffe.png"
-             alt="A lone Masai Giraffe standing in open African savanna with scattered trees and shrubs. The animal's characteristic irregular, jagged brown patches on a cream background are clearly visible. It stands tall with its long neck raised, surveying the landscape." />
+        <img src="masai_giraffe.png" alt="Masai Giraffe" />
       </div>
       <div class="card-body">
         <div class="common-name">Masai Giraffe</div>
         <div class="sci-name">Giraffa tippelskirchi</div>
-        <details>
-          <summary>Description</summary>
-          <p>A lone Masai Giraffe standing in open African savanna with scattered trees and shrubs. The animal's characteristic irregular, jagged brown patches on a cream background are clearly visible. It stands tall with its long neck raised, surveying the landscape.</p>
-        </details>
       </div>
     </article>
 
     <article class="animal-card">
       <div class="card-img-wrap">
-        <img src="paper_wasp.png"
-             alt="A paper wasp actively subduing a grasshopper on rocky ground. The wasp's yellow-and-black-banded abdomen and orange-tinted wings are visible as it grasps the much larger green grasshopper. This image captures an example of predatory insect behavior in the wild." />
+        <img src="paper_wasp.png" alt="Paper Wasp" />
       </div>
       <div class="card-body">
         <div class="common-name">Paper Wasp</div>
-        <div class="sci-name">Polistes sp. (preying on grasshopper)</div>
-        <details>
-          <summary>Description</summary>
-          <p>A paper wasp actively subduing a grasshopper on rocky ground. The wasp's yellow-and-black-banded abdomen and orange-tinted wings are visible as it grasps the much larger green grasshopper. This image captures an example of predatory insect behavior in the wild.</p>
-        </details>
+        <div class="sci-name">Polistes sp.</div>
       </div>
     </article>
 
     <article class="animal-card">
       <div class="card-img-wrap">
-        <img src="african_lioness.png"
-             alt="An African lioness sitting on bare, dry ground in a savanna setting. She is caught mid-yawn, her mouth wide open to display her large canine teeth. Her tawny, short-furred coat, muscular build, and alert amber eyes are characteristic of the species." />
+        <img src="african_lioness.png" alt="African Lioness" />
       </div>
       <div class="card-body">
         <div class="common-name">African Lioness</div>
         <div class="sci-name">Panthera leo</div>
-        <details>
-          <summary>Description</summary>
-          <p>An African lioness sitting on bare, dry ground in a savanna setting. She is caught mid-yawn, her mouth wide open to display her large canine teeth. Her tawny, short-furred coat, muscular build, and alert amber eyes are characteristic of the species.</p>
-        </details>
       </div>
     </article>
 
     <article class="animal-card">
       <div class="card-img-wrap">
-        <img src="red_panda.png"
-             alt="A Red Panda resting on a wooden log or fence rail, likely in a zoo enclosure. The animal's distinctive rust-red fur, white-lined ears, and dark underbelly are clearly visible. The Red Panda is often mistaken for a giant panda but is a distinct species in its own family." />
+        <img src="red_panda.png" alt="Red Panda" />
       </div>
       <div class="card-body">
         <div class="common-name">Red Panda</div>
         <div class="sci-name">Ailurus fulgens</div>
-        <details>
-          <summary>Description</summary>
-          <p>A Red Panda resting on a wooden log or fence rail, likely in a zoo enclosure. The animal's distinctive rust-red fur, white-lined ears, and dark underbelly are clearly visible. The Red Panda is often mistaken for a giant panda but is a distinct species in its own family.</p>
-        </details>
       </div>
     </article>
 
     <article class="animal-card">
       <div class="card-img-wrap">
-        <img src="california_sea_lion.png"
-             alt="A California Sea Lion resting on a white sandy beach. The animal is posed in a classic upright posture, balancing on its front flippers with its sleek dark-brown body and whiskered muzzle raised. The background is a flat expanse of pale sand." />
+        <img src="california_sea_lion.png" alt="California Sea Lion" />
       </div>
       <div class="card-body">
         <div class="common-name">California Sea Lion</div>
         <div class="sci-name">Zalophus californianus</div>
-        <details>
-          <summary>Description</summary>
-          <p>A California Sea Lion resting on a white sandy beach. The animal is posed in a classic upright posture, balancing on its front flippers with its sleek dark-brown body and whiskered muzzle raised. The background is a flat expanse of pale sand.</p>
-        </details>
       </div>
     </article>
 
@@ -357,314 +258,403 @@
 <footer>made with p5.js &nbsp;·&nbsp; 9 species &nbsp;·&nbsp; 2026</footer>
 
 <script>
-// ── P5.js Retro Scene ──────────────────────────────────────────────
+// ── Sesame Street Header ──────────────────────────────────────────
 new p5(function(p) {
 
-  const PIXEL = 4; // pixel art scale factor
-
-  // Sun
-  let sunX, sunY, sunR;
-  let sunPulse = 0;
-
-  // Clouds
+  const PX = 3;
+  let W, H, wallY;
+  let t = 0;
   let clouds = [];
 
-  // Flowers
-  let flowers = [];
-
-  // Ground hills
-  let hillOffset = 0;
-
-  // Canvas dimensions
-  let W, H;
-
-  // Palette
-  const SKY_TOP    = p.color(34, 85, 160);
-  const SKY_BOT    = p.color(100, 190, 230);
-  const SUN_COL    = p.color(255, 220, 30);
-  const SUN_GLOW   = p.color(255, 240, 120, 80);
-  const CLOUD_COL  = p.color(240, 240, 255);
-  const CLOUD_SHD  = p.color(180, 190, 210);
-  const GRASS_DARK = p.color(42, 90, 50);
-  const GRASS_MID  = p.color(72, 140, 72);
-  const GRASS_LIT  = p.color(110, 190, 80);
-  const STEM_COL   = p.color(50, 110, 50);
-
-  const FLOWER_PALETTES = [
-    [p.color(255, 80, 120),  p.color(255, 200, 50)],  // pink / yellow
-    [p.color(255, 165, 0),   p.color(255, 240, 100)], // orange / pale yellow
-    [p.color(200, 80, 220),  p.color(255, 220, 50)],  // purple / yellow
-    [p.color(255, 230, 50),  p.color(255, 120, 30)],  // yellow / orange
-    [p.color(80, 180, 255),  p.color(255, 255, 200)], // blue / cream
-  ];
-
-  // ── Setup ──────────────────────────────────────────────────────
+  // ── Setup / Resize ──────────────────────────────────────────────
   p.setup = function() {
     W = p.windowWidth;
-    H = Math.round(W * 0.32);
-    H = p.constrain(H, 180, 380);
-
+    H = p.constrain(Math.round(W * 0.34), 230, 440);
+    wallY = H * 0.68;
     let cnv = p.createCanvas(W, H);
     cnv.parent('p5-canvas-container');
     p.noSmooth();
     p.pixelDensity(1);
-
-    sunX = W * 0.82;
-    sunY = H * 0.22;
-    sunR = pxSnap(H * 0.13);
-
-    spawnClouds();
-    spawnFlowers();
+    initClouds();
   };
 
   p.windowResized = function() {
     W = p.windowWidth;
-    H = p.constrain(Math.round(W * 0.32), 180, 380);
+    H = p.constrain(Math.round(W * 0.34), 230, 440);
+    wallY = H * 0.68;
     p.resizeCanvas(W, H);
-    sunX = W * 0.82;
-    sunY = H * 0.22;
-    sunR = pxSnap(H * 0.13);
-    spawnClouds();
-    spawnFlowers();
+    initClouds();
   };
 
-  // ── Draw ───────────────────────────────────────────────────────
+  // ── Main draw loop ──────────────────────────────────────────────
   p.draw = function() {
+    t += 0.018;
     drawSky();
-    updateClouds();
+    moveClouds();
     drawClouds();
     drawSun();
-    drawGround();
-    drawFlowers();
+    drawBuildings();
+    drawWall();
+    drawMuppets();
   };
 
-  // ── Sky gradient (banded, retro) ───────────────────────────────
+  // ── Sky gradient ────────────────────────────────────────────────
   function drawSky() {
     let bands = 10;
     for (let i = 0; i < bands; i++) {
-      let t = i / bands;
-      let c = p.lerpColor(SKY_TOP, SKY_BOT, t);
-      p.fill(c);
-      p.noStroke();
-      p.rect(0, pxSnap(t * H * 0.72), W, pxSnap(H * 0.72 / bands) + 1);
+      let fr = i / bands;
+      let c = p.lerpColor(p.color(65, 155, 235), p.color(155, 215, 255), fr);
+      p.fill(c); p.noStroke();
+      p.rect(0, sn(fr * wallY), W, sn(wallY / bands) + 2);
     }
   }
 
-  // ── Sun ────────────────────────────────────────────────────────
+  // ── Sun ─────────────────────────────────────────────────────────
   function drawSun() {
-    sunPulse += 0.025;
-    let pulse = p.sin(sunPulse) * PIXEL;
-
-    // Outer glow rings (pixel-rounded circles)
+    let sx = sn(W * 0.87), sy = sn(H * 0.14);
+    let r  = sn(H * 0.09);
+    let pulse = p.sin(t * 1.8) * PX;
     p.noStroke();
-    for (let r = sunR + pulse + PIXEL * 8; r > sunR + pulse; r -= PIXEL * 2) {
-      let a = p.map(r, sunR + pulse, sunR + pulse + PIXEL * 8, 60, 0);
-      p.fill(255, 230, 80, a);
-      pixelCircle(sunX, sunY, r);
+    for (let gr = r + PX*9 + pulse; gr > r + pulse; gr -= PX * 2) {
+      let a = p.map(gr, r + pulse, r + PX*9 + pulse, 0, 75);
+      p.fill(255, 235, 80, a);
+      p.ellipse(sx, sy, gr * 2, gr * 2);
     }
-
-    // Rays — 8 directions, pixel-style
-    p.fill(255, 215, 0, 180);
+    p.strokeWeight(PX * 2);
     for (let i = 0; i < 8; i++) {
-      let angle = (i / 8) * p.TWO_PI + sunPulse * 0.3;
-      let rx1 = sunX + p.cos(angle) * (sunR + PIXEL * 2);
-      let ry1 = sunY + p.sin(angle) * (sunR + PIXEL * 2);
-      let rx2 = sunX + p.cos(angle) * (sunR + PIXEL * 9 + pulse);
-      let ry2 = sunY + p.sin(angle) * (sunR + PIXEL * 9 + pulse);
-      p.strokeWeight(PIXEL * 2);
-      p.stroke(255, 215, 0, 200);
-      p.line(pxSnap(rx1), pxSnap(ry1), pxSnap(rx2), pxSnap(ry2));
+      let a = (i / 8) * p.TWO_PI + t * 0.25;
+      p.stroke(255, 210, 0, 190);
+      p.line(sn(sx + p.cos(a)*(r+PX*2)),    sn(sy + p.sin(a)*(r+PX*2)),
+             sn(sx + p.cos(a)*(r+PX*9+pulse)), sn(sy + p.sin(a)*(r+PX*9+pulse)));
     }
     p.noStroke();
-
-    // Sun body
-    p.fill(SUN_COL);
-    pixelCircle(sunX, sunY, sunR + pulse);
-
-    // Pixel highlight
+    p.fill(255, 222, 30);
+    p.ellipse(sx, sy, (r+pulse)*2, (r+pulse)*2);
     p.fill(255, 255, 200, 200);
-    pixelCircle(sunX - sunR * 0.28, sunY - sunR * 0.28, sunR * 0.28);
+    p.ellipse(sn(sx - r*0.27), sn(sy - r*0.27), sn(r*0.5), sn(r*0.5));
   }
 
-  // ── Clouds ─────────────────────────────────────────────────────
-  function spawnClouds() {
+  // ── Clouds ──────────────────────────────────────────────────────
+  function initClouds() {
     clouds = [];
-    let n = 4 + Math.floor(W / 250);
-    for (let i = 0; i < n; i++) {
-      clouds.push(makeCloud(p.random(W), p.random(H * 0.08, H * 0.42)));
-    }
+    let n = 3 + Math.floor(W / 280);
+    for (let i = 0; i < n; i++)
+      clouds.push(mkCloud(p.random(W), p.random(H * 0.05, H * 0.40)));
   }
-
-  function makeCloud(x, y) {
-    return {
-      x, y,
-      speed: p.random(0.25, 0.7),
-      w: pxSnap(p.random(70, 160)),
-      h: pxSnap(p.random(26, 48)),
-      bumps: Math.floor(p.random(3, 6))
-    };
+  function mkCloud(x, y) {
+    return { x, y, spd: p.random(0.2, 0.6), w: sn(p.random(70,155)), h: sn(p.random(26,46)), bumps: p.floor(p.random(3,6)) };
   }
-
-  function updateClouds() {
+  function moveClouds() {
     for (let c of clouds) {
-      c.x -= c.speed;
-      if (c.x + c.w < 0) {
-        c.x = W + c.w;
-        c.y = p.random(H * 0.08, H * 0.42);
-      }
+      c.x -= c.spd;
+      if (c.x + c.w < 0) { c.x = W + c.w; c.y = p.random(H*0.05, H*0.40); }
     }
   }
-
   function drawClouds() {
-    for (let c of clouds) {
-      // Shadow
-      p.fill(CLOUD_SHD);
-      p.noStroke();
-      drawCloudShape(c.x + PIXEL, c.y + PIXEL * 2, c.w, c.h, c.bumps);
-      // Body
-      p.fill(CLOUD_COL);
-      drawCloudShape(c.x, c.y, c.w, c.h, c.bumps);
-    }
-  }
-
-  function drawCloudShape(x, y, w, h, bumps) {
-    // Base rectangle
-    p.rect(pxSnap(x), pxSnap(y + h * 0.4), pxSnap(w), pxSnap(h * 0.6));
-    // Bumps along the top
-    for (let i = 0; i < bumps; i++) {
-      let bx = x + (w / (bumps)) * i + w / bumps / 2;
-      let by = y + h * 0.38;
-      let br = (h * 0.42) + (i === Math.floor(bumps / 2) ? h * 0.12 : 0);
-      pixelCircle(bx, by, br);
-    }
-  }
-
-  // ── Ground ─────────────────────────────────────────────────────
-  function drawGround() {
-    let groundY = H * 0.70;
-    let bandH   = H * 0.06;
-
-    // Dark base
-    p.fill(GRASS_DARK);
     p.noStroke();
-    p.rect(0, pxSnap(groundY + bandH), W, H);
-
-    // Mid grass band with bumpy hills
-    p.fill(GRASS_MID);
-    drawHillBand(groundY, bandH, 0.018, 0);
-
-    // Bright top highlight
-    p.fill(GRASS_LIT);
-    drawHillBand(groundY - bandH * 0.3, bandH * 0.35, 0.022, 60);
-  }
-
-  function drawHillBand(baseY, bH, freq, phaseOff) {
-    p.beginShape();
-    p.vertex(0, H);
-    for (let x = 0; x <= W; x += PIXEL) {
-      let y = baseY + p.sin((x + hillOffset + phaseOff) * freq) * PIXEL * 4;
-      p.vertex(pxSnap(x), pxSnap(y));
+    for (let c of clouds) {
+      p.fill(175, 192, 215); cloudShape(c.x+PX, c.y+PX*2, c.w, c.h, c.bumps);
+      p.fill(245, 250, 255); cloudShape(c.x,    c.y,      c.w, c.h, c.bumps);
     }
-    p.vertex(W, H);
-    p.endShape(p.CLOSE);
-    hillOffset += 0.4;
   }
-
-  // ── Flowers ────────────────────────────────────────────────────
-  function spawnFlowers() {
-    flowers = [];
-    let n = 12 + Math.floor(W / 80);
-    for (let i = 0; i < n; i++) {
-      let x = p.random(W);
-      flowers.push(makeFlower(x));
-    }
-    flowers.sort((a, b) => a.x - b.x);
-  }
-
-  function makeFlower(x) {
-    let palette = FLOWER_PALETTES[Math.floor(p.random(FLOWER_PALETTES.length))];
-    let size = pxSnap(p.random(14, 28));
-    return {
-      x: pxSnap(x),
-      stemH: pxSnap(p.random(28, 60)),
-      size,
-      petalCol: palette[0],
-      centerCol: palette[1],
-      wobble: p.random(p.TWO_PI),
-      wobbleSpeed: p.random(0.02, 0.05),
-      type: Math.floor(p.random(3)) // 0=round, 1=star, 2=daisy
-    };
-  }
-
-  function drawFlowers() {
-    let groundY = H * 0.70;
-
-    for (let f of flowers) {
-      f.wobble += f.wobbleSpeed;
-      let sway = p.sin(f.wobble) * PIXEL * 1.5;
-
-      let baseY = pxSnap(groundY + H * 0.04);
-      let tipX  = pxSnap(f.x + sway);
-      let tipY  = pxSnap(baseY - f.stemH);
-
-      // Stem
-      p.stroke(STEM_COL);
-      p.strokeWeight(PIXEL);
-      p.line(f.x, baseY, tipX, tipY);
-      p.noStroke();
-
-      // Petals
-      p.fill(f.petalCol);
-      drawFlowerHead(f.type, tipX, tipY, f.size);
-
-      // Center
-      p.fill(f.centerCol);
-      pixelCircle(tipX, tipY, f.size * 0.35);
+  function cloudShape(x, y, w, h, bumps) {
+    p.rect(sn(x), sn(y + h*0.4), sn(w), sn(h*0.6));
+    for (let i = 0; i < bumps; i++) {
+      let bx = x + (w/bumps)*i + w/bumps/2;
+      let by = y + h*0.38;
+      let br = h*0.42 + (i === p.floor(bumps/2) ? h*0.12 : 0);
+      p.ellipse(sn(bx), sn(by), sn(br*2), sn(br*2));
     }
   }
 
-  function drawFlowerHead(type, x, y, r) {
-    if (type === 0) {
-      // Round blob petals (4 cardinal)
-      let offsets = [[0, -1], [1, 0], [0, 1], [-1, 0]];
-      for (let [dx, dy] of offsets) {
-        pixelCircle(x + dx * r * 0.7, y + dy * r * 0.7, r * 0.55);
-      }
-    } else if (type === 1) {
-      // Star / diamond petals (8 dir)
-      for (let i = 0; i < 8; i++) {
-        let a = (i / 8) * p.TWO_PI;
-        let px2 = x + p.cos(a) * r * 0.8;
-        let py2 = y + p.sin(a) * r * 0.8;
-        pixelCircle(px2, py2, r * 0.38);
-      }
-    } else {
-      // Daisy — elongated petals
-      for (let i = 0; i < 6; i++) {
-        let a = (i / 6) * p.TWO_PI;
-        let px2 = x + p.cos(a) * r;
-        let py2 = y + p.sin(a) * r;
-        p.fill(p.red(p.color(255, 255, 255)) > 200 ? p.color(255, 255, 255) : arguments.callee);
-        pixelRect(pxSnap(px2 - PIXEL), pxSnap(py2 - PIXEL), PIXEL * 2, PIXEL * 2);
+  // ── Buildings (NYC brownstones) ─────────────────────────────────
+  function drawBuildings() {
+    let bldgs = [
+      { x:0.00, w:0.10, h:0.56, c:[192,128,84]  },
+      { x:0.09, w:0.08, h:0.48, c:[155,165,185] },
+      { x:0.16, w:0.09, h:0.62, c:[168,95,80]   },
+      { x:0.24, w:0.08, h:0.45, c:[192,128,84]  },
+      { x:0.31, w:0.06, h:0.52, c:[140,160,180] },
+      { x:0.53, w:0.08, h:0.55, c:[155,165,185] },
+      { x:0.60, w:0.10, h:0.58, c:[168,95,80]   },
+      { x:0.69, w:0.07, h:0.47, c:[192,128,84]  },
+      { x:0.75, w:0.09, h:0.60, c:[155,165,185] },
+      { x:0.83, w:0.08, h:0.52, c:[168,95,80]   },
+      { x:0.90, w:0.10, h:0.55, c:[192,128,84]  },
+    ];
+    p.noStroke();
+    for (let b of bldgs) {
+      let bx = W*b.x, bw = W*b.w, bh = H*b.h, topY = wallY - H*b.h;
+      p.fill(b.c[0], b.c[1], b.c[2]);
+      p.rect(sn(bx), sn(topY), sn(bw), sn(bh));
+      p.fill(b.c[0]-28, b.c[1]-28, b.c[2]-28);
+      p.rect(sn(bx), sn(topY), PX*2, sn(bh));
+      // Windows
+      let wW = sn(bw*0.22), wH = sn(bh*0.10);
+      let wRows = Math.max(2, Math.floor(bh*0.7/(wH+PX*3)));
+      for (let row = 0; row < wRows; row++) {
+        for (let col = 0; col < 2; col++) {
+          let wx = bx + bw*(col===0 ? 0.15 : 0.55);
+          let wy = topY + bh*0.10 + row*(bh*0.78/wRows);
+          let lit = p.noise(wx*0.03, wy*0.03) > 0.48;
+          p.fill(lit ? p.color(255,240,140) : p.color(78,108,162));
+          p.rect(sn(wx), sn(wy), wW, wH);
+          p.fill(0,0,0,55);
+          p.rect(sn(wx), sn(wy), wW, PX);
+          p.rect(sn(wx), sn(wy), PX, wH);
+        }
       }
     }
   }
 
-  // ── Pixel helpers ──────────────────────────────────────────────
-  function pxSnap(v) {
-    return Math.round(v / PIXEL) * PIXEL;
+  // ── Brick Wall ──────────────────────────────────────────────────
+  function drawWall() {
+    let wallH = H - wallY;
+    let bH = PX*5, bW = PX*15;
+    p.fill(183,72,70); p.noStroke();
+    p.rect(0, sn(wallY), W, wallH);
+    let rows = Math.ceil(wallH/bH)+1;
+    for (let r = 0; r <= rows; r++) {
+      let by = wallY + r*bH;
+      let off = (r%2)*bW*0.5;
+      p.fill(214,197,177); p.noStroke();
+      p.rect(0, sn(by), W, PX);
+      let cols = Math.ceil(W/bW)+2;
+      for (let c = 0; c <= cols; c++) {
+        let bx = c*bW - off;
+        p.fill(214,197,177);
+        p.rect(sn(bx), sn(by), PX, sn(bH));
+        p.fill(148,52,52);
+        p.rect(sn(bx+PX), sn(by+bH-PX), sn(bW-PX*2), PX);
+      }
+    }
+    p.fill(208,98,92); p.noStroke(); p.rect(0, sn(wallY),   W, PX*2);
+    p.fill(228,128,118);             p.rect(0, sn(wallY),   W, PX);
   }
 
-  function pixelCircle(cx, cy, r) {
-    let pr = pxSnap(r);
-    let pcx = pxSnap(cx);
-    let pcy = pxSnap(cy);
-    p.ellipse(pcx, pcy, pr * 2, pr * 2);
+  // ── Muppets ─────────────────────────────────────────────────────
+  function drawMuppets() {
+    let pos = [0.10, 0.26, 0.44, 0.62, 0.80];
+    let sc  = p.constrain(W / 1100, 0.55, 1.6);
+    drawBigBird      (sn(W*pos[0]), wallY, sc);
+    drawElmo         (sn(W*pos[1]), wallY, sc);
+    drawCookieMonster(sn(W*pos[2]), wallY, sc);
+    drawKermit       (sn(W*pos[3]), wallY, sc);
+    drawOscar        (sn(W*pos[4]), wallY, sc);
   }
 
-  function pixelRect(x, y, w, h) {
-    p.rect(pxSnap(x), pxSnap(y), pxSnap(w), pxSnap(h));
+  // ── Big Bird (yellow, tall, orange beak) ────────────────────────
+  function drawBigBird(cx, wy, sc) {
+    let u  = PX * sc;
+    let hR = u * 7;
+    let hy = wy - hR * 2.2;
+    p.noStroke();
+    // body
+    p.fill(255,215,0);
+    p.ellipse(sn(cx), sn(wy+u*4), sn(u*14), sn(u*12));
+    // neck
+    p.rect(sn(cx-u*2.5), sn(hy+hR), sn(u*5), sn(wy-hy-hR+u*2));
+    // head
+    p.fill(255,215,0);
+    p.ellipse(sn(cx), sn(hy), sn(hR*2), sn(hR*2.2));
+    // feather tufts
+    p.fill(255,228,30);
+    for (let i=-1; i<=1; i++)
+      p.ellipse(sn(cx+i*hR*0.45), sn(hy-hR*0.86+Math.abs(i)*hR*0.15), sn(u*2.5), sn(u*4));
+    // eye whites
+    p.fill(255);
+    p.ellipse(sn(cx-hR*0.36), sn(hy-hR*0.08), sn(u*3.5), sn(u*3.5));
+    p.ellipse(sn(cx+hR*0.36), sn(hy-hR*0.08), sn(u*3.5), sn(u*3.5));
+    // pupils
+    p.fill(40,40,40);
+    p.ellipse(sn(cx-hR*0.28), sn(hy-hR*0.10), sn(u*2),   sn(u*2));
+    p.ellipse(sn(cx+hR*0.44), sn(hy-hR*0.10), sn(u*2),   sn(u*2));
+    // highlights
+    p.fill(255);
+    p.ellipse(sn(cx-hR*0.37), sn(hy-hR*0.21), sn(u*0.8), sn(u*0.8));
+    p.ellipse(sn(cx+hR*0.35), sn(hy-hR*0.21), sn(u*0.8), sn(u*0.8));
+    // beak
+    p.fill(255,145,30);
+    p.triangle(sn(cx-hR*0.5),sn(hy+hR*0.10), sn(cx+hR*0.5),sn(hy+hR*0.10), sn(cx),sn(hy+hR*0.70));
+    p.fill(200,100,10);
+    p.rect(sn(cx-hR*0.5), sn(hy+hR*0.10), sn(hR), PX*2);
   }
+
+  // ── Elmo (red, round, googly eyes, big smile) ───────────────────
+  function drawElmo(cx, wy, sc) {
+    let u  = PX * sc;
+    let hR = u * 6.5;
+    let hy = wy - hR * 1.3;
+    p.noStroke();
+    // body stub
+    p.fill(238,28,28);
+    p.ellipse(sn(cx), sn(wy+u*2), sn(hR*2.2), sn(u*8));
+    // head
+    p.ellipse(sn(cx), sn(hy), sn(hR*2.1), sn(hR*2));
+    // googly eyes (wobble)
+    let ew = p.sin(t*2.5+1) * u*0.5;
+    p.fill(255);
+    p.ellipse(sn(cx-hR*0.35), sn(hy-hR*0.20+ew), sn(hR*0.72), sn(hR*0.82));
+    p.ellipse(sn(cx+hR*0.35), sn(hy-hR*0.20+ew), sn(hR*0.72), sn(hR*0.82));
+    p.fill(30,30,30);
+    p.ellipse(sn(cx-hR*0.32), sn(hy-hR*0.18+ew), sn(hR*0.40), sn(hR*0.40));
+    p.ellipse(sn(cx+hR*0.38), sn(hy-hR*0.18+ew), sn(hR*0.40), sn(hR*0.40));
+    p.fill(255);
+    p.ellipse(sn(cx-hR*0.41), sn(hy-hR*0.30+ew), sn(u*1.0), sn(u*1.0));
+    p.ellipse(sn(cx+hR*0.30), sn(hy-hR*0.30+ew), sn(u*1.0), sn(u*1.0));
+    // orange nose
+    p.fill(255,130,30);
+    p.ellipse(sn(cx), sn(hy+hR*0.12), sn(hR*0.42), sn(hR*0.38));
+    // open mouth
+    p.fill(30,30,30);
+    p.arc(sn(cx), sn(hy+hR*0.48), sn(hR*1.2), sn(hR*0.75), 0.1, p.PI-0.1);
+    // teeth
+    p.fill(255);
+    p.rect(sn(cx-hR*0.37), sn(hy+hR*0.18), sn(hR*0.33), sn(hR*0.27));
+    p.rect(sn(cx+hR*0.04), sn(hy+hR*0.18), sn(hR*0.33), sn(hR*0.27));
+  }
+
+  // ── Cookie Monster (blue, shaggy, huge eyes, cookie) ────────────
+  function drawCookieMonster(cx, wy, sc) {
+    let u  = PX * sc;
+    let hR = u * 7;
+    let hy = wy - hR * 1.35;
+    p.noStroke();
+    // body
+    p.fill(55,100,200);
+    p.ellipse(sn(cx), sn(wy+u*3), sn(hR*2.5), sn(u*10));
+    // shaggy head (ring of ovals + center)
+    for (let i=0; i<7; i++) {
+      let a = (i/7)*p.TWO_PI;
+      p.ellipse(sn(cx+p.cos(a)*hR*0.45), sn(hy+p.sin(a)*hR*0.38), sn(hR*1.85), sn(hR*1.75));
+    }
+    p.ellipse(sn(cx), sn(hy), sn(hR*2), sn(hR*1.9));
+    // eyes on top (wobble)
+    let ey = hy - hR*0.58;
+    let ew = p.sin(t*3) * u*0.5;
+    p.fill(255);
+    p.ellipse(sn(cx-hR*0.35), sn(ey+ew), sn(hR*0.78), sn(hR*0.85));
+    p.ellipse(sn(cx+hR*0.35), sn(ey+ew), sn(hR*0.78), sn(hR*0.85));
+    p.fill(30,30,30);
+    p.ellipse(sn(cx-hR*0.32), sn(ey+ew), sn(hR*0.43), sn(hR*0.43));
+    p.ellipse(sn(cx+hR*0.38), sn(ey+ew), sn(hR*0.43), sn(hR*0.43));
+    p.fill(255);
+    p.ellipse(sn(cx-hR*0.43), sn(ey-hR*0.10+ew), sn(u*1.1), sn(u*1.1));
+    p.ellipse(sn(cx+hR*0.28), sn(ey-hR*0.10+ew), sn(u*1.1), sn(u*1.1));
+    // open mouth
+    p.fill(30,30,30);
+    p.arc(sn(cx), sn(hy+hR*0.28), sn(hR*1.5), sn(hR*0.95), 0.05, p.PI-0.05);
+    // upper teeth
+    p.fill(255);
+    p.rect(sn(cx-hR*0.52), sn(hy-hR*0.04), sn(hR*0.38), sn(hR*0.32));
+    p.rect(sn(cx+hR*0.14), sn(hy-hR*0.04), sn(hR*0.38), sn(hR*0.32));
+    // cookie
+    let kx = sn(cx+hR*0.95), ky = sn(wy-u*1.5);
+    p.fill(195,145,75);
+    p.ellipse(kx, ky, sn(u*8), sn(u*8));
+    p.fill(88,50,18);
+    p.ellipse(sn(kx-u*1.2), sn(ky-u*0.8), sn(u*1.6), sn(u*1.6));
+    p.ellipse(sn(kx+u*1.3), sn(ky+u*0.5), sn(u*1.4), sn(u*1.4));
+    p.ellipse(sn(kx-u*0.2), sn(ky+u*1.2), sn(u*1.5), sn(u*1.5));
+  }
+
+  // ── Kermit (green frog, wide smile, collar) ──────────────────────
+  function drawKermit(cx, wy, sc) {
+    let u  = PX * sc;
+    let hR = u * 6.5;
+    let hy = wy - hR * 1.3;
+    p.noStroke();
+    // collar
+    p.fill(228,228,228);
+    p.ellipse(sn(cx), sn(wy-u*1.5), sn(hR*2.6), sn(u*6));
+    p.fill(198,198,198);
+    p.ellipse(sn(cx), sn(wy-u*0.8), sn(hR*2.2), sn(u*4));
+    // body
+    p.fill(72,175,72);
+    p.rect(sn(cx-hR*0.9), sn(hy+hR), sn(hR*1.8), sn(wy-hy-hR));
+    // head (wide frog shape)
+    p.fill(72,175,72);
+    p.ellipse(sn(cx), sn(hy), sn(hR*2.4), sn(hR*1.8));
+    // eyes on top
+    let eBase = hy - hR*0.62;
+    p.fill(255);
+    p.ellipse(sn(cx-hR*0.47), sn(eBase), sn(hR*0.72), sn(hR*0.70));
+    p.ellipse(sn(cx+hR*0.47), sn(eBase), sn(hR*0.72), sn(hR*0.70));
+    p.fill(30,30,30);
+    p.ellipse(sn(cx-hR*0.45), sn(eBase), sn(hR*0.40), sn(hR*0.40));
+    p.ellipse(sn(cx+hR*0.49), sn(eBase), sn(hR*0.40), sn(hR*0.40));
+    p.fill(255);
+    p.ellipse(sn(cx-hR*0.53), sn(eBase-hR*0.14), sn(u*1),   sn(u*1));
+    p.ellipse(sn(cx+hR*0.41), sn(eBase-hR*0.14), sn(u*1),   sn(u*1));
+    // nostrils
+    p.fill(58,148,58);
+    p.ellipse(sn(cx-hR*0.16), sn(hy+hR*0.05), sn(u*1.2), sn(u*1));
+    p.ellipse(sn(cx+hR*0.16), sn(hy+hR*0.05), sn(u*1.2), sn(u*1));
+    // wide smile (stroke only)
+    p.stroke(30,30,30); p.strokeWeight(u*1.6); p.noFill();
+    p.arc(sn(cx), sn(hy+hR*0.42), sn(hR*2.0), sn(hR*0.88), 0.05, p.PI-0.05);
+    p.noStroke();
+    // cheek blush
+    p.fill(112,215,112,130);
+    p.ellipse(sn(cx-hR*0.76), sn(hy+hR*0.25), sn(hR*0.6), sn(hR*0.38));
+    p.ellipse(sn(cx+hR*0.76), sn(hy+hR*0.25), sn(hR*0.6), sn(hR*0.38));
+  }
+
+  // ── Oscar the Grouch (green, grumpy, trash can) ─────────────────
+  function drawOscar(cx, wy, sc) {
+    let u    = PX * sc;
+    let canW = u*10, canH = u*11;
+    let canY = wy - canH*0.55;
+    let fR   = u*5.5;
+    let fy   = canY - fR*0.4;
+    p.noStroke();
+    // trash can
+    p.fill(120,120,120);
+    p.rect(sn(cx-canW*0.5), sn(canY), sn(canW), sn(canH));
+    p.fill(95,95,95);
+    for (let i=1; i<=3; i++)
+      p.rect(sn(cx-canW*0.5), sn(canY+i*canH*0.25), sn(canW), PX*1.5);
+    p.fill(158,158,158);
+    p.rect(sn(cx-canW*0.5+u), sn(canY+u), sn(u*1.5), sn(canH*0.7));
+    // lid
+    p.fill(102,102,102);
+    p.rect(sn(cx-canW*0.55), sn(canY-u*3), sn(canW*1.1), sn(u*3.5));
+    p.fill(142,142,142);
+    p.rect(sn(cx-canW*0.55), sn(canY-u*3), sn(canW*1.1), sn(u));
+    p.fill(82,82,82);
+    p.rect(sn(cx-u), sn(canY-u*4.5), sn(u*2), sn(u*1.5));
+    // shaggy face
+    p.fill(95,135,52);
+    for (let i=0; i<6; i++) {
+      let a = (i/6)*p.TWO_PI;
+      p.ellipse(sn(cx+p.cos(a)*fR*0.42), sn(fy+p.sin(a)*fR*0.38-fR*0.15), sn(fR*1.75), sn(fR*1.65));
+    }
+    p.fill(100,140,55);
+    p.ellipse(sn(cx), sn(fy), sn(fR*1.85), sn(fR*1.8));
+    // eyes
+    p.fill(255);
+    p.ellipse(sn(cx-fR*0.36), sn(fy-fR*0.14), sn(fR*0.58), sn(fR*0.48));
+    p.ellipse(sn(cx+fR*0.36), sn(fy-fR*0.14), sn(fR*0.58), sn(fR*0.48));
+    p.fill(30,30,30);
+    p.ellipse(sn(cx-fR*0.34), sn(fy-fR*0.12), sn(fR*0.30), sn(fR*0.30));
+    p.ellipse(sn(cx+fR*0.38), sn(fy-fR*0.12), sn(fR*0.30), sn(fR*0.30));
+    // grumpy eyebrows
+    p.stroke(30,30,30); p.strokeWeight(u*1.6);
+    p.line(sn(cx-fR*0.58), sn(fy-fR*0.45), sn(cx-fR*0.14), sn(fy-fR*0.32));
+    p.line(sn(cx+fR*0.58), sn(fy-fR*0.45), sn(cx+fR*0.14), sn(fy-fR*0.32));
+    p.noStroke();
+    // frown
+    p.stroke(30,30,30); p.strokeWeight(u*1.8); p.noFill();
+    p.arc(sn(cx), sn(fy+fR*0.52), sn(fR*1.2), sn(fR*0.55), p.PI+0.22, p.TWO_PI-0.22);
+    p.noStroke();
+    // eye highlights
+    p.fill(255);
+    p.ellipse(sn(cx-fR*0.43), sn(fy-fR*0.22), sn(u*0.9), sn(u*0.9));
+    p.ellipse(sn(cx+fR*0.30), sn(fy-fR*0.22), sn(u*0.9), sn(u*0.9));
+  }
+
+  // ── Pixel snap helper ────────────────────────────────────────────
+  function sn(v) { return Math.round(v / PX) * PX; }
 
 });
 </script>
