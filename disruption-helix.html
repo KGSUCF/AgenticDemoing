@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Disruption Helix</title>
+  <style>
+    :root {
+      --color-background-primary: #ffffff;
+      --color-background-secondary: #f5f4f0;
+      --color-text-primary: #1a1a18;
+      --color-text-secondary: #4a4a47;
+      --color-text-tertiary: #888780;
+      --color-border-tertiary: rgba(0,0,0,0.10);
+      --color-border-secondary: rgba(0,0,0,0.18);
+      --font-sans: Georgia, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-background-primary: #1a1a18;
+        --color-background-secondary: #242422;
+        --color-text-primary: #e8e6e0;
+        --color-text-secondary: #b0aea8;
+        --color-text-tertiary: #6e6c66;
+        --color-border-tertiary: rgba(255,255,255,0.08);
+        --color-border-secondary: rgba(255,255,255,0.14);
+      }
+    }
+    .t  { font-family: var(--font-sans); font-size: 14px; font-weight: 400; fill: var(--color-text-primary); }
+    .ts { font-family: var(--font-sans); font-size: 12px; font-weight: 400; fill: var(--color-text-secondary); }
+    .th { font-family: var(--font-sans); font-size: 14px; font-weight: 500; fill: var(--color-text-primary); }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-sans); background: var(--color-background-primary); color: var(--color-text-primary); min-height: 100vh; padding: 40px 24px; }
+    .page-wrap { max-width: 860px; margin: 0 auto; }
+    .page-title { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: 32px; }
+    .helix-wrap { display: flex; gap: 0; min-height: 900px; }
+    .helix-col { flex: 0 0 240px; }
+    .panel-col { flex: 1; padding: 0 0 0 24px; display: flex; flex-direction: column; }
+    .era-panel { display: none; padding: 20px 24px; border-radius: 12px; border: 1px solid var(--color-border-tertiary); background: var(--color-background-secondary); }
+    .era-panel.active { display: block; }
+    .era-panel h3 { font-size: 15px; font-weight: 500; margin: 0 0 2px; }
+    .era-panel .dates { font-size: 11px; color: var(--color-text-tertiary); margin: 0 0 12px; letter-spacing: 0.03em; }
+    .era-panel p { font-size: 12px; color: var(--color-text-secondary); line-height: 1.65; margin: 0 0 10px; }
+    .era-panel p:last-child { margin-bottom: 0; }
+    .era-panel .lede { color: var(--color-text-primary); font-size: 13px; font-weight: 500; line-height: 1.55; margin-bottom: 12px; }
+    .hint { font-size: 11px; color: var(--color-text-tertiary); margin-top: 12px; text-align: center; }
+    .nav-dots { display: flex; gap: 8px; justify-content: center; margin-top: 16px; }
+    .nav-dot { width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid var(--color-border-secondary); background: transparent; cursor: pointer; transition: background .2s; }
+    .nav-dot.active { background: var(--color-text-secondary); border-color: var(--color-text-secondary); }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <p class="page-title">The Disruption Helix</p>
+  <div class="helix-wrap">
+    <div class="helix-col">
+      <svg width="240" viewBox="0 0 240 920" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </marker>
+        </defs>
+
+        <text class="ts" x="120" y="22" text-anchor="middle" font-size="11" opacity="0.5">The disruption helix</text>
+
+        <ellipse cx="120" cy="115" rx="30" ry="18" fill="none" stroke="#3B6D11" stroke-width="2" opacity="0.85"/>
+        <circle cx="90" cy="115" r="5" fill="#3B6D11" opacity="0.9" style="cursor:pointer" onclick="show(0)"/>
+        <text class="ts" x="120" y="86"  text-anchor="middle" font-size="11" fill="#3B6D11" style="cursor:pointer" onclick="show(0)">Agricultural</text>
+        <text class="ts" x="120" y="148" text-anchor="middle" font-size="10" fill="#3B6D11" opacity="0.65">~10,000 BCE – 1750 CE</text>
+
+        <path d="M150 115 C210 115, 215 175, 215 210 C215 237, 175 247, 120 227"
+          fill="none" stroke="#888780" stroke-width="2.5" opacity="0.7" marker-end="url(#ah)"/>
+
+        <ellipse cx="120" cy="255" rx="50" ry="28" fill="none" stroke="#854F0B" stroke-width="2.2" opacity="0.85"/>
+        <circle cx="70" cy="255" r="5.5" fill="#854F0B" opacity="0.9" style="cursor:pointer" onclick="show(1)"/>
+        <text class="ts" x="120" y="218" text-anchor="middle" font-size="11" fill="#854F0B" style="cursor:pointer" onclick="show(1)">Industrial</text>
+        <text class="ts" x="120" y="297" text-anchor="middle" font-size="10" fill="#854F0B" opacity="0.65">~1760 – 1900</text>
+
+        <path d="M170 255 C230 255, 235 330, 235 375 C235 415, 185 425, 120 405"
+          fill="none" stroke="#888780" stroke-width="2.5" opacity="0.7" marker-end="url(#ah)"/>
+
+        <ellipse cx="120" cy="445" rx="75" ry="40" fill="none" stroke="#185FA5" stroke-width="2.5" opacity="0.85"/>
+        <circle cx="45" cy="445" r="6" fill="#185FA5" opacity="0.9" style="cursor:pointer" onclick="show(2)"/>
+        <text class="ts" x="120" y="393" text-anchor="middle" font-size="11" fill="#185FA5" style="cursor:pointer" onclick="show(2)">Information</text>
+        <text class="ts" x="120" y="500" text-anchor="middle" font-size="10" fill="#185FA5" opacity="0.65">~1960 – 2020</text>
+
+        <path d="M195 445 C238 445, 238 545, 238 595 C238 635, 190 644, 120 624"
+          fill="none" stroke="#888780" stroke-width="2.5" opacity="0.7" marker-end="url(#ah)"/>
+
+        <ellipse cx="120" cy="680" rx="105" ry="56" fill="none" stroke="#534AB7" stroke-width="3" opacity="0.9"/>
+        <circle cx="15" cy="680" r="7" fill="#534AB7" opacity="0.9" style="cursor:pointer" onclick="show(3)"/>
+        <text class="ts" x="120" y="611" text-anchor="middle" font-size="11" fill="#534AB7" style="cursor:pointer" onclick="show(3)">AI</text>
+        <text class="ts" x="120" y="752" text-anchor="middle" font-size="10" fill="#534AB7" opacity="0.65">~2020 – ?</text>
+
+        <path d="M15 680 C15 618, 40 572, 70 556" fill="none" stroke="#534AB7" stroke-width="2" stroke-dasharray="5 4" opacity="0.55" marker-end="url(#ah)"/>
+
+        <text class="ts" x="120" y="858" text-anchor="middle" font-size="10" opacity="0.35">Each coil widens:</text>
+        <text class="ts" x="120" y="871" text-anchor="middle" font-size="10" opacity="0.35">scale of disruption grows</text>
+      </svg>
+    </div>
+
+    <div class="panel-col">
+      <div class="hint">Select an era on the helix to read its annotation</div>
+
+      <div id="panel-0" class="era-panel" style="border-color:#3B6D11; margin-top:40px;">
+        <h3 style="color:#3B6D11">Agricultural age</h3>
+        <div class="dates">c. 10,000 BCE – 1750 CE (approximate baseline era)</div>
+        <p class="lede">For most of recorded history, the overwhelming majority of human labor was agricultural. Subsistence farming, animal husbandry, and craft production were the foundations of economic life across virtually every civilization.</p>
+        <p>In pre-industrial societies, roughly 80–90% of the population worked the land in some capacity. Surplus agricultural output — where it existed — supported a small stratum of artisans, merchants, clergy, soldiers, and administrators, but these occupations were numerically marginal. Labor was seasonal, locally organized, and largely transmitted through kinship and apprenticeship rather than formal institutions.</p>
+        <p>This era is included not as a disrupted age but as the stable environment that the Industrial Revolution would eventually transform. Its relevance to the helix is foundational: it establishes what "the existing labor order" looked like before technological displacement became a recurring historical phenomenon. The productivity ceiling imposed by hand tools and animal power set the conditions under which mechanization would appear revolutionary rather than merely incremental.</p>
+      </div>
+
+      <div id="panel-1" class="era-panel" style="border-color:#854F0B; margin-top:40px;">
+        <h3 style="color:#854F0B">Industrial revolution</h3>
+        <div class="dates">c. 1760 – 1900 (approximate; British origins, global diffusion)</div>
+        <p class="lede">The mechanization of production displaced agricultural and artisanal labor at scale, while simultaneously generating entirely new categories of employment that had not previously existed.</p>
+        <p>Steam power, textile machinery, and later steel and rail infrastructure rendered many forms of hand production economically unviable. The English handloom weaver is the canonical example: a skilled craft occupation that was largely eliminated within two generations of the power loom's diffusion. Rural-to-urban migration accelerated as factory employment absorbed displaced agricultural workers, though the transition was frequently violent, impoverishing, and contested — the Luddite movement being the most visible expression of organized resistance.</p>
+        <p>Critically, industrialization also created demand for new labor categories: factory supervisors, railway clerks, accountants tracking complex supply chains, engineers, and eventually a sizable clerical workforce to manage the administrative complexity of large firms. These were not pre-existing roles expanded in scale but genuinely novel occupational forms generated by the organizational requirements of industrial capitalism. The net employment effect over the long run was positive, though the distributional consequences across generations and geographies were highly uneven.</p>
+      </div>
+
+      <div id="panel-2" class="era-panel" style="border-color:#185FA5; margin-top:40px;">
+        <h3 style="color:#185FA5">Information revolution</h3>
+        <div class="dates">c. 1960 – 2020 (approximate; computing to networked digital economy)</div>
+        <p class="lede">The computerization of record-keeping, communication, and coordination displaced the clerical and middle-management roles that industrialization had created, while producing a new class of knowledge work organized around digital infrastructure.</p>
+        <p>The diffusion of mainframe computing in the 1960s and 1970s began automating routine cognitive tasks — payroll processing, inventory management, actuarial calculation — that had previously required large clerical pools. The personal computer, and subsequently networked computing and the internet, extended this displacement into middle management, eliminating many of the supervisory and coordination functions that had grown up around industrial-era organizational hierarchies.</p>
+        <p>Simultaneously, new occupational categories emerged that were inconceivable in earlier eras: software engineers, database administrators, UX designers, network architects, digital marketers, and the various analytical roles associated with the data-intensive firm. The organizational locus of high-value employment shifted from manufacturing floors to office parks and, eventually, to globally distributed remote workforces. As with industrialization, the transition compressed rapid displacement into specific sectors and demographics while new employment forms accumulated elsewhere — often with a lag of years or decades that imposed real hardship on those caught in between.</p>
+      </div>
+
+      <div id="panel-3" class="era-panel" style="border-color:#534AB7; margin-top:40px;">
+        <h3 style="color:#534AB7">AI revolution</h3>
+        <div class="dates">c. 2020 – present (approximate; generative AI and autonomous systems)</div>
+        <p class="lede">Where prior technological revolutions automated physical and then routine cognitive labor, contemporary AI systems are beginning to automate non-routine knowledge work — the domain that previous waves of automation had left largely intact.</p>
+        <p>Large language models, generative image and code systems, and increasingly autonomous agents are demonstrating competence in tasks — legal drafting, software development, financial analysis, medical imaging interpretation, content creation — that had been understood as requiring human judgment and domain expertise. This represents a qualitative shift from earlier automation, which typically targeted well-defined, repetitive tasks. The current wave targets the judgment-intensive, context-dependent work that constituted the upper tier of the information-economy labor market.</p>
+        <p>Whether this wave follows the pattern of its predecessors — net job creation over the long run, distributed through new categories of work not yet visible — remains an open and genuinely contested empirical question. The helix metaphor suggests that the cycle will repeat: new goods and services enabled by AI will require human management, curation, and governance until those roles are themselves candidates for automation. What distinguishes the current moment, and justifies the widening of the outermost coil, is the accelerating pace of capability development and the breadth of occupational exposure — suggesting that whatever adjustment period emerges may be both shorter and more socially disruptive than those that preceded it.</p>
+      </div>
+
+      <div class="nav-dots">
+        <div class="nav-dot" id="dot-0" onclick="show(0)"></div>
+        <div class="nav-dot" id="dot-1" onclick="show(1)"></div>
+        <div class="nav-dot" id="dot-2" onclick="show(2)"></div>
+        <div class="nav-dot" id="dot-3" onclick="show(3)"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function show(i) {
+    [0,1,2,3].forEach(function(j){
+      document.getElementById('panel-'+j).classList.toggle('active', j===i);
+      document.getElementById('dot-'+j).classList.toggle('active', j===i);
+    });
+  }
+  show(0);
+</script>
+</body>
+</html>
