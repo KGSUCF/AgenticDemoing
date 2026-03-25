@@ -1,0 +1,2545 @@
+{
+  "corpus_stats": {
+    "opticks": {
+      "title": "Opticks",
+      "total_tokens": 98974,
+      "total_meaningful": 39908,
+      "unique_meaningful": 3987,
+      "top_40": [
+        [
+          "light",
+          817
+        ],
+        [
+          "rays",
+          657
+        ],
+        [
+          "colours",
+          598
+        ],
+        [
+          "red",
+          394
+        ],
+        [
+          "prism",
+          318
+        ],
+        [
+          "glass",
+          305
+        ],
+        [
+          "refraction",
+          300
+        ],
+        [
+          "colour",
+          299
+        ],
+        [
+          "made",
+          285
+        ],
+        [
+          "blue",
+          277
+        ],
+        [
+          "white",
+          269
+        ],
+        [
+          "paper",
+          244
+        ],
+        [
+          "water",
+          231
+        ],
+        [
+          "bodies",
+          226
+        ],
+        [
+          "distance",
+          222
+        ],
+        [
+          "yellow",
+          204
+        ],
+        [
+          "air",
+          203
+        ],
+        [
+          "reflected",
+          200
+        ],
+        [
+          "rings",
+          199
+        ],
+        [
+          "therefore",
+          189
+        ],
+        [
+          "refracted",
+          183
+        ],
+        [
+          "violet",
+          182
+        ],
+        [
+          "green",
+          174
+        ],
+        [
+          "less",
+          171
+        ],
+        [
+          "appear",
+          165
+        ],
+        [
+          "little",
+          160
+        ],
+        [
+          "several",
+          152
+        ],
+        [
+          "equal",
+          149
+        ],
+        [
+          "image",
+          145
+        ],
+        [
+          "refrangible",
+          142
+        ],
+        [
+          "eye",
+          139
+        ],
+        [
+          "like",
+          137
+        ],
+        [
+          "reflexion",
+          137
+        ],
+        [
+          "let",
+          136
+        ],
+        [
+          "inch",
+          133
+        ],
+        [
+          "angle",
+          127
+        ],
+        [
+          "incidence",
+          127
+        ],
+        [
+          "greater",
+          122
+        ],
+        [
+          "lens",
+          122
+        ],
+        [
+          "make",
+          121
+        ]
+      ]
+    },
+    "prophecies": {
+      "title": "Observations upon the Prophecies",
+      "total_tokens": 70376,
+      "total_meaningful": 31831,
+      "unique_meaningful": 7819,
+      "top_40": [
+        [
+          "year",
+          278
+        ],
+        [
+          "time",
+          208
+        ],
+        [
+          "years",
+          179
+        ],
+        [
+          "king",
+          172
+        ],
+        [
+          "kingdom",
+          167
+        ],
+        [
+          "empire",
+          162
+        ],
+        [
+          "john",
+          151
+        ],
+        [
+          "beast",
+          148
+        ],
+        [
+          "god",
+          134
+        ],
+        [
+          "therefore",
+          134
+        ],
+        [
+          "people",
+          131
+        ],
+        [
+          "days",
+          124
+        ],
+        [
+          "reign",
+          122
+        ],
+        [
+          "rome",
+          122
+        ],
+        [
+          "made",
+          119
+        ],
+        [
+          "christ",
+          113
+        ],
+        [
+          "daniel",
+          107
+        ],
+        [
+          "book",
+          106
+        ],
+        [
+          "death",
+          106
+        ],
+        [
+          "kings",
+          106
+        ],
+        [
+          "temple",
+          103
+        ],
+        [
+          "end",
+          101
+        ],
+        [
+          "emperor",
+          97
+        ],
+        [
+          "prophecy",
+          95
+        ],
+        [
+          "new",
+          90
+        ],
+        [
+          "till",
+          90
+        ],
+        [
+          "earth",
+          89
+        ],
+        [
+          "pope",
+          86
+        ],
+        [
+          "day",
+          85
+        ],
+        [
+          "romans",
+          85
+        ],
+        [
+          "began",
+          85
+        ],
+        [
+          "jews",
+          82
+        ],
+        [
+          "chap",
+          80
+        ],
+        [
+          "came",
+          80
+        ],
+        [
+          "war",
+          80
+        ],
+        [
+          "things",
+          79
+        ],
+        [
+          "kingdoms",
+          77
+        ],
+        [
+          "church",
+          77
+        ],
+        [
+          "called",
+          76
+        ],
+        [
+          "times",
+          75
+        ]
+      ]
+    },
+    "chronology": {
+      "title": "Chronology of Ancient Kingdoms",
+      "total_tokens": 83519,
+      "total_meaningful": 39101,
+      "unique_meaningful": 7358,
+      "top_40": [
+        [
+          "years",
+          569
+        ],
+        [
+          "king",
+          385
+        ],
+        [
+          "year",
+          385
+        ],
+        [
+          "egypt",
+          384
+        ],
+        [
+          "son",
+          321
+        ],
+        [
+          "reign",
+          292
+        ],
+        [
+          "kings",
+          276
+        ],
+        [
+          "called",
+          223
+        ],
+        [
+          "days",
+          222
+        ],
+        [
+          "reigned",
+          194
+        ],
+        [
+          "therefore",
+          173
+        ],
+        [
+          "built",
+          173
+        ],
+        [
+          "temple",
+          157
+        ],
+        [
+          "made",
+          149
+        ],
+        [
+          "father",
+          149
+        ],
+        [
+          "time",
+          148
+        ],
+        [
+          "darius",
+          138
+        ],
+        [
+          "war",
+          137
+        ],
+        [
+          "tells",
+          130
+        ],
+        [
+          "death",
+          127
+        ],
+        [
+          "began",
+          125
+        ],
+        [
+          "came",
+          125
+        ],
+        [
+          "greeks",
+          115
+        ],
+        [
+          "city",
+          115
+        ],
+        [
+          "greece",
+          112
+        ],
+        [
+          "people",
+          109
+        ],
+        [
+          "reigns",
+          109
+        ],
+        [
+          "greek",
+          107
+        ],
+        [
+          "herodotus",
+          107
+        ],
+        [
+          "end",
+          106
+        ],
+        [
+          "babylon",
+          106
+        ],
+        [
+          "according",
+          104
+        ],
+        [
+          "daughter",
+          104
+        ],
+        [
+          "name",
+          100
+        ],
+        [
+          "solomon",
+          100
+        ],
+        [
+          "egyptians",
+          97
+        ],
+        [
+          "till",
+          96
+        ],
+        [
+          "conquered",
+          95
+        ],
+        [
+          "cyrus",
+          92
+        ],
+        [
+          "medes",
+          91
+        ]
+      ]
+    },
+    "principia": {
+      "title": "Principia Mathematica (Latin)",
+      "total_tokens": 117851,
+      "total_meaningful": 77529,
+      "unique_meaningful": 10831,
+      "top_40": [
+        [
+          "est",
+          1614
+        ],
+        [
+          "ratione",
+          714
+        ],
+        [
+          "corpus",
+          617
+        ],
+        [
+          "motus",
+          542
+        ],
+        [
+          "vis",
+          537
+        ],
+        [
+          "corol",
+          496
+        ],
+        [
+          "sunt",
+          488
+        ],
+        [
+          "erit",
+          473
+        ],
+        [
+          "prop",
+          344
+        ],
+        [
+          "inter",
+          329
+        ],
+        [
+          "hoc",
+          306
+        ],
+        [
+          "corporis",
+          293
+        ],
+        [
+          "propterea",
+          291
+        ],
+        [
+          "centrum",
+          278
+        ],
+        [
+          "centro",
+          275
+        ],
+        [
+          "seu",
+          273
+        ],
+        [
+          "qua",
+          268
+        ],
+        [
+          "illa",
+          265
+        ],
+        [
+          "partes",
+          265
+        ],
+        [
+          "punctum",
+          263
+        ],
+        [
+          "sph",
+          259
+        ],
+        [
+          "corpora",
+          249
+        ],
+        [
+          "quo",
+          246
+        ],
+        [
+          "tempore",
+          240
+        ],
+        [
+          "vires",
+          239
+        ],
+        [
+          "qualis",
+          222
+        ],
+        [
+          "resistentia",
+          212
+        ],
+        [
+          "ejus",
+          209
+        ],
+        [
+          "corporum",
+          202
+        ],
+        [
+          "motu",
+          202
+        ],
+        [
+          "semper",
+          200
+        ],
+        [
+          "quales",
+          192
+        ],
+        [
+          "erunt",
+          191
+        ],
+        [
+          "area",
+          186
+        ],
+        [
+          "tempus",
+          181
+        ],
+        [
+          "illustration",
+          181
+        ],
+        [
+          "arcus",
+          179
+        ],
+        [
+          "invicem",
+          178
+        ],
+        [
+          "sint",
+          177
+        ],
+        [
+          "motum",
+          176
+        ]
+      ]
+    }
+  },
+  "shared_terms": [
+    {
+      "term": "made",
+      "n_texts": 3,
+      "total_freq": 553,
+      "texts": [
+        "opticks",
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 285,
+        "prophecies": 119,
+        "chronology": 149
+      }
+    },
+    {
+      "term": "therefore",
+      "n_texts": 3,
+      "total_freq": 496,
+      "texts": [
+        "opticks",
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 189,
+        "prophecies": 134,
+        "chronology": 173
+      }
+    },
+    {
+      "term": "time",
+      "n_texts": 3,
+      "total_freq": 397,
+      "texts": [
+        "opticks",
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 41,
+        "prophecies": 208,
+        "chronology": 148
+      }
+    },
+    {
+      "term": "end",
+      "n_texts": 3,
+      "total_freq": 289,
+      "texts": [
+        "opticks",
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 82,
+        "prophecies": 101,
+        "chronology": 106
+      }
+    },
+    {
+      "term": "little",
+      "n_texts": 3,
+      "total_freq": 261,
+      "texts": [
+        "opticks",
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 160,
+        "prophecies": 48,
+        "chronology": 53
+      }
+    },
+    {
+      "term": "greek",
+      "n_texts": 3,
+      "total_freq": 250,
+      "texts": [
+        "opticks",
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 90,
+        "prophecies": 53,
+        "chronology": 107
+      }
+    },
+    {
+      "term": "several",
+      "n_texts": 3,
+      "total_freq": 237,
+      "texts": [
+        "opticks",
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 152,
+        "prophecies": 30,
+        "chronology": 55
+      }
+    },
+    {
+      "term": "till",
+      "n_texts": 3,
+      "total_freq": 231,
+      "texts": [
+        "opticks",
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 45,
+        "prophecies": 90,
+        "chronology": 96
+      }
+    },
+    {
+      "term": "make",
+      "n_texts": 3,
+      "total_freq": 214,
+      "texts": [
+        "opticks",
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 121,
+        "prophecies": 42,
+        "chronology": 51
+      }
+    },
+    {
+      "term": "times",
+      "n_texts": 3,
+      "total_freq": 210,
+      "texts": [
+        "opticks",
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 79,
+        "prophecies": 75,
+        "chronology": 56
+      }
+    },
+    {
+      "term": "place",
+      "n_texts": 3,
+      "total_freq": 205,
+      "texts": [
+        "opticks",
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 77,
+        "prophecies": 52,
+        "chronology": 76
+      }
+    },
+    {
+      "term": "side",
+      "n_texts": 3,
+      "total_freq": 203,
+      "texts": [
+        "opticks",
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 117,
+        "prophecies": 30,
+        "chronology": 56
+      }
+    },
+    {
+      "term": "according",
+      "n_texts": 3,
+      "total_freq": 197,
+      "texts": [
+        "opticks",
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 57,
+        "prophecies": 36,
+        "chronology": 104
+      }
+    },
+    {
+      "term": "things",
+      "n_texts": 3,
+      "total_freq": 175,
+      "texts": [
+        "opticks",
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 50,
+        "prophecies": 79,
+        "chronology": 46
+      }
+    },
+    {
+      "term": "length",
+      "n_texts": 3,
+      "total_freq": 161,
+      "texts": [
+        "opticks",
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 84,
+        "prophecies": 25,
+        "chronology": 52
+      }
+    },
+    {
+      "term": "became",
+      "n_texts": 3,
+      "total_freq": 145,
+      "texts": [
+        "opticks",
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 57,
+        "prophecies": 49,
+        "chronology": 39
+      }
+    },
+    {
+      "term": "next",
+      "n_texts": 3,
+      "total_freq": 143,
+      "texts": [
+        "opticks",
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 45,
+        "prophecies": 49,
+        "chronology": 49
+      }
+    },
+    {
+      "term": "est",
+      "n_texts": 2,
+      "total_freq": 1648,
+      "texts": [
+        "prophecies",
+        "principia"
+      ],
+      "per_text": {
+        "prophecies": 34,
+        "principia": 1614
+      }
+    },
+    {
+      "term": "years",
+      "n_texts": 2,
+      "total_freq": 748,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 179,
+        "chronology": 569
+      }
+    },
+    {
+      "term": "year",
+      "n_texts": 2,
+      "total_freq": 663,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 278,
+        "chronology": 385
+      }
+    },
+    {
+      "term": "king",
+      "n_texts": 2,
+      "total_freq": 557,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 172,
+        "chronology": 385
+      }
+    },
+    {
+      "term": "sunt",
+      "n_texts": 2,
+      "total_freq": 516,
+      "texts": [
+        "prophecies",
+        "principia"
+      ],
+      "per_text": {
+        "prophecies": 28,
+        "principia": 488
+      }
+    },
+    {
+      "term": "egypt",
+      "n_texts": 2,
+      "total_freq": 456,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 72,
+        "chronology": 384
+      }
+    },
+    {
+      "term": "red",
+      "n_texts": 2,
+      "total_freq": 431,
+      "texts": [
+        "opticks",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 394,
+        "chronology": 37
+      }
+    },
+    {
+      "term": "reign",
+      "n_texts": 2,
+      "total_freq": 414,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 122,
+        "chronology": 292
+      }
+    },
+    {
+      "term": "prop",
+      "n_texts": 2,
+      "total_freq": 403,
+      "texts": [
+        "opticks",
+        "principia"
+      ],
+      "per_text": {
+        "opticks": 59,
+        "principia": 344
+      }
+    },
+    {
+      "term": "son",
+      "n_texts": 2,
+      "total_freq": 383,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 62,
+        "chronology": 321
+      }
+    },
+    {
+      "term": "kings",
+      "n_texts": 2,
+      "total_freq": 382,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 106,
+        "chronology": 276
+      }
+    },
+    {
+      "term": "days",
+      "n_texts": 2,
+      "total_freq": 346,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 124,
+        "chronology": 222
+      }
+    },
+    {
+      "term": "called",
+      "n_texts": 2,
+      "total_freq": 299,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 76,
+        "chronology": 223
+      }
+    },
+    {
+      "term": "temple",
+      "n_texts": 2,
+      "total_freq": 260,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 103,
+        "chronology": 157
+      }
+    },
+    {
+      "term": "kingdom",
+      "n_texts": 2,
+      "total_freq": 257,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 167,
+        "chronology": 90
+      }
+    },
+    {
+      "term": "illustration",
+      "n_texts": 2,
+      "total_freq": 245,
+      "texts": [
+        "opticks",
+        "principia"
+      ],
+      "per_text": {
+        "opticks": 64,
+        "principia": 181
+      }
+    },
+    {
+      "term": "reigned",
+      "n_texts": 2,
+      "total_freq": 244,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 50,
+        "chronology": 194
+      }
+    },
+    {
+      "term": "empire",
+      "n_texts": 2,
+      "total_freq": 243,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 162,
+        "chronology": 81
+      }
+    },
+    {
+      "term": "people",
+      "n_texts": 2,
+      "total_freq": 240,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 131,
+        "chronology": 109
+      }
+    },
+    {
+      "term": "death",
+      "n_texts": 2,
+      "total_freq": 233,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 106,
+        "chronology": 127
+      }
+    },
+    {
+      "term": "war",
+      "n_texts": 2,
+      "total_freq": 217,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 80,
+        "chronology": 137
+      }
+    },
+    {
+      "term": "began",
+      "n_texts": 2,
+      "total_freq": 210,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 85,
+        "chronology": 125
+      }
+    },
+    {
+      "term": "came",
+      "n_texts": 2,
+      "total_freq": 205,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 80,
+        "chronology": 125
+      }
+    },
+    {
+      "term": "like",
+      "n_texts": 2,
+      "total_freq": 194,
+      "texts": [
+        "opticks",
+        "prophecies"
+      ],
+      "per_text": {
+        "opticks": 137,
+        "prophecies": 57
+      }
+    },
+    {
+      "term": "city",
+      "n_texts": 2,
+      "total_freq": 189,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 74,
+        "chronology": 115
+      }
+    },
+    {
+      "term": "god",
+      "n_texts": 2,
+      "total_freq": 186,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 134,
+        "chronology": 52
+      }
+    },
+    {
+      "term": "book",
+      "n_texts": 2,
+      "total_freq": 175,
+      "texts": [
+        "opticks",
+        "prophecies"
+      ],
+      "per_text": {
+        "opticks": 69,
+        "prophecies": 106
+      }
+    },
+    {
+      "term": "image",
+      "n_texts": 2,
+      "total_freq": 173,
+      "texts": [
+        "opticks",
+        "prophecies"
+      ],
+      "per_text": {
+        "opticks": 145,
+        "prophecies": 28
+      }
+    },
+    {
+      "term": "tells",
+      "n_texts": 2,
+      "total_freq": 164,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 34,
+        "chronology": 130
+      }
+    },
+    {
+      "term": "body",
+      "n_texts": 2,
+      "total_freq": 157,
+      "texts": [
+        "opticks",
+        "prophecies"
+      ],
+      "per_text": {
+        "opticks": 116,
+        "prophecies": 41
+      }
+    },
+    {
+      "term": "line",
+      "n_texts": 2,
+      "total_freq": 154,
+      "texts": [
+        "opticks",
+        "principia"
+      ],
+      "per_text": {
+        "opticks": 83,
+        "principia": 71
+      }
+    },
+    {
+      "term": "greeks",
+      "n_texts": 2,
+      "total_freq": 154,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 39,
+        "chronology": 115
+      }
+    },
+    {
+      "term": "nations",
+      "n_texts": 2,
+      "total_freq": 148,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 70,
+        "chronology": 78
+      }
+    },
+    {
+      "term": "conquered",
+      "n_texts": 2,
+      "total_freq": 147,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 52,
+        "chronology": 95
+      }
+    },
+    {
+      "term": "middle",
+      "n_texts": 2,
+      "total_freq": 147,
+      "texts": [
+        "opticks",
+        "chronology"
+      ],
+      "per_text": {
+        "opticks": 106,
+        "chronology": 41
+      }
+    },
+    {
+      "term": "earth",
+      "n_texts": 2,
+      "total_freq": 142,
+      "texts": [
+        "opticks",
+        "prophecies"
+      ],
+      "per_text": {
+        "opticks": 53,
+        "prophecies": 89
+      }
+    },
+    {
+      "term": "new",
+      "n_texts": 2,
+      "total_freq": 141,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 90,
+        "chronology": 51
+      }
+    },
+    {
+      "term": "jews",
+      "n_texts": 2,
+      "total_freq": 136,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 82,
+        "chronology": 54
+      }
+    },
+    {
+      "term": "saith",
+      "n_texts": 2,
+      "total_freq": 136,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 70,
+        "chronology": 66
+      }
+    },
+    {
+      "term": "name",
+      "n_texts": 2,
+      "total_freq": 136,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 36,
+        "chronology": 100
+      }
+    },
+    {
+      "term": "together",
+      "n_texts": 2,
+      "total_freq": 134,
+      "texts": [
+        "opticks",
+        "prophecies"
+      ],
+      "per_text": {
+        "opticks": 92,
+        "prophecies": 42
+      }
+    },
+    {
+      "term": "babylon",
+      "n_texts": 2,
+      "total_freq": 133,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 27,
+        "chronology": 106
+      }
+    },
+    {
+      "term": "day",
+      "n_texts": 2,
+      "total_freq": 132,
+      "texts": [
+        "prophecies",
+        "chronology"
+      ],
+      "per_text": {
+        "prophecies": 85,
+        "chronology": 47
+      }
+    }
+  ],
+  "kwic": {
+    "made": {
+      "opticks": [
+        "  ...                       out of it i have on this occasion  [MADE]  it publick prefixing to it an introduction and...",
+        "  ...               which was also written many years ago and  [MADE]  known to some friends who have solicited the...",
+        "  ...                  of the rarer medium into the denser is  [MADE]  towards the perpendicular that is so that the...",
+        "  ...             may be determined thus if the refraction be  [MADE]  out of air into water the sine of...",
+        "  ...                  in so many points after they have been  [MADE]  to converge by reflection or refraction there they...",
+        "  ...                     from any point q of that object are  [MADE]  to converge and meet again in the point...",
+        "  ...            come at the bottom and therefore the picture  [MADE]  in the bottom and the vision caused thereby...",
+        "  ...            point of the object do after their reflexion  [MADE]  in the points b c d diverge in...",
+        "  ...    interposition of the looking-glass and all vision is  [MADE]  according to the place and shape of that...",
+        "  ...            large and luminous as it can conveniently be  [MADE]  i have now given in axioms and their..."
+      ],
+      "prophecies": [
+        "  ...       like him amidst occupations of a different nature  [MADE]  religion your voluntary study and in all your...",
+        "  ...      errors of the transcribers before this edition was  [MADE]  had crept into the text are now scarce...",
+        "  ...            the reading of them after the collection was  [MADE]  by reading the law and the prophets in...",
+        "  ...                       when god had given them a law and  [MADE]  a covenant with them to be their god...",
+        "  ...                     relate to the last times he must be  [MADE]  the key to the rest notes to chap...",
+        "  ...                    thy father the king i say thy father  [MADE]  master of the magicians astrologers chaldeans and soothsayers...",
+        "  ...                     it was lifted up from the earth and  [MADE]  to stand upon the feet as a man...",
+        "  ...                  is till it was humbled and subdued and  [MADE]  to know its human state the second beast...",
+        "  ...         arms of the emperors gratian and theodosius and  [MADE]  a submissive peace the visigoths and thervingi returned...",
+        "  ...            and the rhine and their king mellobaudes was  [MADE]  comes domesticorum by the emperor gratian richomer another..."
+      ],
+      "chronology": [
+        "  ...            the short chronicle was never intended to be  [MADE]  public and therefore was not so lately corrected...",
+        "  ...          years as appears by their chronology they have  [MADE]  the antiquities of greece three or four hundred...",
+        "  ...      the first olympiad first aristotle and some others  [MADE]  him as old as the first olympiad then...",
+        "  ...first olympiad then eratosthenes apollodorus and some others  [MADE]  him above an hundred years older and in...",
+        "  ...themselves about repugnancies it seems the chronologers had  [MADE]  the legislature of solon too ancient to consist...",
+        "  ... daughter of inachus into the egyptian isis chronologers  [MADE]  her husband osiris or bacchus and his mistress...",
+        "  ...            jasus corruptly for inachus and so they have  [MADE]  two pandions and two erechtheus's giving the name...",
+        "  ...   and lasted about years and accordingly herodotus hath  [MADE]  semiramis only five generations or about years older...",
+        "  ...               the last king of babylon but ctesias hath  [MADE]  semiramis years older than nitocris and feigned a...",
+        "  ...             kings who did nothing and thereby they have  [MADE]  its founder aegialeus three hundred years older than..."
+      ],
+      "principia": [
+        "  ...         tempus periodicum comet q e i finis corrections  [MADE]  to printed original the errata of the printed..."
+      ]
+    },
+    "therefore": {
+      "opticks": [
+        "  ...                   to us about seven minutes of time and  [THEREFORE]  i have chosen to define rays and refractions...",
+        "  ...   it need seldom be considered illustration fig suppose  [THEREFORE]  that rs in fig represents the surface of...",
+        "  ...              angle of incidence acp produced i let fall  [THEREFORE]  upon the perpendicular cp the sine of incidence...",
+        "  ...                 eyes before they come at the bottom and  [THEREFORE]  the picture made in the bottom and the...",
+        "  ...                  see remote objects best in old age and  [THEREFORE]  they are accounted to have the most lasting...",
+        "  ...                            the red half fe is to fe and  [THEREFORE]  suffers a greater refraction if the edge of...",
+        "  ...     of each line were terminated most distinctly noting  [THEREFORE]  as diligently as i could the places where...",
+        "  ...     blue half appeared most distinct in like incidences  [THEREFORE]  of the blue and red upon the lens...",
+        "  ...                        sooner by an inch and a half and  [THEREFORE]  is more refrangible illustration in the twelfth figure...",
+        "  ...         where some other posture is described the prism  [THEREFORE]  being placed in this posture i let the..."
+      ],
+      "prophecies": [
+        "  ...                  found again in the reign of josiah and  [THEREFORE]  it was written before the third year of...",
+        "  ...          handed down to posterity by the samaritans and  [THEREFORE]  was received by the ten tribes before their...",
+        "  ...              could not bring judah to it the pentateuch  [THEREFORE]  was the book of the law in the...",
+        "  ...                     set down in the book of genesis and  [THEREFORE]  that book was not written entirely in the...",
+        "  ...                    of those kings till his own time and  [THEREFORE]  wrote before david conquered edom the pentateuch is...",
+        "  ...        the journeying of israel thro the wilderness and  [THEREFORE]  was begun by moses and joshua might carry...",
+        "  ...                         of the law of god josh xxiv and  [THEREFORE]  might write his own wars in the book...",
+        "  ...                wars of god these were publick books and  [THEREFORE]  not written without the authority of moses and...",
+        "  ...                 judges down to the death of sampson and  [THEREFORE]  was compiled after his death out of the...",
+        "  ...                   in israel judg xvii xviii xix xxi and  [THEREFORE]  this book was written after the beginning of..."
+      ],
+      "chronology": [
+        "  ...                was never intended to be made public and  [THEREFORE]  was not so lately corrected by him to...",
+        "  ...              or an hundred years after their deaths and  [THEREFORE]  i admit no chronology of things done in...",
+        "  ...                 at thermopylae i do not find athens and  [THEREFORE]  doubt whether amphictyon was king of that city...",
+        "  ...     the great bacchus this council worshipped ceres and  [THEREFORE]  was instituted after her death minos prepares a...",
+        "  ...             solstice in the eighth degree of cancer and  [THEREFORE]  the solstice had then gone back seven degrees...",
+        "  ...               this day called menuf by the arabians and  [THEREFORE]  menes who built the city and temple was...",
+        "  ...             when these five princes were born they were  [THEREFORE]  added in the reign of ammon the father...",
+        "  ...              upon the days thereof the priests of egypt  [THEREFORE]  in the reign of amenophis continued to observe...",
+        "  ...              backwards days and five hours in years and  [THEREFORE]  fell upon the vernal equinox years before the...",
+        "  ...                     that he was the son of tithonus and  [THEREFORE]  he was born after the return of sesac..."
+      ]
+    },
+    "time": {
+      "opticks": [
+        "  ...             which comes presently after and in the same  [TIME]  you may stop it in any one place...",
+        "  ...         satellites it seems that light is propagated in  [TIME]  spending in its passage from the sun to...",
+        "  ...                    the sun to us about seven minutes of  [TIME]  and therefore i have chosen to define rays...",
+        "  ...                     the prism behind it and in the mean  [TIME]  i noted the places on the opposite wall...",
+        "  ...               g to refract the trajected light a second  [TIME]  and these things being thus ordered i marked...",
+        "  ...         and ninth experiments and those which the first  [TIME]  at like incidences are equally refracted are again...",
+        "  ...             and the sun's altitude observed at the same  [TIME]  i found the angle which the emergent rays...",
+        "  ...                  of those colours from the lens was one  [TIME]  another time another time inches and as to...",
+        "  ...              colours from the lens was one time another  [TIME]  another time inches and as to so are...",
+        "  ...              the lens was one time another time another  [TIME]  inches and as to so are to respectively..."
+      ],
+      "prophecies": [
+        "  ...           of st john chap i introduction concerning the  [TIME]  when the apocalypse was written chap ii of...",
+        "  ...                   judah had quiet ten years and in that  [TIME]  asa built fenced cities in judah and got...",
+        "  ...                    the race of those kings till his own  [TIME]  and therefore wrote before david conquered edom the...",
+        "  ...                      by the same author and at the same  [TIME]  for it was written after the birth of...",
+        "  ...                    of the first book of samuel till the  [TIME]  of his death the two books of samuel...",
+        "  ...                   they were written at one and the same  [TIME]  and this time was after the return from...",
+        "  ...                       at one and the same time and this  [TIME]  was after the return from the babylonian captivity...",
+        "  ...                 and brought down the history to his own  [TIME]  he was a ready scribe in the law...",
+        "  ...                   of the acts of the kings written from  [TIME]  to time by the prophets he compos'd the...",
+        "  ...                  acts of the kings written from time to  [TIME]  by the prophets he compos'd the books of..."
+      ],
+      "chronology": [
+        "  ...                 here no less observable and at the same  [TIME]  that he supports his suggestions with all the...",
+        "  ...                  the felicities of a throne at the same  [TIME]  that they bless all around it thus madam...",
+        "  ...                 of sir isaac newton shall be forgot and  [TIME]  it self be no more which is the...",
+        "  ...              actually preparing it for the press at the  [TIME]  of his death but the short chronicle was...",
+        "  ...              a-piece one with another i have stated the  [TIME]  of the return of the heraclides by the...",
+        "  ...                   and down in the fields about the same  [TIME]  cecrops built cecropia in attica afterwards called athens...",
+        "  ...         sciences and customs of the phoenicians at this  [TIME]  cranaus the successor of cecrops reigned in attica...",
+        "  ...         singing and dancing in their armour and keeping  [TIME]  by striking upon one another's armour with their...",
+        "  ...                     in music and poetry and at the same  [TIME]  they nurse up the cretan jupiter in a...",
+        "  ...                in phrygia in the city cybele about this  [TIME]  temples begin to be built in greece hyagnis..."
+      ]
+    },
+    "end": {
+      "opticks": [
+        "  ...   have omitted the mathematical tracts publish'd at the  [END]  of the former edition as not belonging to...",
+        "  ...                 not belonging to the subject and at the  [END]  of the third book i have added some...",
+        "  ...              lines running from the three angles of one  [END]  to the three angles of the other end...",
+        "  ...                    end to the three angles of the other  [END]  and if the refraction of the light in...",
+        "  ...                through the middle of the prism from one  [END]  of it to the other end parallel to...",
+        "  ...                         from one end of it to the other  [END]  parallel to the edge of the refracting angle...",
+        "  ...           veins running along within the glass from one  [END]  to the other which scattered some of the...",
+        "  ...                         about a or of an inch at either  [END]  of the spectrum the light of the clouds...",
+        "  ...    directly towards the spectator's eye with its nearer  [END]  and let xy be the sun mn the...",
+        "  ...                 broad the rays which going to the upper  [END]  p of the image suffer the greatest refraction..."
+      ],
+      "prophecies": [
+        "  ...                         w innys and r manby at the west  [END]  of st paul's church-yard j osborn and t...",
+        "  ...              were also written after his death for they  [END]  with these words so this daniel prospered in...",
+        "  ...               some other prophet have been added to the  [END]  of the prophecies of zechariah and the book...",
+        "  ...                      of an old one or the beginning and  [END]  of the world for the rise and ruin...",
+        "  ...                  lowest of the people or for the latter  [END]  of the kingdom the feet nails and teeth...",
+        "  ...                     and grow very great and last to the  [END]  of all ages the head of the image...",
+        "  ...              over the danube from geberic in the latter  [END]  of the reign of constantine the great and...",
+        "  ...            aeternum tibi rhenus aret and orosius in the  [END]  of his history which was finished a c...",
+        "  ...              greece to invade the western empire in the  [END]  of the reign of athaulphus the goths were...",
+        "  ...         francia this bucher well observes refers to the  [END]  of the year or the beginning of the..."
+      ],
+      "chronology": [
+        "  ...                   reach of your sex nor does this study  [END]  in barren speculation it discovers itself in a...",
+        "  ...   the writing in prose pherecydes atheniensis about the  [END]  of the reign of darius hystaspis wrote of...",
+        "  ...                seas subject to that empire and for that  [END]  order the building of the ship argo the...",
+        "  ...                thebes and troy and that this age should  [END]  when the men then living grew hoary and...",
+        "  ...former expedition return into peloponnesus henceforward to the  [END]  of the first messenian war reigned ten kings...",
+        "  ...     institutions of lycurgus about years older than the  [END]  of the peloponnesian war that is years before...",
+        "  ...              some of these archons might dye before the  [END]  of the ten years and the remainder of...",
+        "  ...                  predicted by thales may the th puts an  [END]  to a battel between the medes and lydians...",
+        "  ...        history of the jews artaxerxes mnemon reigns the  [END]  of the peloponnesian war artaxerxes ochus reigns arogus...",
+        "  ...      return of the heraclides into peloponnesus and the  [END]  of the first messenian war the ten kings..."
+      ],
+      "principia": [
+        "  ...              have been corrected they are listed at the  [END]  of the text braces are inserted by the...",
+        "  ...volocitate in original p differenti contrariorum contrario at  [END]  of page in original the rum is only...",
+        "  ...                   in original p et pari ratione pari at  [END]  of line in original p resolvo in seriem...",
+        "  ...        original p vim suam elasticam mediocrem medio at  [END]  of line in original crem missing p prop...",
+        "  ...    p luce sua quantumvis plumbea quamtumvis in original  [END]  of the project gutenberg ebook of philosophiae naturalis...",
+        "  ...of philosophiae naturalis principia mathematica by isaac newton  [END]  of this project gutenberg ebook philosophiae naturalis this..."
+      ]
+    },
+    "little": {
+      "opticks": [
+        "  ...         have other proportions but the difference is so  [LITTLE]  that it need seldom be considered illustration fig...",
+        "  ...                       lower edge of the paper or a very  [LITTLE]  higher then at the distance of six feet...",
+        "  ...                      light of the clouds seemed to be a  [LITTLE]  tinged with red and violet but so very...",
+        "  ...                  blue at the other end excepting only a  [LITTLE]  penumbra whose breadth scarce exceeded a quarter of...",
+        "  ...         or curles which usually arise from sand-holes a  [LITTLE]  smoothed in polishing with putty if the glass...",
+        "  ...                and the sides not accurately plane but a  [LITTLE]  convex or concave as it frequently happens yet...",
+        "  ...                sun's light into a dark room through two  [LITTLE]  round holes f and greek ph in fig...",
+        "  ...                     coloured images of the sun and at a  [LITTLE]  distance from the wall i placed a long...",
+        "  ...                  illuminated with red and begin to be a  [LITTLE]  divided from it when illuminated with orange and...",
+        "  ...       in degrees of refrangibility i illuminated also a  [LITTLE]  circular piece of white paper all over with..."
+      ],
+      "prophecies": [
+        "  ...             teys which runs southward into the danube a  [LITTLE]  above belgrade it comprehended the countries now called...",
+        "  ...   incendia fundis vel pastorales aedificare casas and a  [LITTLE]  after aeternum tibi rhenus aret and orosius in...",
+        "  ...                    with arcadius s death or the times a  [LITTLE]  after and arcadius died a c may the...",
+        "  ...obsidiatus sui tempore familiari amicitia devinctos and a  [LITTLE]  after aetius tribus annis alarici obses dehinc chunnorum...",
+        "  ...                      years and but they might come in a  [LITTLE]  earlier for we are told that the lombards...",
+        "  ...             put for kingdoms as above and therefore the  [LITTLE]  horn is a little kingdom it was a...",
+        "  ...                above and therefore the little horn is a  [LITTLE]  kingdom it was a horn of the fourth...",
+        "  ...             of the three kingdoms which fell before the  [LITTLE]  horn in the year pope zechary deposed childeric...",
+        "  ...            was the second kingdom which fell before the  [LITTLE]  horn but rome which was to be the...",
+        "  ...                         i take to be the third king the  [LITTLE]  horn overcame and even the chief of the..."
+      ],
+      "chronology": [
+        "  ...                    and carried on the history so then a  [LITTLE]  after the death of alexander the great they...",
+        "  ...           that cadmus milesius and acusilaus were but a  [LITTLE]  before the expedition of the persians against the...",
+        "  ...                  years before the use of letters are of  [LITTLE]  credit diodorus in the beginning of his history...",
+        "  ...                        of the th olympiad or but a very  [LITTLE]  before if it may be supposed that the...",
+        "  ...                         to cyprus in the days of dido a  [LITTLE]  before the reign of her brother pygmalion and...",
+        "  ...    sesoch sesoos sethos sesonch which names differ very  [LITTLE]  from sesach sesonchis and sesach differ no more...",
+        "  ...            about the tropics and equinoxes might lean a  [LITTLE]  to the opinion of former astronomers so as...",
+        "  ...                 into egypt with their king hadad then a  [LITTLE]  child and others to the philistims where they...",
+        "  ...                   in the beginning of his reign and her  [LITTLE]  sister who at that time had no breasts...",
+        "  ...          id est sepem nominarunt and pliny concerning a  [LITTLE]  island near it erythia dicta est quoniam tyrii..."
+      ]
+    },
+    "greek": {
+      "opticks": [
+        "  ...   in these opticks transcriber's note there are several  [GREEK]  letters used in the descriptions of the illustrations...",
+        "  ... descriptions of the illustrations they are signified by  [GREEK]  letter square roots are noted by the letters...",
+        "  ...         the paper will be refracted downward suppose to  [GREEK]  de and the blue half will be refracted...",
+        "  ...                the blue half will be refracted lower to  [GREEK]  dg than the red half is to greek...",
+        "  ...                        greek dg than the red half is to  [GREEK]  pe illustration fig exper about the aforesaid paper...",
+        "  ...             four square image such as is represented at  [GREEK]  pt for the better understanding of which let...",
+        "  ...               dilated and drawn out into the long image  [GREEK]  p qkp and the light kqrl into the...",
+        "  ...                 so many other long images lrsm msvn nvt  [GREEK]  t and all these long images would compose...",
+        "  ...        long images would compose the four square images  [GREEK]  pt thus it ought to be were every...",
+        "  ...                  would be formed a four square figure p  [GREEK]  p t greek t as i described above..."
+      ],
+      "prophecies": [
+        "  ...               and policy and in matters of religion for  [GREEK]  episkopoi bishops speaking for making laws the mouth...",
+        "  ...             greece and therefore at the breaking of the  [GREEK]  empire into four kingdoms of the greeks we...",
+        "  ...                   two first beasts nor do we reckon the  [GREEK]  empire seated at constantinople among the horns of...",
+        "  ...                granted them in maesia and thrace by the  [GREEK]  emperor valens but the next year they revolted...",
+        "  ...     great and powerful stilico s expedition against the  [GREEK]  emperor was stopt by the order of honorius...",
+        "  ...              being no longer obedient to the roman laws  [GREEK]  kat heauton biateuein they lived in separate bodies...",
+        "  ...          overcome in battle was slain with his children  [GREEK]  bretannian men toi romaioi anasosasthai ouketi echon all...",
+        "  ...               their king chunnimund a c he assisted the  [GREEK]  emperor against totila king of the ostrogoths in...",
+        "  ...                  and his successors by the grant of the  [GREEK]  emperors upon the death of valentinian the second...",
+        "  ...           under the dominion of the ostrogoths when the  [GREEK]  emperor conquered the ostrogoths he succeeded them in..."
+      ],
+      "chronology": [
+        "  ...      persia by alexander the great the introduction the  [GREEK]  antiquities are full of poetical fictions because the...",
+        "  ...             to their ships to buy their merchandize the  [GREEK]  seas begin to be infested with pyrates the...",
+        "  ...             her death minos prepares a fleet clears the  [GREEK]  seas of pyrates and sends colonies to the...",
+        "  ...his sepulchre visited by pythagoras was this inscription  [GREEK]  tou dios the sepulchre of jupiter danaus with...",
+        "  ...       took almost all things from diocles peparethius a  [GREEK]  the chronologers of gallia spain germany scythia swedeland...",
+        "  ...             years which is above years a-piece thus the  [GREEK]  chronologers who follow timaeus and eratosthenes have made...",
+        "  ...sesochis sesoosis sethosis sesonchis sesonchosis take away the  [GREEK]  termination and the names become sesost sesoch sesoos...",
+        "  ...        biduum ex mense civili dierum triginta quos illi  [GREEK]  exairesimous dies nominant and proclus upon hesiod s...",
+        "  ...    exairesimous dies nominant and proclus upon hesiod s  [GREEK]  triakas mentions the same thing and geminus greek...",
+        "  ...       greek triakas mentions the same thing and geminus  [GREEK]  prothesis gar en tois archaiois tous men menas..."
+      ],
+      "principia": [
+        "  ...     fluviorum fluxus majores c teris paribus tardius ad  [GREEK]  akm n venient pendent autem effectus luminarium ex..."
+      ]
+    },
+    "several": {
+      "opticks": [
+        "  ...                      to make at the bottom of the pages  [SEVERAL]  citations from thence where may be found the...",
+        "  ...   omitted in these opticks transcriber's note there are  [SEVERAL]  greek letters used in the descriptions of the...",
+        "  ...         successive in the same lines as contemporary in  [SEVERAL]  lines for it is manifest that light consists...",
+        "  ...               fig ax vi homogeneal rays which flow from  [SEVERAL]  points of any object and fall perpendicularly or...",
+        "  ...               if the incident rays flow from or towards  [SEVERAL]  points q the reflected or refracted rays shall...",
+        "  ...                   in fig the light which comes from the  [SEVERAL]  points of the object is so refracted by...",
+        "  ...           which was stiff like thin pasteboard i lapped  [SEVERAL]  times a slender thred of very black silk...",
+        "  ...                 very black silk in such manner that the  [SEVERAL]  parts of the thred might appear upon the...",
+        "  ...            which might collect the rays coming from the  [SEVERAL]  points of the paper and make them converge...",
+        "  ...                  now if the rays which tend towards the  [SEVERAL]  points of the round image y were dilated..."
+      ],
+      "prophecies": [
+        "  ...       together and the history hath been collected from  [SEVERAL]  books such as were the history of the...",
+        "  ...                     death out of the acts of the judges  [SEVERAL]  things in this book are said to be...",
+        "  ...             also so the prophecies of isaiah written at  [SEVERAL]  times he has collected into one body and...",
+        "  ...             daniel is a collection of papers written at  [SEVERAL]  times the six last chapters contain prophecies written...",
+        "  ...     the six last chapters contain prophecies written at  [SEVERAL]  times by daniel himself the six first are...",
+        "  ...                       a flood are put for the people of  [SEVERAL]  regions nations and dominions embittering of waters for...",
+        "  ...                and vegetables are put for the people of  [SEVERAL]  regions and conditions and particularly trees herbs and...",
+        "  ...         a large signification for the whole kingdom and  [SEVERAL]  animals as a lion a bear a leopard...",
+        "  ...           goat according to their qualities are put for  [SEVERAL]  kingdoms and bodies politic and sacrificing of beasts...",
+        "  ...                      to one another as if they were but  [SEVERAL]  parts of one general prophecy given at several..."
+      ],
+      "chronology": [
+        "  ...   next olympiad timaeus siculus published an history in  [SEVERAL]  books down to his own times according to...",
+        "  ...           arts and sciences of phoenicia and settled in  [SEVERAL]  places under the names of curetes corybantes telchines...",
+        "  ...           hellen he and cranaus might reign together in  [SEVERAL]  parts of attica but i meet with a...",
+        "  ...             every nome erects a temple and appoints the  [SEVERAL]  gods festivals and religions of the several nomes...",
+        "  ...         the several gods festivals and religions of the  [SEVERAL]  nomes the temples were the sepulchres of his...",
+        "  ...                    age and this was the original of the  [SEVERAL]  nomes of egypt and of the several gods...",
+        "  ...                   the several nomes of egypt and of the  [SEVERAL]  gods and several religions of those nomes sesac...",
+        "  ...                    of egypt and of the several gods and  [SEVERAL]  religions of those nomes sesac divided also the...",
+        "  ...                 of the lake of moeris egypt breaks into  [SEVERAL]  kingdoms gnephactus and bocchoris reign successively in the...",
+        "  ...             magi are slain the various religions of the  [SEVERAL]  nations of persia which consisted in the worship..."
+      ]
+    },
+    "till": {
+      "opticks": [
+        "  ...                 lastly that by age the eye grow flatter  [TILL]  it come to a due figure for short-sighted...",
+        "  ...            that paper most distinctly and then i stay'd  [TILL]  by the motion of the sun and consequent...",
+        "  ...                    to be reflected by its base at which  [TILL]  then it went out of the glass i...",
+        "  ...        object-metal or concave which was to be polish'd  [TILL]  it had taken the figure of the convex...",
+        "  ...               it upon the pitch with the concave copper  [TILL]  it had done making a noise and then...",
+        "  ...                putty upon the pitch and ground it again  [TILL]  it had done making a noise and afterwards...",
+        "  ...                   it as before and this work i repeated  [TILL]  the metal was polished grinding it the last...",
+        "  ...              many trials i learn'd the way of polishing  [TILL]  i made those two reflecting perspectives i spake...",
+        "  ...                 the putty on it with the concave copper  [TILL]  it had done making a noise because if...",
+        "  ...    too much composition they maybe diluted and weaken'd  [TILL]  they cease and the mixture becomes white or..."
+      ],
+      "prophecies": [
+        "  ...                    babylon the book of the law was lost  [TILL]  the eighteenth year of his grandson josiah then...",
+        "  ...                 writer set down the race of those kings  [TILL]  his own time and therefore wrote before david...",
+        "  ...                  the author of the first book of samuel  [TILL]  the time of his death the two books...",
+        "  ...          had broken these prophets he continued to send  [TILL]  the days of ezra but after their prophecies...",
+        "  ...             was in the greatest credit amongst the jews  [TILL]  the reign of the roman emperor hadrian and...",
+        "  ...   gold saith he to nebuchadnezzar these nations reigned  [TILL]  cyrus conquered babylon and within a few months...",
+        "  ...            a mighty empire and reigned with great power  [TILL]  the days of theodosius the great then by...",
+        "  ...                   of the lion and i beheld saith daniel  [TILL]  the wings thereof were pluckt and it was...",
+        "  ...                     man's heart was given to it that is  [TILL]  it was humbled and subdued and made to...",
+        "  ...    former beasts this empire continued in its greatness  [TILL]  the reign of theodosius the great and then..."
+      ],
+      "chronology": [
+        "  ...      be transmitted with the scepter to their posterity  [TILL]  this and the other works of sir isaac...",
+        "  ...         and these were the oldest towns in peloponnesus  [TILL]  then they built only single houses scattered up...",
+        "  ...          another on the mediterranean at irasa in libya  [TILL]  then they used small and round vessels of...",
+        "  ...            noted upon it and this circle remained there  [TILL]  cambyses spoiled the temples of egypt and from...",
+        "  ...      hadad were worshipt in their sepulchres or temples  [TILL]  the days of josephus the jew and the...",
+        "  ...      men were addicted to poetry as anaximenes affirmed  [TILL]  those days the greeks wrote only in verse...",
+        "  ...            for scythia beyond the danube had no letters  [TILL]  ulphilas their bishop formed them which was about...",
+        "  ...             of alexander the great and germany had none  [TILL]  it received them from the western empire of...",
+        "  ...         ii c according to herodotus these kings reigned  [TILL]  the sixth year of xerxes in which leonidas...",
+        "  ...         those pythic games and therefore lived at least  [TILL]  the th olympiad and beginning to flourish in..."
+      ]
+    },
+    "make": {
+      "opticks": [
+        "  ...            lately printed it has been thought proper to  [MAKE]  at the bottom of the pages several citations...",
+        "  ...                        axis nor the lens so broad as to  [MAKE]  any of the rays fall too obliquely on...",
+        "  ...                and thereby a lens be formed which shall  [MAKE]  the rays flow towards or from what place...",
+        "  ...    converge by reflection or refraction there they will  [MAKE]  a picture of the object upon any white...",
+        "  ...        a correspondent point of the picture and thereby  [MAKE]  a picture like the object in shape and...",
+        "  ...                     old age decay so as by shrinking to  [MAKE]  the cornea and coat of the crystalline humour...",
+        "  ...             in the eye and by increasing the refraction  [MAKE]  the rays converge sooner so as to convene...",
+        "  ...               on the spectator's eyes for these rays do  [MAKE]  the same picture in the bottom of the...",
+        "  ...   more such convex or concave-glasses every glass shall  [MAKE]  a new image and the object shall appear...",
+        "  ...          else than the describing such glasses as shall  [MAKE]  the last image of any object as distinct..."
+      ],
+      "prophecies": [
+        "  ...        high chancellor of great-britain my lord i shall  [MAKE]  no apology for addressing the following sheets to...",
+        "  ...     days god would destroy the impenitent revolters and  [MAKE]  a new covenant with his people and the...",
+        "  ...            to protect them and now stilico purposing to  [MAKE]  himself emperor procured a military prefecture for alaric...",
+        "  ...                the western but his secret design was to  [MAKE]  himself emperor by the assistance of the vandals...",
+        "  ...   diligent searchers into the originals of this kingdom  [MAKE]  it begin the same year with the barbarian...",
+        "  ...            nations who were their subjects to rebel and  [MAKE]  war upon them the same year the ostrogoths...",
+        "  ...                   to the hunns and when alaric began to  [MAKE]  war upon the romans which was in the...",
+        "  ...               to purge them from the dissemblers and to  [MAKE]  them white even to the time of the...",
+        "  ...            thy holy city to finish transgression and to  [MAKE]  an end of sins to expiate iniquity and...",
+        "  ...                and upon a wing of abominations he shall  [MAKE]  it desolate even until the consummation and that..."
+      ],
+      "chronology": [
+        "  ...               best returns the learned world is able to  [MAKE]  and the many extraordinary honours your majesty vouchsafed...",
+        "  ...                 argos with the olympic victors so as to  [MAKE]  the olympiads and the genealogies and successions of...",
+        "  ...           up the following chronological table so as to  [MAKE]  chronology suit with the course of nature with...",
+        "  ...                fled from them build tyre and aradus and  [MAKE]  abibalus king of tyre these edomites carry to...",
+        "  ...                    by asa the people of the lower egypt  [MAKE]  osarsiphus their king and call in two hundred...",
+        "  ...     battel between the medes and lydians whereupon they  [MAKE]  peace and ratify it by a marriage between...",
+        "  ...       athenians and makes laws for them the amphictions  [MAKE]  war upon the cirrheans by the advice of...",
+        "  ...       kings of egypt and that three hundred generations  [MAKE]  ten thousand years for saith he three generations...",
+        "  ...             years for saith he three generations of men  [MAKE]  an hundred years and the remaining forty and...",
+        "  ...       years and the remaining forty and one generations  [MAKE]  years and so the whole time from the..."
+      ]
+    },
+    "times": {
+      "opticks": [
+        "  ...            an argument taken from the aequations of the  [TIMES]  of the eclipses of jupiter's satellites it seems...",
+        "  ...         was stiff like thin pasteboard i lapped several  [TIMES]  a slender thred of very black silk in...",
+        "  ...          posture i repeated the experiment four or five  [TIMES]  and always found the length of the image...",
+        "  ...                   the image is not round but about five  [TIMES]  longer than broad the rays which going to...",
+        "  ...                length of its refracted image to be many  [TIMES]  greater than its breadth and that the most...",
+        "  ...             their centers remain the same be made three  [TIMES]  less than before the mixture will be also...",
+        "  ...              than before the mixture will be also three  [TIMES]  less if ten times less the mixture will...",
+        "  ...                    will be also three times less if ten  [TIMES]  less the mixture will be ten times less...",
+        "  ...                  ten times less the mixture will be ten  [TIMES]  less and so of other proportions that is...",
+        "  ...                     breadth of the image pt to be forty  [TIMES]  and sometimes sixty or seventy times less than..."
+      ],
+      "prophecies": [
+        "  ...                 horn of daniel s fourth beast to change  [TIMES]  and laws chap ix of the kingdoms represented...",
+        "  ...                     of the seventy weeks chap xi of the  [TIMES]  of the birth and passion of christ chap...",
+        "  ...            teaching priest and without law and in those  [TIMES]  there was no peace to him that went...",
+        "  ...          so the prophecies of isaiah written at several  [TIMES]  he has collected into one body and the...",
+        "  ...            is a collection of papers written at several  [TIMES]  the six last chapters contain prophecies written at...",
+        "  ... six last chapters contain prophecies written at several  [TIMES]  by daniel himself the six first are a...",
+        "  ...                in those things which relate to the last  [TIMES]  he must be made the key to the...",
+        "  ...          parts of one general prophecy given at several  [TIMES]  the first is the easiest to be understood...",
+        "  ...            his historia miscell lib xiv speaking of the  [TIMES]  next after the death of this emperor tells...",
+        "  ...               by the franks it was therefore taken four  [TIMES]  once by the vandals and thrice by the..."
+      ],
+      "chronology": [
+        "  ...                history in several books down to his own  [TIMES]  according to the olympiads comparing the ephori the...",
+        "  ...                   it was reputed by the greeks of those  [TIMES]  may be understood by these passages of plutarch...",
+        "  ...           name of lycurgus upon it others supputing the  [TIMES]  by the succession of the kings of the...",
+        "  ...empire now since eratosthenes and apollodorus computed the  [TIMES]  by the reigns of the kings of sparta...",
+        "  ...           conquest of persia by alexander the great the  [TIMES]  are set down in years before christ the...",
+        "  ...                 said to be of years standing before the  [TIMES]  of alexander the great and the chaldaeans boasted...",
+        "  ...                 the truth some of the greeks called the  [TIMES]  before the reign of ogyges unknown because they...",
+        "  ...    olympiads the europeans had no chronology before the  [TIMES]  of the persian empire and whatsoever chronology they...",
+        "  ...    and whatsoever chronology they now have of ancienter  [TIMES]  hath been framed since by reasoning and conjecture...",
+        "  ...                history in several books down to his own  [TIMES]  according to the olympiads comparing the ephori the..."
+      ]
+    },
+    "place": {
+      "opticks": [
+        "  ...    both successive and contemporary because in the same  [PLACE]  you may stop that which comes one moment...",
+        "  ...                         time you may stop it in any one  [PLACE]  and let it pass in any other for...",
+        "  ...                 make the rays flow towards or from what  [PLACE]  you please b so then the meaning of...",
+        "  ...                       the bottom of the eye but to some  [PLACE]  beyond it and by consequence paint in the...",
+        "  ...                     brought so near the eye as that the  [PLACE]  where the converging rays convene may be removed...",
+        "  ...         seen by reflexion or refraction appears in that  [PLACE]  from whence the rays after their last reflexion...",
+        "  ...                    mn it shall appear not in its proper  [PLACE]  a but behind the glass at a from...",
+        "  ...                 and all vision is made according to the  [PLACE]  and shape of that picture in like manner...",
+        "  ...               through a prism appears not in its proper  [PLACE]  d but is thence translated to some other...",
+        "  ...                d but is thence translated to some other  [PLACE]  d situated in the last refracted ray fg..."
+      ],
+      "prophecies": [
+        "  ...                  the ark was brought into the most holy  [PLACE]  there was nothing in it but the two...",
+        "  ...        understanding the prophecies we are in the first  [PLACE]  to acquaint our-selves with the figurative language of...",
+        "  ...                a weak and low condition moving from one  [PLACE]  to another for translation from one office dignity...",
+        "  ...             ezek xxviii and the same ezekiel in another  [PLACE]  joins daniel with noah and job as most...",
+        "  ...                by the pecuniary mulcts in them that the  [PLACE]  where he reigned abounded much with money and...",
+        "  ...             of ravenna with pentapolis and in the third  [PLACE]  the territories taken from the lombards these are...",
+        "  ...            simplicius wrote thus to zeno bishop of that  [PLACE]  talibus idcirco gloriantes indiciis congruum duximus vicaria sedis...",
+        "  ...              the daily sacrifice was taken away and the  [PLACE]  of his sanctuary was cast down viz in...",
+        "  ...              by daniel the prophet standing in the holy  [PLACE]  it may relate chiefly to the worship of...",
+        "  ...              temple built by the emperor hadrian in the  [PLACE]  of the temple of the jews and to..."
+      ],
+      "chronology": [
+        "  ...             above an hundred years older and in another  [PLACE]  plutarch tells us the congress of solon with...",
+        "  ...       psammiticus began about years before christ and i  [PLACE]  the founding of this temple by menes about...",
+        "  ...           raised their antiquities so much higher as to  [PLACE]  six eight or ten new reigns of kings...",
+        "  ...           beginning of the reign of nyctimus the greeks  [PLACE]  the flood of deucalion this flood was succeeded...",
+        "  ...               from the year of nabonassar and they will  [PLACE]  the argonautic expedition about years before christ gingris...",
+        "  ...                  or four years earlier and there we may  [PLACE]  the death of this king the greeks feigned...",
+        "  ...               thermopylae may take up years more and so  [PLACE]  the return of the heraclides about years before...",
+        "  ...         cadmus milesius to write history and in another  [PLACE]  he saith that cadmus milesius was the first...",
+        "  ...             above an hundred years older and in another  [PLACE]  plutarch tells us the congress of solon with...",
+        "  ...         father of eurysthenes and procles and they will  [PLACE]  the return of the heraclides into peloponnesus years..."
+      ]
+    },
+    "side": {
+      "opticks": [
+        "  ...                   de be the ray incident upon the first  [SIDE]  of the prism ac where the light goes...",
+        "  ...                ray for the incident ray upon the second  [SIDE]  of the glass bc where the light goes...",
+        "  ...                    found when the lens is convex on one  [SIDE]  and plane or concave on the other or...",
+        "  ...                             if q c be taken on the same  [SIDE]  of the plane with qc and in proportion...",
+        "  ...                       and if in that radius on the same  [SIDE]  the point t you take the points q...",
+        "  ...        spherically convex or concave or plane on either  [SIDE]  and let cd be its axis that is...",
+        "  ...                        for if that point be on the same  [SIDE]  of the reflecting or refracting surface or lens...",
+        "  ...                 contrary happens when q is on the other  [SIDE]  of the surface ax vii wherever the rays...",
+        "  ...         a perpendicular right line drawn cross from one  [SIDE]  to the other distinguished it into two equal...",
+        "  ...                      and one or two inches on the other  [SIDE]  of the lens and so form the image..."
+      ],
+      "prophecies": [
+        "  ...                    v this beast raised itself up on one  [SIDE]  the persians being under the medes at the...",
+        "  ...                   the third and those of europe on this  [SIDE]  greece are still the fourth seeing therefore the...",
+        "  ...                beast is confined to the nations on this  [SIDE]  the river euphrates and the body of the...",
+        "  ...                beast is confined to the nations on this  [SIDE]  greece we are to look for all the...",
+        "  ...               the third beast among the nations on this  [SIDE]  of the river euphrates and for all the...",
+        "  ...              the fourth beast among the nations on this  [SIDE]  of greece and therefore at the breaking of...",
+        "  ...   where ptolemy placeth the mountain alanus and western  [SIDE]  of the palus maeotis these nations continued under...",
+        "  ...   and being opposed seated themselves upon the northern  [SIDE]  of the rhine over against mentz in the...",
+        "  ...     marcomans under ermeric marched thro rhaetia to the  [SIDE]  of the rhine leaving their seats in pannonia...",
+        "  ...              pannonia into rugia a country on the north  [SIDE]  of noricum next beyond the danube from whence..."
+      ],
+      "chronology": [
+        "  ...     was the eighteenth from aesculapius by the father's  [SIDE]  and the nineteenth from hercules by the mother's...",
+        "  ...        and the nineteenth from hercules by the mother's  [SIDE]  and because these generations being noted in history...",
+        "  ...        and thus the seventeen intervals by the father's  [SIDE]  and eighteen by the mother's will at a...",
+        "  ...               of cubits in compass covered on the upper  [SIDE]  with a plate of gold and divided into...",
+        "  ...hippocrates was the eighteenth inclusively by the father's  [SIDE]  from aesculapius and the nineteenth from hercules by...",
+        "  ...        and the nineteenth from hercules by the mother's  [SIDE]  and because these generations being taken notice of...",
+        "  ...        and thus the seventeen intervals by the father's  [SIDE]  and eighteen by the mother's will at a...",
+        "  ...           samothrace an island near thrace on the north  [SIDE]  of lemnos and there married harmonia the sister...",
+        "  ...                  their first money with his head on one  [SIDE]  and a ship on the other macrobius tells...",
+        "  ...                 malta and gaulus or gaudus on the other  [SIDE]  of sicily were first peopled by phoenicians and..."
+      ]
+    },
+    "according": {
+      "opticks": [
+        "  ...                bottom of the eye a confused picture and  [ACCORDING]  to the indistinctness of this picture the object...",
+        "  ...             of the looking-glass and all vision is made  [ACCORDING]  to the place and shape of that picture...",
+        "  ...             there is the like success of the experiment  [ACCORDING]  to the quantity of the refraction it is...",
+        "  ...                    than two degrees and an half and yet  [ACCORDING]  to the laws of opticks vulgarly received they...",
+        "  ...           and yet if the refraction were done regularly  [ACCORDING]  to one certain proportion of the sines of...",
+        "  ...      paint innumerable equal circles of all which being  [ACCORDING]  to their degrees of refrangibility placed in order...",
+        "  ...             that every one of the circles was refracted  [ACCORDING]  to some most regular uniform and constant law...",
+        "  ...                first prism abc is turned about its axis  [ACCORDING]  to the order of the letters abc the...",
+        "  ...             also by a total reflexion vanished in order  [ACCORDING]  to their degrees of refrangibility the light therefore...",
+        "  ...       by turning the parallelopiped acbd about its axis  [ACCORDING]  to the order of the letters a c..."
+      ],
+      "prophecies": [
+        "  ...                     truth chap xiii of the king who did  [ACCORDING]  to his will and magnified himself above every...",
+        "  ...             the mahuzzims honoured by the king who doth  [ACCORDING]  to his will part ii observations upon the...",
+        "  ...            and temple were ordered by david and solomon  [ACCORDING]  to the law of this book and david...",
+        "  ...                          a lion a bear a leopard a goat  [ACCORDING]  to their qualities are put for several kingdoms...",
+        "  ...          it the visigoths were between them the gepides  [ACCORDING]  to jornandes were upon the vistula the burgundians...",
+        "  ...          itinerary written in autumn anno urbis that is  [ACCORDING]  to varro s computation then in use a...",
+        "  ... and the carthaginian province this kingdom lasted years  [ACCORDING]  to isidorus and then was subdued by leovigildus...",
+        "  ...      and forming themselves into a sort of commonwealth  [ACCORDING]  to their own pleasure this rebellion of britain...",
+        "  ...                   the son of ayon who became their king  [ACCORDING]  to prosper in the consulship of honorius and...",
+        "  ...           and theodosius a c reigned thirty three years  [ACCORDING]  to paulus warnefridus and was slain in battle..."
+      ],
+      "chronology": [
+        "  ...                  in several books down to his own times  [ACCORDING]  to the olympiads comparing the ephori the kings...",
+        "  ...priestesses and poetical histories suit with one another  [ACCORDING]  to the best of his judgment and where...",
+        "  ...             of troy eighty years older than that return  [ACCORDING]  to thucydides and the argonautic expedition a generation...",
+        "  ...                  philyra was born and the last of which  [ACCORDING]  to hesiod ended with the trojan war and...",
+        "  ...                    a club and this is that hercules who  [ACCORDING]  to cicero was born upon the nile and...",
+        "  ...                    to cicero was born upon the nile and  [ACCORDING]  to eudoxus was slain by typhon and according...",
+        "  ...            according to eudoxus was slain by typhon and  [ACCORDING]  to diodorus was an egyptian and went over...",
+        "  ...                       he seems to be also the belus who  [ACCORDING]  to diodorus led a colony of egyptians to...",
+        "  ...                  or cales she was the daughter of atlas  [ACCORDING]  to homer the ancients at length feigned that...",
+        "  ...    altitudes they had found the solstices and equinoxes  [ACCORDING]  to the sun's mean motion his equation being..."
+      ]
+    },
+    "things": {
+      "opticks": [
+        "  ...            such theorems and having since met with some  [THINGS]  copied out of it i have on this...",
+        "  ...     the paper and obscure the phaenomenon thereof these  [THINGS]  being thus ordered i found that if the...",
+        "  ...                   an inch and an half scholium the same  [THINGS]  succeed notwithstanding that some of the circumstances be...",
+        "  ...             j taken together it follows by adding equal  [THINGS]  to equal things that the refractions at k...",
+        "  ...              it follows by adding equal things to equal  [THINGS]  that the refractions at k and h taken...",
+        "  ...            second refraction for this end i ordered all  [THINGS]  as in the third experiment and then placed...",
+        "  ...            refracted in the second and seeing all these  [THINGS]  continue to succeed after the same manner when...",
+        "  ...             the trajected light a second time and these  [THINGS]  being thus ordered i marked the places m...",
+        "  ...                  and help to disturb it in trying these  [THINGS]  so much diligence is not altogether necessary but...",
+        "  ...        experiments and by a very scrupulous examiner of  [THINGS]  deserves to be apply'd it's difficult to get..."
+      ],
+      "prophecies": [
+        "  ...       forefathers kept it not he quotes many historical  [THINGS]  out of the books of exodus and numbers...",
+        "  ...            the conquest of canaan for joshua wrote some  [THINGS]  in the book of the law of god...",
+        "  ...                   out of the acts of the judges several  [THINGS]  in this book are said to be done...",
+        "  ...                        the book of ruth is a history of  [THINGS]  done in the days of the judges and...",
+        "  ...    babylonian captivity but with none later after these  [THINGS]  antiochus epiphanes spoiled the temple commanded the jews...",
+        "  ...              upon them that break it and predictions of  [THINGS]  to come while the people of god keep...",
+        "  ...    authorized to alter this covenant the predictions of  [THINGS]  to come relate to the state of the...",
+        "  ...         easiest to be understood and therefore in those  [THINGS]  which relate to the last times he must...",
+        "  ...                as is considered in the prophecy and the  [THINGS]  in that world signify the analogous things in...",
+        "  ...          the things in that world signify the analogous  [THINGS]  in this for the heavens and the things..."
+      ],
+      "chronology": [
+        "  ...              a short chronicle from the first memory of  [THINGS]  in europe to the conquest of persia by...",
+        "  ...              a short chronicle from the first memory of  [THINGS]  in page europe to the conquest of persia...",
+        "  ...              a short chronicle from the first memory of  [THINGS]  in europe to the conquest of persia by...",
+        "  ...           father of alexander the great but he digested  [THINGS]  by generations and the reckoning by olympiads was...",
+        "  ...           deaths and therefore i admit no chronology of  [THINGS]  done in europe above eighty years before cadmus...",
+        "  ...       before cadmus brought letters into europe none of  [THINGS]  done in germany before the rise of the...",
+        "  ...              a short chronicle from the first memory of  [THINGS]  in europe to the conquest of persia by...",
+        "  ...             built two great pyramids of brick and these  [THINGS]  being not mentioned by homer or hesiod were...",
+        "  ...          fancies pliny in reckoning up the inventors of  [THINGS]  tells us that pherecydes syrius taught to compose...",
+        "  ...              fall of the persian empire but he digested  [THINGS]  by generations and the reckoning by the olympiads..."
+      ]
+    },
+    "length": {
+      "opticks": [
+        "  ...                  surface of the glass and air begins at  [LENGTH]  to be totally reflected by that surface those...",
+        "  ...            which is the sun's apparent diameter but the  [LENGTH]  of the image was about ten inches and...",
+        "  ...                  about ten inches and a quarter and the  [LENGTH]  of the rectilinear sides about eight inches and...",
+        "  ...                   angle of the prism whereby so great a  [LENGTH]  was made was degrees with a less angle...",
+        "  ...                  made was degrees with a less angle the  [LENGTH]  of the image was less the breadth remaining...",
+        "  ...            but had no sensible effect in increasing the  [LENGTH]  of the coloured spectrum for i tried the...",
+        "  ...          whose refracting angle was degrees i found the  [LENGTH]  of the image or inches at the distance...",
+        "  ...                 four or five times and always found the  [LENGTH]  of the image that which is set down...",
+        "  ...        veins and whose refracting angle was degrees the  [LENGTH]  of this image at the same distance of...",
+        "  ...             the horizon made no sensible changes in the  [LENGTH]  of the image neither did the different matter..."
+      ],
+      "prophecies": [
+        "  ...                   tho they should rise from the dead at  [LENGTH]  when a new truth was to be preached...",
+        "  ...                conquered every one what he could and at  [LENGTH]  a c divided their conquests by lot the...",
+        "  ...                          the death of attila a c and at  [LENGTH]  were conquered by the ostrogoths the kings of...",
+        "  ...           his dominions and invaded the empire again at  [LENGTH]  after various great wars with the romans attila...",
+        "  ...           right which this senate still retained and at  [LENGTH]  exerted of chusing a new western emperor i...",
+        "  ...                  by the goths some of these kingdoms at  [LENGTH]  fell and new ones arose but whatever was...",
+        "  ...              invaded the cities of the exarchate and at  [LENGTH]  viz a c took ravenna and put an...",
+        "  ...                    the birth of christ on decemb and at  [LENGTH]  on decemb and for the same reason they...",
+        "  ...                          one year or at most but two at  [LENGTH]  eusebius discovered four successive passovers in the gospel...",
+        "  ...                           to do the like matth x and at  [LENGTH]  when he had received a message from john..."
+      ],
+      "chronology": [
+        "  ...                   yet a race of seventeen kings of that  [LENGTH]  is no where to be met with in...",
+        "  ...                 use but this year being of an uncertain  [LENGTH]  and so unfit for astronomy in his days...",
+        "  ...                 and setting of the stars they found the  [LENGTH]  of the solar year and made it consist...",
+        "  ...             menoph or amenophis the priests of egypt at  [LENGTH]  made this temple above a thousand years older...",
+        "  ...             of atlas according to homer the ancients at  [LENGTH]  feigned that this island which from atlas they...",
+        "  ...                   the egyptians and made it of the same  [LENGTH]  and the thoth of the first year of...",
+        "  ...                 and therefore it was but of an ordinary  [LENGTH]  and herodotus has told us that hesiod and...",
+        "  ...         followers have encreased the reigns of kings in  [LENGTH]  and number plutarch tells us that the philosophers...",
+        "  ...                         in the th or th olympiad and at  [LENGTH]  aristotle made him as old as the first...",
+        "  ...               years a-piece one with another which is a  [LENGTH]  so much beyond the course of nature as..."
+      ]
+    },
+    "became": {
+      "opticks": [
+        "  ...          refracting surface of the prism the image soon  [BECAME]  an inch or two longer or more and...",
+        "  ...          on the first refracting surface the image soon  [BECAME]  an inch or two shorter and therefore in...",
+        "  ...             the refraction of the second prism but only  [BECAME]  oblique as tis represented at pt its upper...",
+        "  ...                  appeared no longer in a right line but  [BECAME]  broken from one another as they are represented...",
+        "  ...         went from the paper the refracted image thereof  [BECAME]  more and more divided by the unequal refraction...",
+        "  ...                  until when it was also red both images  [BECAME]  fully co-incident i placed also two paper circles...",
+        "  ...           came nearer and nearer together and at length  [BECAME]  co-incident and afterwards when i went still farther...",
+        "  ...           afterwards the rest also by a total reflexion  [BECAME]  as copious as these to try this i...",
+        "  ...             when the contiguous sides of the two prisms  [BECAME]  so oblique to the incident rays that those...",
+        "  ...      and so being restor'd to its pristine constitution  [BECAME]  of the same nature and condition as at..."
+      ],
+      "prophecies": [
+        "  ...            it follows that they received it before they  [BECAME]  divided into two kingdoms for after the division...",
+        "  ...       revealed to the king and thereby daniel presently  [BECAME]  famous for wisdom and revealing of secrets insomuch...",
+        "  ...                 brake all the four metals to pieces and  [BECAME]  a great mountain and filled the whole earth...",
+        "  ...          empire and divided it between them and thereby  [BECAME]  considerable and grew into great empires in the...",
+        "  ...            nabonass and by these and other conquests it  [BECAME]  greater and more terrible than any of the...",
+        "  ...several smaller kingdoms hunnimund the son of hermanaric  [BECAME]  king over the ostrogoths fridigern over the visigoths...",
+        "  ...          and left a son called theudomir who afterwards  [BECAME]  king of the salian franks in brabant in...",
+        "  ...       and conforming to one another's manners till they  [BECAME]  one without distinction thus by the access of...",
+        "  ...                rome was besieged and taken by the goths  [BECAME]  broken into the following ten kingdoms the kingdom...",
+        "  ...            pannonia before the alans left it there they  [BECAME]  subject to the hunns till the death of..."
+      ],
+      "chronology": [
+        "  ...     cnidia erycina idalia c and her three waiting-women  [BECAME]  the three graces the war of the seven...",
+        "  ...        brother and lycurgus upon the birth of charillus  [BECAME]  tutor to the child and after about eight...",
+        "  ...            these children was sesac or sesostris for he  [BECAME]  king of egypt in the reign of solomon...",
+        "  ...                    year of asa because in that year asa  [BECAME]  free from the dominion of egypt so as...",
+        "  ...       twenty years after the death of androgeus theseus  [BECAME]  victor and returned from crete with ariadne the...",
+        "  ...             by glaucus an egyptian commander at sea and  [BECAME]  the mistress of the great bacchus who at...",
+        "  ...               the return of bacchus from india and then  [BECAME]  the mistress of bacchus and accompanied him in...",
+        "  ...               us that the cares were called leleges and  [BECAME]  subject to minos and lived first in the...",
+        "  ...                  and his son cisus the kingdom of argos  [BECAME]  divided among the posterity of temenus until phidon...",
+        "  ...           in macedonia which after the death of caranus  [BECAME]  one under perdiccas herodotus tells us that after..."
+      ]
+    },
+    "next": {
+      "opticks": [
+        "  ...                    bc where the light goes out find the  [NEXT]  refracted ray fg by putting the proportion of...",
+        "  ...              experiments which are now to follow in the  [NEXT]  proposition prop ii theor ii the light of...",
+        "  ...                  while another prism abc is to be fixed  [NEXT]  after that hole g to refract the trajected...",
+        "  ...                  by the light of the very bright clouds  [NEXT]  the sun's body intermixing with these colours and...",
+        "  ...          would try experiments in the more simple light  [NEXT]  the side gm of the spectrum which being...",
+        "  ...                     by the deepest part of it which was  [NEXT]  the end of the spectrum i suspected therefore...",
+        "  ...                sensible red and that part of the violet  [NEXT]  the indigo whose corrected distance from the red...",
+        "  ...                    by that part of the violet which was  [NEXT]  the indigo and sometimes i could see them...",
+        "  ...            more strongly than all the rest together and  [NEXT]  to these in strength are the red and...",
+        "  ...                      half of the red that half which is  [NEXT]  the orange and the brighter half of the..."
+      ],
+      "prophecies": [
+        "  ...        of silver and represent the persians who reigned  [NEXT]  the belly and thighs of the image were...",
+        "  ...  alexander the great conquered the persians and reigned  [NEXT]  after them the legs were of iron and...",
+        "  ...            of iron and represent the romans who reigned  [NEXT]  after the greeks and began to conquer them...",
+        "  ...                    the vision of the four beasts in the  [NEXT]  vision which is of the four beasts the...",
+        "  ...          a bear and represents the empire which reigned  [NEXT]  after the babylonians that is the empire of...",
+        "  ...              thrace by the greek emperor valens but the  [NEXT]  year they revolted called in some goths alans...",
+        "  ...          historia miscell lib xiv speaking of the times  [NEXT]  after the death of this emperor tells us...",
+        "  ...                      thence went into italy a c and the  [NEXT]  year were so beaten at pollentia and verona...",
+        "  ...                    danube began to be in motion and the  [NEXT]  winter between a c and a great body...",
+        "  ...       made them spread themselves into aquitain but the  [NEXT]  year they had the passage betrayed by some..."
+      ],
+      "chronology": [
+        "  ...                yet mention not the olympiads but in the  [NEXT]  olympiad timaeus siculus published an history in several...",
+        "  ...        sesac invades india and returns with triumph the  [NEXT]  year but one whence trieterica bacchi he sets...",
+        "  ...               menes the first king of egypt who reigned  [NEXT]  after the gods that is by menoph or...",
+        "  ...              that is by menoph or amenophis who reigned  [NEXT]  after the death of osiris isis orus bubaste...",
+        "  ...                     christ and if it began upon the day  [NEXT]  after the vernal equinox it might begin three...",
+        "  ...                     us himself that he lived in the age  [NEXT]  after the wars of thebes and troy and...",
+        "  ...                      to a reckoning by years and in the  [NEXT]  olympiad timaeus siculus improved it for he wrote...",
+        "  ...              c reigned years which is years a-piece the  [NEXT]  twenty four kings of france ludovicus balbus c...",
+        "  ...               balbus c years which is years a-piece the  [NEXT]  fifteen philip valesius c years which is years...",
+        "  ...                   and gave it to his daughter sesac the  [NEXT]  king came out of egypt with an army..."
+      ]
+    },
+    "est": {
+      "prophecies": [
+        "  ...     ex senatoribus nomine lucii a francis capta incensa  [EST]  castinus domesticorum comes expeditionem accipit contra francos c...",
+        "  ...     hoc praelio quod supra memini a romanis interfectus  [EST]  that is in the battle with castinus s...",
+        "  ...              remained under tyrants and beda l c fracta  [EST]  roma a gothis anno suae conditionis ex quo...",
+        "  ...saecula multa pannonias revocavit iter jam credere promptum  [EST]  quid faciet bellis the poet means that by...",
+        "  ...provincia episcopi deduceretur examen vel si ipse metropolitanus  [EST]  romam necessario vel ad eos quos romanus episcopus...",
+        "  ...si vel metropolitani episcopi vel cujuscunque sacerdotis iniquitas  [EST]  suspecta aut gratia ad romanum episcopum vel ad...",
+        "  ...non posse quam auctoritatem ubique nos misisse manifestum  [EST]  ut cunctis regionibus innotescat id quod statuimus omnimodis...",
+        "  ...       leo i cui id etiam honoris dignitatisque collatum  [EST]  say they ut non tantum has provincias potestate...",
+        "  ...      tanti ac tales viri praedecessores mei episcopi id  [EST]  sanctae memoriae damasus siricius atque supra memoratus vir...",
+        "  ...illis partibus gererentur sanctitati tuae quae plena justitiae  [EST]  traderent cognoscenda and in his epistle to rufus..."
+      ],
+      "chronology": [
+        "  ...   years in these words adrymeto atque carthagini author  [EST]  a tyro populus urbem istam ut cato in...",
+        "  ...exprimit civitatem novam mox sermone verso carthago dicta  [EST]  quae post annos septingentos triginta septem exciditur quam...",
+        "  ...                   done by most of the greeks and cicero  [EST]  consuetudo siculorum caeterorumque graecorum quod suos dies mensesque...",
+        "  ...        menses cum luna porro secundum solem annos agere  [EST]  circa easdem tempestates anni eadem sacrificia diis perfici...",
+        "  ...    zodiaci locis fierent secundum lunam vero dies agere  [EST]  tale ut congruant cum lunae illuminationibus appellationes dierum...",
+        "  ...  ea per synaloephen seu compositionem greek neomenia id  [EST]  novilunium appellatur in qua vero die secundam facit...",
+        "  ...          mensis fit ab ipso eventu greek dichomenian id  [EST]  medietatem mensis nominarunt ac summatim omnes dies a...",
+        "  ...        mari profecti erytheam poeni sua lingua gadir id  [EST]  sepem nominarunt and pliny concerning a little island...",
+        "  ...        concerning a little island near it erythia dicta  [EST]  quoniam tyrii aborigines eorum orti ab erythraeo mari...",
+        "  ...    megan peribolon kai neosoikous mons calpe ad dextram  [EST]  e nostro mari foras navigantibus ad quadraginta inde..."
+      ],
+      "principia": [
+        "  ...     fatio ad lectorem cum veteres mechanicam uti author  [EST]  pappus in verum naturalium investigatione maximi fecerint recentiores...",
+        "  ...natur ad leges mathematicas revocare aggressi sint visum  [EST]  in hoc tractatu mathesin excolere quatenus ea ad...",
+        "  ...    omnes manuales a quibus utiq mechanica nomen mutuata  [EST]  cum autem artifices parum accurate operari soleant fit...",
+        "  ...artis sed artificum qui minus accurate operatur imperfectior  [EST]  mechanicus si quis accuratissime operari posset hic foret...",
+        "  ...fundatur igitur geometria in praxi mechanica nihil aliud  [EST]  quam mechanic universalis pars illa qu artem mensurandi...",
+        "  ...    phoebus adest totoque incessit numine mentem nec fas  [EST]  propius mortali attingere divos edm halley philosophi naturalis...",
+        "  ...naturalis principia mathematica definitiones def i quantitas materi  [EST]  mensura ejusdem orta ex illius densitate magnitudine conjunctim...",
+        "  ... conjunctim aer duplo densior in duplo spatio quadruplus  [EST]  idem intellige de nive et pulveribus per compressionem...",
+        "  ...pulveribus per compressionem vel liquefactionem condensatis et par  [EST]  ratio corporum omnium qu per causas quascunq diversimode...",
+        "  ...  instituta uti posthac docebitur def ii quantitas motus  [EST]  mensura ejusdem orta ex velocitate et quantitate materi..."
+      ]
+    },
+    "years": {
+      "opticks": [
+        "  ...            meetings and the rest was added about twelve  [YEARS]  after to complete the theory except the third...",
+        "  ...                with which they may be compared and some  [YEARS]  ago i lent out a manuscript containing such...",
+        "  ...             the second kind which was also written many  [YEARS]  ago and made known to some friends who...",
+        "  ...              read in the university of cambridge in the  [YEARS]  and are lately printed it has been thought...",
+        "  ...                  and pleasant two of these i made about  [YEARS]  ago and have one of them still by...",
+        "  ...                       a glass i tried about five or six  [YEARS]  ago to make a reflecting telescope of four...",
+        "  ...                 at venice in the year and written above  [YEARS]  before for he teaches there how the interior...",
+        "  ...             a speculum of metal without glass made some  [YEARS]  since for optical uses and very well wrought...",
+        "  ...              the motions of the planets in ten thousand  [YEARS]  if any one would ask how a medium...",
+        "  ... improvement of natural philosophy and therefore of late  [YEARS]  have been rejected to tell us that every..."
+      ],
+      "prophecies": [
+        "  ...    jews continued under great troubles for about twenty  [YEARS]  being without the true god and without a...",
+        "  ...            egypt fell into troubles judah had quiet ten  [YEARS]  and in that time asa built fenced cities...",
+        "  ...            possessions and the days of their acting for  [YEARS]  and when a tree is put for a...",
+        "  ...          by that emperor where they lived quietly forty  [YEARS]  viz till the year when several gothic nations...",
+        "  ...                      pannonia as far as the alps in the  [YEARS]  and they were checkt by the arms of...",
+        "  ...                 and epirus with fire and sword for five  [YEARS]  together when turning westward they invaded dalmatia illyricum...",
+        "  ...             saltus norica rura tenebant this was in the  [YEARS]  and and among these nations i reckon the...",
+        "  ...      kingdom lasted in gallia spain and africa together  [YEARS]  and in africa they were very potent the...",
+        "  ...boetica and the carthaginian province this kingdom lasted  [YEARS]  according to isidorus and then was subdued by...",
+        "  ...                they did together with the romans in the  [YEARS]  and overthrowing the alans and part of the..."
+      ],
+      "chronology": [
+        "  ...                 which he alone carried farther in a few  [YEARS]  than all the most learned who went before...",
+        "  ...            kingdoms amended was writ by the author many  [YEARS]  since yet he lately revis'd it and was...",
+        "  ...       also by genealogies and hellanicus who was twelve  [YEARS]  older than herodotus digested his history by the...",
+        "  ...        archons of athens hippias the elean about thirty  [YEARS]  before the fall of the persian empire published...",
+        "  ...               list of the olympic victors and about ten  [YEARS]  before the fall thereof ephorus the disciple of...",
+        "  ...                   kings were yet set down by numbers of  [YEARS]  the arundelian marbles were composed sixty years after...",
+        "  ...     of years the arundelian marbles were composed sixty  [YEARS]  after the death of alexander the great an...",
+        "  ...    the generations reigns and successions in numbers of  [YEARS]  and by putting reigns and successions equipollent to...",
+        "  ...                  to an hundred or an hundred and twenty  [YEARS]  as appears by their chronology they have made...",
+        "  ...         the antiquities of greece three or four hundred  [YEARS]  older than the truth and this was the..."
+      ]
+    },
+    "year": {
+      "opticks": [
+        "  ...           of some gentlemen of the royal-society in the  [YEAR]  and then sent to their secretary and read...",
+        "  ...                  a letter written to mr leibnitz in the  [YEAR]  and published by dr wallis i mention'd a...",
+        "  ...                 by his friend bartolus at venice in the  [YEAR]  and written above years before for he teaches...",
+        "  ...                    the moon for in the beginning of the  [YEAR]  febr th at night i saw two such..."
+      ],
+      "prophecies": [
+        "  ...                 of the law was lost till the eighteenth  [YEAR]  of his grandson josiah then hilkiah the high...",
+        "  ...                monarchy of egypt which was in the fifth  [YEAR]  of rehoboam the jews continued under great troubles...",
+        "  ...                        army of men with which in the th  [YEAR]  of his reign he met and overcame zerah...",
+        "  ...                   away the high places and in the third  [YEAR]  of his reign sent some of his princes...",
+        "  ...           and therefore it was written before the third  [YEAR]  of jehosaphat the same book of the law...",
+        "  ...          and therefore it was written before the eighth  [YEAR]  of david sam v and chron xi the...",
+        "  ...                 the reign of saul and before the eighth  [YEAR]  of david and samuel was a sacred writer...",
+        "  ...         author saith that daniel continued to the first  [YEAR]  of cyrus that is to his first year...",
+        "  ...                      year of cyrus that is to his first  [YEAR]  over the persians and medes and third year...",
+        "  ...              year over the persians and medes and third  [YEAR]  over babylon and for the same reason the..."
+      ],
+      "chronology": [
+        "  ...            with the siege of perinthus in the twentieth  [YEAR]  of philip the father of alexander the great...",
+        "  ...                         do not pretend to be exact to a  [YEAR]  there may be errors of five or ten...",
+        "  ...                       reigned in the days of eli in the  [YEAR]  before christ mephres reigned over the upper egypt...",
+        "  ...            lower egypt called abaris or pelusium in the  [YEAR]  the philistims strengthned by the access of the...",
+        "  ...       and sailing had their rise hitherto the lunisolar  [YEAR]  had been in use but this year being...",
+        "  ...                 lunisolar year had been in use but this  [YEAR]  being of an uncertain length and so unfit...",
+        "  ...                stars they found the length of the solar  [YEAR]  and made it consist of five days more...",
+        "  ...         the twelve calendar months of the old lunisolar  [YEAR]  creusa the daughter of erechtheus marries xuthus the...",
+        "  ...         invades india and returns with triumph the next  [YEAR]  but one whence trieterica bacchi he sets up...",
+        "  ...          cancer chelae capricorn and aries meton in the  [YEAR]  of nabonassar observed the summer solstice in the..."
+      ]
+    },
+    "king": {
+      "prophecies": [
+        "  ...                 the scripture of truth chap xiii of the  [KING]  who did according to his will and magnified...",
+        "  ...               chap xiv of the mahuzzims honoured by the  [KING]  who doth according to his will part ii...",
+        "  ...        wickedness was invaded by the army of asserhadon  [KING]  of assyria and carried captive to babylon the...",
+        "  ...             repairing the temple found it there and the  [KING]  lamented that their fathers had not done after...",
+        "  ...                     sent back to bethel by order of the  [KING]  of assyria to instruct the new inhabitants of...",
+        "  ...              the kings of edom before there reigned any  [KING]  over israel is set down in the book...",
+        "  ...                 the kings of edom until there reigned a  [KING]  in israel the book of the judges is...",
+        "  ...                       said to be done when there was no  [KING]  in israel judg xvii xviii xix xxi and...",
+        "  ...                in honour of david after he was anointed  [KING]  by samuel and before he had children in...",
+        "  ...vexatious wars persecutions and troubles inflicted by the  [KING]  riding on the clouds for reigning over much..."
+      ],
+      "chronology": [
+        "  ...             is administred in this happy nation under a  [KING]  who distinguished himself early in opposition to the...",
+        "  ...          latines lived an hundred years later than that  [KING]  in sacred history the assyrian empire began with...",
+        "  ...              older than nitocris the mother of the last  [KING]  of babylon but ctesias hath made semiramis years...",
+        "  ...      egypt and there conquered timaus thamus or thammuz  [KING]  of the lower egypt and reigned there under...",
+        "  ...               and proetus comes from egypt saul is made  [KING]  of israel and by the hand of jonathan...",
+        "  ...         laconia and build sparta samuel dies david made  [KING]  the edomites are conquered and dispersed by david...",
+        "  ...                 of them fly into egypt with their young  [KING]  hadad others fly to the persian gulph with...",
+        "  ...            them build tyre and aradus and make abibalus  [KING]  of tyre these edomites carry to all places...",
+        "  ...              art to triptolemus the young son of celeus  [KING]  of eleusis oenotrus the youngest son of lycaon...",
+        "  ...            and grandson of lycaon and eumelus the first  [KING]  of achaia receive bread-corn from triptolemus solomon reigns..."
+      ]
+    },
+    "sunt": {
+      "prophecies": [
+        "  ...maximae trans danubium habitantes ex quibus rationabiliores quatuor  [SUNT]  gothi scilicet huisogothi gepides vandali nomen tantum nihil...",
+        "  ...mutantes isti sub arcadia honorio danubium transeuntes locati  [SUNT]  in terra romanorum gepides quidem ex quibus postea...",
+        "  ...  terra romanorum gepides quidem ex quibus postea divisi  [SUNT]  longobardi avares villas quae sunt circa singidonum sirmium...",
+        "  ... quibus postea divisi sunt longobardi avares villas quae  [SUNT]  circa singidonum sirmium habitavere and procopius in the...",
+        "  ...them burgundionum esse praevalidam manum galliae hodieque testes  [SUNT]  in quibus praesumpta possessione consistunt about the year...",
+        "  ...     regnavit sub hoc rege franci usque summam progressi  [SUNT]  merovechus sub hoc rege franci trevirim destruunt metim...",
+        "  ...apud avernis capti a ducibus honorii crudeliter interempti  [SUNT]  trevirorum civitas factione unius ex senatoribus nomine lucii...",
+        "  ...galli prius contra romanos rebellassent franci iis sociati  [SUNT]  pariter juncti ferramundum sunonis ducis filium sibi regem...",
+        "  ...    datis acceptisque obsidibus fecit ex quibus qui dati  [SUNT]  aetius qui etiam alarico tributus fuerat praecipue memoratur...",
+        "  ...quinquaginta annos invasa pannonia a romanis gothis expulsi  [SUNT]  and marcellinus hierio ardaburio coss pannoniae quae per..."
+      ],
+      "chronology": [
+        "  ...appellationes dierum nam a lunae illuminationibus appellationes dierum  [SUNT]  denominatae in qua enim die luna apparet nova...",
+        "  ...referunt phoenices sidonios nostros esse colonos eorum qui  [SUNT]  in oceano addentes illos ideo vocari phoenices puniceos...",
+        "  ...patiuntur convivales ludi tota perside regibus purpuratisque cordi  [SUNT]  babylonii maxime in vinum quae ebrietatem sequuntur effusi...",
+        "  ...babylonii maxime in vinum quae ebrietatem sequuntur effusi  [SUNT]  faeminarum convivia ineuntium in principio modestus est habitus...",
+        "  ...firmitudine communitas legibus suis uti permissi religionis respectu  [SUNT]  honorati so this empire was at first composed..."
+      ],
+      "principia": [
+        "  ...quicquid minus accuratum ad mechanicam attamen errores non  [SUNT]  artis sed artificum qui minus accurate operatur imperfectior...",
+        "  ...operationes problemata solvantur docet rectas circulos describere problemata  [SUNT]  sed non geometrica ex mechanica postulatur horum solutio...",
+        "  ...        circuitu diffusam ad movenda corpora qu in ipsis  [SUNT]  vim autem absolutam ad centrum tanquam causa aliqua...",
+        "  ...   aut rationem physicam alicubi definire vel centris qu  [SUNT]  puncta mathematica vires vere et physice tribuere si...",
+        "  ...       minus notas quo in sensu in sequentibus accipiend  [SUNT]  explicare visum est nam tempus spatium locum et...",
+        "  ...           lestis definita per situm suum ad terram idem  [SUNT]  spatium absolutum relativum specie magnitudine sed non permanent...",
+        "  ...vel superficiem ambientem nam solidorum qualium quales semper  [SUNT]  loci superficies autem ob dissimilitudinem figurarum ut plurimum...",
+        "  ...autem ob dissimilitudinem figurarum ut plurimum in quales  [SUNT]  situs vero proprie loquendo quantitatem non habent neq...",
+        "  ...    vero proprie loquendo quantitatem non habent neq tam  [SUNT]  loca quam affectiones locorum motus totius idem est...",
+        "  ...  astronomia per quationem temporis vulgi in quales enim  [SUNT]  dies naturales qui vulgo tanquam quales pro mensura..."
+      ]
+    },
+    "egypt": {
+      "prophecies": [
+        "  ...                 law now extant when shishak came out of  [EGYPT]  and spoil'd the temple and brought judah into...",
+        "  ...        brought judah into subjection to the monarchy of  [EGYPT]  which was in the fifth year of rehoboam...",
+        "  ...             all adversity but when shishak was dead and  [EGYPT]  fell into troubles judah had quiet ten years...",
+        "  ...      and overcame zerah the ethiopian who had conquered  [EGYPT]  and lybia and troglodytica and came out with...",
+        "  ...           to signify the kingdoms of sardes babylon and  [EGYPT]  which were conquered by it but did not...",
+        "  ... epirus lysimachus over thrace and bithynia ptolemy over  [EGYPT]  lybia arabia coelosyria and palestine and seleucus over...",
+        "  ...                 that of syria anno nabonass and that of  [EGYPT]  anno nabonass and by these and other conquests...",
+        "  ...          macedon greece and thrace asia minor syria and  [EGYPT]  are still the third and those of europe...",
+        "  ...        of those nations and extend his dominion towards  [EGYPT]  syria and judea in the latter time of...",
+        "  ...        armenia syria and judea an nabonass they subdued  [EGYPT]  and by these conquests the little horn waxed..."
+      ],
+      "chronology": [
+        "  ...                       p greeks chap ii of the empire of  [EGYPT]  p chap iii of the assyrian empire p...",
+        "  ...          the assyrian names in scripture the priests of  [EGYPT]  told herodotus that menes built memphis and the...",
+        "  ...            menes about years earlier but the priests of  [EGYPT]  had so magnified their antiquities before the days...",
+        "  ...          fled from joshua retired in great numbers into  [EGYPT]  and there conquered timaus thamus or thammuz king...",
+        "  ...              timaus thamus or thammuz king of the lower  [EGYPT]  and reigned there under their kings salatis boeon...",
+        "  ...    earth and abominated flesh-eaters the upper parts of  [EGYPT]  were in those days under many kings reigning...",
+        "  ...       year before christ mephres reigned over the upper  [EGYPT]  from syene to heliopolis and his successor misphragmuthosis...",
+        "  ...              by misphragmuthosis in a part of the lower  [EGYPT]  called abaris or pelusium in the year the...",
+        "  ...           the father of acrisius and proetus comes from  [EGYPT]  saul is made king of israel and by...",
+        "  ...                      by david and some of them fly into  [EGYPT]  with their young king hadad others fly to..."
+      ]
+    },
+    "red": {
+      "opticks": [
+        "  ...                 into water the sine of incidence of the  [RED]  light is to the sine of its refraction...",
+        "  ...                    of incidence that is if the light be  [RED]  as to and about the center c and...",
+        "  ...                     one of these parts i painted with a  [RED]  colour and the other with a blue the...",
+        "  ...             be lifted higher by the refraction than its  [RED]  half but if the refracting angle of the...",
+        "  ...        will be carried something lower thereby than its  [RED]  half wherefore in both cases the light which...",
+        "  ...          refraction than the light which comes from the  [RED]  half and by consequence is more refrangible illustration...",
+        "  ...                blue colour the other fe of an intensely  [RED]  and bac cab represents the prism whose refracting...",
+        "  ...                     dg is carried higher to dg than the  [RED]  half fe is to fe and therefore suffers...",
+        "  ...                 be refracted lower to greek dg than the  [RED]  half is to greek pe illustration fig exper...",
+        "  ...            paper whose two halfs were painted over with  [RED]  and blue and which was stiff like thin..."
+      ],
+      "chronology": [
+        "  ...         with their commander oannes and others from the  [RED]  sea to the coast of the mediterranean and...",
+        "  ... herodotus that the phoenicians came originally from the  [RED]  sea and presently undertook long voyages on the...",
+        "  ...        sparta the phoenician mariners who fled from the  [RED]  sea being used to long voyages for the...",
+        "  ...                        had a fleet of such ships on the  [RED]  sea and another on the mediterranean at irasa...",
+        "  ...             and round vessels of burden invented on the  [RED]  sea and kept within sight of the shore...",
+        "  ...         who had mariners among them acquainted with the  [RED]  sea sets out a fleet upon that sea...",
+        "  ...                     sets up pillars at the mouth of the  [RED]  sea apis epaphus or epopeus the son of...",
+        "  ...           chiefly the merchants and seamen fly from the  [RED]  sea to the philistims upon the mediterranean where...",
+        "  ...       thalasses pheugadon one of the fugitives from the  [RED]  sea built azoth that is a prince of...",
+        "  ...          convenient for the merchants who fled from the  [RED]  sea and then did the zidonians fly by..."
+      ]
+    },
+    "reign": {
+      "prophecies": [
+        "  ...                        with which in the th year of his  [REIGN]  he met and overcame zerah the ethiopian who...",
+        "  ...                     places and in the third year of his  [REIGN]  sent some of his princes and of the...",
+        "  ...                the law which was afterwards lost in the  [REIGN]  of manasses and found again in the reign...",
+        "  ...                reign of manasses and found again in the  [REIGN]  of josiah and therefore it was written before...",
+        "  ...              entirely in the form now extant before the  [REIGN]  of saul the writer set down the race...",
+        "  ...                and joshua and samuel had leisure in the  [REIGN]  of saul to put them into the form...",
+        "  ...             book was written after the beginning of the  [REIGN]  of saul when it was written the jebusites...",
+        "  ...                the same hand after the beginning of the  [REIGN]  of saul and before the eighth year of...",
+        "  ...                   judges sam xii and had leisure in the  [REIGN]  of saul and sufficient authority to compose these...",
+        "  ...            children in hebron and by consequence in the  [REIGN]  of saul it proceeds not to the history..."
+      ],
+      "chronology": [
+        "  ...        the tyranny which threatned europe and chuses to  [REIGN]  in the hearts of his subjects who by...",
+        "  ...               examples of virtue and wisdom set in this  [REIGN]  by the royal patrons of both will be...",
+        "  ...       prose pherecydes atheniensis about the end of the  [REIGN]  of darius hystaspis wrote of antiquities and digested...",
+        "  ...              two or three hundred years in building the  [REIGN]  of psammiticus began about years before christ and...",
+        "  ...                         is after the rate of years to a  [REIGN]  and yet a race of seventeen kings of...",
+        "  ...          true history and kings at a moderate reckoning  [REIGN]  but or years a-piece one with another i...",
+        "  ...   lacedaemon who married sparta the daughter of eurotas  [REIGN]  in laconia and build sparta samuel dies david...",
+        "  ...                 of cecrops reigned in attica and in his  [REIGN]  and the beginning of the reign of nyctimus...",
+        "  ...                   in his reign and the beginning of the  [REIGN]  of nyctimus the greeks place the flood of...",
+        "  ...              ammon places cepheus at joppa sesac in the  [REIGN]  of his father ammon invades arabia foelix and..."
+      ]
+    },
+    "prop": {
+      "opticks": [
+        "  ...           our author's lectiones opticae part i sect iv  [PROP]  there is an elegant method of determining these...",
+        "  ...              in any other curved figure whatever and in  [PROP]  the same thing is done for any ray...",
+        "  ...                        ray lying out of the axis b ibid  [PROP]  propositions prop i theor i lights which differ...",
+        "  ...                out of the axis b ibid prop propositions  [PROP]  i theor i lights which differ in colour...",
+        "  ...               are now to follow in the next proposition  [PROP]  ii theor ii the light of the sun...",
+        "  ... constantly more refrangible than others as was proposed  [PROP]  iii theor iii the sun's light consists of...",
+        "  ...               of the two prisms in the tenth experiment  [PROP]  iv prob i to separate from one another...",
+        "  ...sometimes impregnated the water strongly with saccharum saturni  [PROP]  v theor iv homogeneal light is refracted regularly...",
+        "  ...    homogeneal light was never changed by the refraction  [PROP]  vi theor v the sine of incidence of...",
+        "  ...        found by the method in the following proposition  [PROP]  vii theor vi the perfection of telescopes is..."
+      ],
+      "principia": [
+        "  ...           s is long-s distinguished from short-s and in  [PROP]  xxii d is small-caps distinguished from normal font...",
+        "  ...  sine limite sect ii de inventione virium centripetarum  [PROP]  i theorema i areas quas corpora in gyros...",
+        "  ...           loco b secundum lineam parallelam ipsi cc per  [PROP]  lib i elem leg ii hoc est secundum...",
+        "  ...nec minuet propterea in compositione virium negligenda est  [PROP]  iii theor iii corpus omne quod radio ad...",
+        "  ...quod motus omnis circularis in spatiis liberis peragitur  [PROP]  iv theor iv corporum qu diversos circulos quabili...",
+        "  ...contraria qua circulus continuo repellit corpus centrum versus  [PROP]  v prob i illustration data quibuscunq in locis...",
+        "  ...proportionale ejus rei dabimus exempla in problematis sequentibus  [PROP]  vii prob ii illustration gyretur corpus in circumferentia...",
+        "  ...quad ut quadrato-cubus distanti sp quod erat inveniendum  [PROP]  viii prob iii illustration moveatur corpus in circulo...",
+        "  ...ordinatim applicat ad centrum virium maxime longinquum tendentis  [PROP]  ix prob iv illustration gyretur corpus in spiral...",
+        "  ...circum diametros ejus descriptis constat utrumq ex conicis  [PROP]  x prob v gyretur corpus in ellipsi requiritur..."
+      ]
+    },
+    "son": {
+      "prophecies": [
+        "  ...               to those who worshiped other gods and his  [SON]  jehosaphat took away the high places and in...",
+        "  ...                eleven horns of the fourth beast and the  [SON]  of man coming in the clouds of heaven...",
+        "  ...                  to the burning flames and one like the  [SON]  of man came with the clouds of heaven...",
+        "  ...hermanaric brake into several smaller kingdoms hunnimund the  [SON]  of hermanaric became king over the ostrogoths fridigern...",
+        "  ...                   but died in the expedition and left a  [SON]  called theudomir who afterwards became king of the...",
+        "  ...             being slain was succeeded in germany by his  [SON]  pharamond while these nations remained quiet within the...",
+        "  ...             arms and under the conduct of theudomir the  [SON]  of ricimer or richomer abovementioned made so stout...",
+        "  ...             possessed a good part of gallia created his  [SON]  constans caesar and sent him into spain to...",
+        "  ...          custody of vienne in gallia narbonensis to his  [SON]  constans gerontius advancing first slew constans at vienne...",
+        "  ...              whom bucher makes the successor if not the  [SON]  of goar they had the territories of valence..."
+      ],
+      "chronology": [
+        "  ...            take the ark samuel judges israel haemon the  [SON]  of pelasgus reigns in thessaly lycaon the son...",
+        "  ...           son of pelasgus reigns in thessaly lycaon the  [SON]  of pelasgus builds lycosura phoroneus the son of...",
+        "  ...       the son of pelasgus builds lycosura phoroneus the  [SON]  of inachus phoronicum afterwards called argos aegialeus the...",
+        "  ...     called argos aegialeus the brother of phoroneus and  [SON]  of inachus aegialeum afterwards called sicyon and these...",
+        "  ...     in attica afterwards called athens and eleusine the  [SON]  of ogyges built eleusis and these towns gave...",
+        "  ...         a great victory over the philistims eurotas the  [SON]  of lelex and lacedaemon who married sparta the...",
+        "  ...        and damascus are conquered by david nyctimus the  [SON]  of lycaon reigns in arcadia deucalion still alive...",
+        "  ...                    men in the first of which chiron the  [SON]  of saturn and philyra was born and the...",
+        "  ...curetes corybantes telchines and idaei dactyli hellen the  [SON]  of deucalion and father of aeolus xuthus and...",
+        "  ...    creusa the daughter of erechtheus marries xuthus the  [SON]  of hellen erechtheus having first celebrated the panathenaea..."
+      ]
+    },
+    "kings": {
+      "prophecies": [
+        "  ...                   of exodus and numbers the race of the  [KINGS]  of edom before there reigned any king over...",
+        "  ...                   the writer set down the race of those  [KINGS]  till his own time and therefore wrote before...",
+        "  ...                     the book of genesis the race of the  [KINGS]  of edom until there reigned a king in...",
+        "  ...                    was nothing in it but the two tables  [KINGS]  viii and therefore when the philistines took the...",
+        "  ...                  by the same disciples the books of the  [KINGS]  cite other authors as the book of the...",
+        "  ...               solomon the book of the chronicles of the  [KINGS]  of israel and the book of the chronicles...",
+        "  ...                   and the book of the chronicles of the  [KINGS]  of judah the books of the chronicles cite...",
+        "  ...                  of rehoboam and abijah the book of the  [KINGS]  of judah and israel for the acts of...",
+        "  ...               and prophets and because the books of the  [KINGS]  and chronicles quote one another they were written...",
+        "  ...             history of judah and the genealogies of the  [KINGS]  of judah and of the high priests to..."
+      ],
+      "chronology": [
+        "  ...            of juno argiva others digested theirs by the  [KINGS]  of the lacedaemonians or archons of athens hippias...",
+        "  ...                   nor doth it appear that the reigns of  [KINGS]  were yet set down by numbers of years...",
+        "  ...     according to the olympiads comparing the ephori the  [KINGS]  of sparta the archons of athens and the...",
+        "  ...    the olympiads and the genealogies and successions of  [KINGS]  archons and priestesses and poetical histories suit with...",
+        "  ...            supputing the times by the succession of the  [KINGS]  of the lacedaemonians as eratosthenes and apollodorus affirm...",
+        "  ...              than nitocris and feigned a long series of  [KINGS]  of assyria whose names are not assyrian nor...",
+        "  ...  moeris who reigned years before psammiticus there were  [KINGS]  whose reigns took up as many ages that...",
+        "  ...             and had filled up the interval with feigned  [KINGS]  who had done nothing and before the days...",
+        "  ...                    place six eight or ten new reigns of  [KINGS]  between those kings whom they had represented to...",
+        "  ...                or ten new reigns of kings between those  [KINGS]  whom they had represented to herodotus to succeed..."
+      ]
+    },
+    "days": {
+      "opticks": [
+        "  ...                   as when the sun comes to his tropicks  [DAYS]  increase and decrease but a very little for...",
+        "  ...          into watry substances and water standing a few  [DAYS]  in the open air yields a tincture which..."
+      ],
+      "prophecies": [
+        "  ...                          was the book of the law in the  [DAYS]  of david and solomon the affairs of the...",
+        "  ...                 was a prophet and judged israel all the  [DAYS]  of his life and was in the greatest...",
+        "  ...                      is a history of things done in the  [DAYS]  of the judges and may be looked upon...",
+        "  ...                    the rest of the prophets down to the  [DAYS]  of the second temple the book of jonah...",
+        "  ...            these prophets he continued to send till the  [DAYS]  of ezra but after their prophecies were read...",
+        "  ...        falling away among the christians soon after the  [DAYS]  of the apostles and that in the latter...",
+        "  ...                  of the apostles and that in the latter  [DAYS]  god would destroy the impenitent revolters and make...",
+        "  ...            so ordered the prophecies that in the latter  [DAYS]  the wise may understand but the wicked shall...",
+        "  ...            the flesh for riches and possessions and the  [DAYS]  of their acting for years and when a...",
+        "  ...                      spirit of the holy gods and in the  [DAYS]  of thy father light and understanding and wisdom..."
+      ],
+      "chronology": [
+        "  ...             that memphis could be famous before homer s  [DAYS]  who doth not mention it or that a...",
+        "  ...     egypt had so magnified their antiquities before the  [DAYS]  of herodotus as to tell him that from...",
+        "  ...               kings who had done nothing and before the  [DAYS]  of diodorus siculus they had raised their antiquities...",
+        "  ...        boeon apachnas apophis janias assis c untill the  [DAYS]  of eli and samuel they fed on flesh...",
+        "  ...                  the upper parts of egypt were in those  [DAYS]  under many kings reigning at coptos thebes this...",
+        "  ...  one kingdom over which misphragmuthosis reigned in the  [DAYS]  of eli in the year before christ mephres...",
+        "  ...     cecrops and other captains into greece before those  [DAYS]  greece and all europe was peopled by wandring...",
+        "  ...                  asia of their race was ogyges in whose  [DAYS]  these egyptian strangers came into greece the rest...",
+        "  ...  idumaea they had constellations and letters before the  [DAYS]  of job who mentions them and there moses...",
+        "  ...             seeing the shore the egyptians began in his  [DAYS]  to observe the stars and from this beginning..."
+      ]
+    },
+    "called": {
+      "opticks": [
+        "  ...        a glass spherically convex on both sides usually  [CALLED]  a lens such as is a burning-glass or...",
+        "  ...                diverge or to which they converge may be  [CALLED]  their focus and the focus of the incident...",
+        "  ...                     eye that is by the outward coat efg  [CALLED]  the tunica cornea and by the crystalline humour...",
+        "  ...                the picture of the object upon that skin  [CALLED]  the tunica retina with which the bottom of...",
+        "  ...                the eye that outward and most thick coat  [CALLED]  the dura mater can then see through the...",
+        "  ...  their constancy of being more refracted are deservedly  [CALLED]  more refrangible illustration fig illustration fig exper at...",
+        "  ...               sphere whereof this glass is a segment be  [CALLED]  d and the semi-diameter of the aperture of...",
+        "  ...           semi-diameter of the aperture of the glass be  [CALLED]  s and the sine of incidence out of...",
+        "  ...              to three the other refraction which may be  [CALLED]  the unusual refraction is perform'd by the following...",
+        "  ...                    are parallel to the plane cfk may be  [CALLED]  the planes of perpendicular refraction and the coast..."
+      ],
+      "prophecies": [
+        "  ...      by the hagiographa they meant the historical books  [CALLED]  joshua judges ruth samuel kings chronicles ezra nehemiah...",
+        "  ...                people and the lowest parts of the earth  [CALLED]  hades or hell the lowest or most miserable...",
+        "  ...         extended to other significations as a tree when  [CALLED]  the tree of life or of knowledge and...",
+        "  ...                   life or of knowledge and a beast when  [CALLED]  the old serpent or worshipped when a beast...",
+        "  ... little above belgrade it comprehended the countries now  [CALLED]  transylvania moldavia and wallachia and the eastern part...",
+        "  ...       of the upper hungary its antient inhabitants were  [CALLED]  getae by the greeks daci by the latins...",
+        "  ...   promoted they were composed of several gothic nations  [CALLED]  ostrogoths visigoths vandals gepides lombards burgundians alans c...",
+        "  ...                    or vinithar over a part of the goths  [CALLED]  gruthungi by ammian gothunni by claudian and sarmatae...",
+        "  ...                 over another part of the goths in dacia  [CALLED]  thervingi box over the antes in sarmatia and...",
+        "  ...          emperor valens but the next year they revolted  [CALLED]  in some goths alans and hunns from beyond..."
+      ],
+      "chronology": [
+        "  ...            after the manner of the phoenicians and were  [CALLED]  shepherds by the egyptians who lived only on...",
+        "  ...           misphragmuthosis in a part of the lower egypt  [CALLED]  abaris or pelusium in the year the philistims...",
+        "  ...lycosura phoroneus the son of inachus phoronicum afterwards  [CALLED]  argos aegialeus the brother of phoroneus and son...",
+        "  ...    of phoroneus and son of inachus aegialeum afterwards  [CALLED]  sicyon and these were the oldest towns in...",
+        "  ...   same time cecrops built cecropia in attica afterwards  [CALLED]  athens and eleusine the son of ogyges built...",
+        "  ...            libya and the desert above it were anciently  [CALLED]  ammonia he was the first that built long...",
+        "  ...       came originally from libya and thence neptune was  [CALLED]  equestris tantalus king of phrygia steals ganimede the...",
+        "  ...        assistants build new cities in the persian gulph  [CALLED]  tyre and aradus the temple of solomon is...",
+        "  ...         pleuron and calydon who built cities in aetolia  [CALLED]  by their own names antiopa the daughter of...",
+        "  ...               people or city of ammon whence the greeks  [CALLED]  it diospolis the city of jupiter sesac also..."
+      ]
+    }
+  }
+}
