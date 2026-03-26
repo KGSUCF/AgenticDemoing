@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newton Corpus — Distant Reading</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & BASE ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:        #1a1410;
+  --ink-2:      #3d3228;
+  --ink-3:      #6b5a4e;
+  --ink-4:      #9c8878;
+  --paper:      #f5f0e8;
+  --paper-2:    #ede6d6;
+  --paper-3:    #e2d8c4;
+  --rule:       rgba(26,20,16,.12);
+  --rule-2:     rgba(26,20,16,.06);
+
+  --c-daniel:   #7a5c3a;
+  --c-opticks:  #2e6e5a;
+  --c-chron:    #4a3670;
+  --c-princip:  #8b3a3a;
+
+  --c-daniel-l: #f2ead8;
+  --c-opticks-l:#e0f0ea;
+  --c-chron-l:  #ece6f5;
+  --c-princip-l:#f5e6e6;
+
+  --serif: 'EB Garamond', Georgia, serif;
+  --mono:  'DM Mono', 'Courier New', monospace;
+
+  --ease: cubic-bezier(.22,.68,0,1.2);
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--serif);
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── NOISE TEXTURE OVERLAY ─────────────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: .6;
+}
+
+/* ─── MASTHEAD ───────────────────────────────────────────────────────────────── */
+.masthead {
+  border-bottom: 1px solid var(--rule);
+  padding: 3rem 0 2rem;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(to bottom, var(--paper-2), var(--paper));
+}
+
+.masthead-ornament {
+  font-size: 1.1rem;
+  color: var(--ink-4);
+  letter-spacing: .25em;
+  margin-bottom: .75rem;
+  font-style: italic;
+}
+
+.masthead h1 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -.01em;
+  margin-bottom: .5rem;
+}
+
+.masthead h1 em {
+  font-style: italic;
+  color: var(--ink-3);
+}
+
+.masthead-sub {
+  font-size: 1rem;
+  color: var(--ink-3);
+  font-style: italic;
+  letter-spacing: .02em;
+}
+
+.masthead-rule {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 1.5rem auto 0;
+  color: var(--ink-4);
+  font-size: .85rem;
+  letter-spacing: .1em;
+}
+.masthead-rule::before, .masthead-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* ─── LAYOUT ────────────────────────────────────────────────────────────────── */
+.site-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ─── CORPUS LEGEND ─────────────────────────────────────────────────────────── */
+.corpus-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  margin: 2.5rem 0;
+  overflow: hidden;
+  background: var(--rule);
+}
+
+.corpus-card {
+  background: var(--paper);
+  padding: 1.1rem 1.4rem;
+  transition: background .2s;
+  cursor: default;
+}
+.corpus-card:hover { background: var(--paper-2); }
+
+.corpus-card-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: .5rem;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.corpus-card-title {
+  font-size: .95rem;
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: .25rem;
+}
+
+.corpus-card-meta {
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: var(--ink-4);
+  letter-spacing: .03em;
+}
+
+/* ─── NAV TABS ───────────────────────────────────────────────────────────────── */
+.nav-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 2.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-tabs::-webkit-scrollbar { display: none; }
+
+.nav-tab {
+  font-family: var(--serif);
+  font-size: .9rem;
+  padding: .85rem 1.6rem;
+  border: none;
+  background: none;
+  color: var(--ink-3);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  white-space: nowrap;
+  transition: color .15s, border-color .15s;
+  letter-spacing: .01em;
+}
+.nav-tab:hover { color: var(--ink); }
+.nav-tab.active {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+  font-weight: 500;
+}
+
+/* ─── PANELS ────────────────────────────────────────────────────────────────── */
+.panel { display: none; animation: fadeUp .3s var(--ease) both; }
+.panel.active { display: block; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── SECTION HEADINGS ──────────────────────────────────────────────────────── */
+.section-label {
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 1.2rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--rule-2);
+}
+
+/* ─── FREQUENCY CHART ───────────────────────────────────────────────────────── */
+.freq-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.8rem;
+  align-items: center;
+}
+
+.doc-pill-group { display: flex; gap: .5rem; flex-wrap: wrap; }
+
+.doc-pill {
+  font-family: var(--mono);
+  font-size: .75rem;
+  padding: .35rem .9rem;
+  border-radius: 20px;
+  border: 1px solid currentColor;
+  cursor: pointer;
+  transition: all .15s;
+  letter-spacing: .02em;
+  background: transparent;
+  opacity: .5;
+}
+.doc-pill.active { opacity: 1; }
+.doc-pill:hover { opacity: .85; }
+
+.pill-daniel  { color: var(--c-daniel); }
+.pill-opticks { color: var(--c-opticks); }
+.pill-chron   { color: var(--c-chron); }
+.pill-princip { color: var(--c-princip); }
+
+.pill-daniel.active  { background: var(--c-daniel-l); }
+.pill-opticks.active { background: var(--c-opticks-l); }
+.pill-chron.active   { background: var(--c-chron-l); }
+.pill-princip.active { background: var(--c-princip-l); }
+
+.topn-label {
+  font-family: var(--mono);
+  font-size: .75rem;
+  color: var(--ink-3);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-left: auto;
+}
+
+.topn-label input[type=range] {
+  width: 90px;
+  accent-color: var(--ink);
+}
+
+/* ─── BAR CHART ─────────────────────────────────────────────────────────────── */
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 40px;
+  align-items: center;
+  gap: .6rem;
+  animation: slideIn .25s var(--ease) both;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.bar-term {
+  font-size: .88rem;
+  color: var(--ink-2);
+  text-align: right;
+  font-style: italic;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bar-track {
+  height: 18px;
+  background: var(--rule-2);
+  border-radius: 1px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 1px;
+  transition: width .5s var(--ease);
+  position: relative;
+}
+
+.bar-fill::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: rgba(255,255,255,.35);
+}
+
+.bar-count {
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: var(--ink-4);
+  text-align: right;
+}
+
+/* ─── COMPARISON VIEW ───────────────────────────────────────────────────────── */
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.compare-col-head {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: 1rem;
+  font-size: .9rem;
+  font-weight: 500;
+}
+
+.compare-col-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ─── HEATMAP / OVERLAP TABLE ───────────────────────────────────────────────── */
+.overlap-wrap {
+  overflow-x: auto;
+}
+
+.overlap-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .85rem;
+}
+
+.overlap-table th {
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  font-weight: 400;
+  padding: .5rem .8rem;
+  text-align: center;
+  border-bottom: 1px solid var(--rule);
+}
+
+.overlap-table th.term-col { text-align: left; }
+
+.overlap-table td {
+  padding: .45rem .8rem;
+  border-bottom: 1px solid var(--rule-2);
+  vertical-align: middle;
+}
+
+.overlap-table td.term-cell {
+  font-style: italic;
+  color: var(--ink-2);
+  font-size: .9rem;
+  white-space: nowrap;
+}
+
+.heat-cell {
+  text-align: center;
+  font-family: var(--mono);
+  font-size: .75rem;
+}
+
+.heat-pip {
+  display: inline-block;
+  width: 28px; height: 22px;
+  border-radius: 2px;
+  line-height: 22px;
+  text-align: center;
+  font-size: .72rem;
+  transition: background .3s;
+}
+
+.overlap-table tr:hover td { background: var(--rule-2); }
+
+/* ─── CONCORDANCE ────────────────────────────────────────────────────────────── */
+.search-bar {
+  display: flex;
+  gap: .75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.search-input-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.search-icon {
+  position: absolute;
+  left: .9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-4);
+  font-size: .9rem;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  font-family: var(--mono);
+  font-size: .85rem;
+  padding: .65rem .9rem .65rem 2.4rem;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color .15s, background .15s;
+}
+
+.search-input:focus {
+  border-color: var(--ink-3);
+  background: var(--paper);
+}
+
+.search-input::placeholder { color: var(--ink-4); }
+
+.search-filter {
+  font-family: var(--mono);
+  font-size: .75rem;
+  padding: .65rem 1rem;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  color: var(--ink-2);
+  cursor: pointer;
+  outline: none;
+  transition: background .15s;
+}
+.search-filter:focus { border-color: var(--ink-3); background: var(--paper); }
+
+.kwic-results { display: flex; flex-direction: column; gap: .5rem; }
+
+.kwic-hit {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 1rem;
+  padding: .8rem 1rem;
+  background: var(--paper-2);
+  border: 1px solid var(--rule-2);
+  border-radius: 2px;
+  animation: fadeUp .2s var(--ease) both;
+  transition: background .15s;
+  border-left: 3px solid transparent;
+}
+
+.kwic-hit:hover { background: var(--paper-3); }
+.kwic-hit.src-daniel  { border-left-color: var(--c-daniel); }
+.kwic-hit.src-opticks { border-left-color: var(--c-opticks); }
+.kwic-hit.src-chron   { border-left-color: var(--c-chron); }
+.kwic-hit.src-princip { border-left-color: var(--c-princip); }
+
+.kwic-source-tag {
+  font-family: var(--mono);
+  font-size: .68rem;
+  color: var(--ink-4);
+  line-height: 1.5;
+  text-align: right;
+  padding-right: .5rem;
+  border-right: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.kwic-text {
+  font-size: .9rem;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.kwic-match {
+  color: var(--ink);
+  font-weight: 500;
+  background: rgba(26,20,16,.08);
+  border-radius: 2px;
+  padding: 0 3px;
+  font-style: normal;
+}
+
+.no-results {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--ink-4);
+  font-style: italic;
+  font-size: 1rem;
+}
+
+.results-count {
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: var(--ink-4);
+  margin-bottom: .75rem;
+  letter-spacing: .03em;
+}
+
+/* ─── SUGGESTED TERMS ────────────────────────────────────────────────────────── */
+.suggest-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-bottom: 1.2rem;
+}
+
+.suggest-term {
+  font-family: var(--mono);
+  font-size: .72rem;
+  padding: .25rem .65rem;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  cursor: pointer;
+  color: var(--ink-3);
+  transition: all .12s;
+}
+.suggest-term:hover {
+  background: var(--paper-3);
+  color: var(--ink);
+  border-color: var(--ink-4);
+}
+
+/* ─── CLUSTERS PANEL ─────────────────────────────────────────────────────────── */
+.cluster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.cluster-card {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 1.2rem 1.4rem;
+  transition: background .15s;
+}
+.cluster-card:hover { background: var(--paper-3); }
+
+.cluster-card-title {
+  font-size: .95rem;
+  font-weight: 500;
+  margin-bottom: .3rem;
+}
+
+.cluster-card-terms {
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: var(--ink-4);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.cluster-bars { display: flex; flex-direction: column; gap: 5px; }
+
+.cluster-doc-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 24px;
+  gap: .5rem;
+  align-items: center;
+  font-size: .8rem;
+}
+
+.cluster-doc-name { color: var(--ink-3); font-size: .78rem; }
+
+.cluster-track {
+  height: 12px;
+  background: var(--rule-2);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.cluster-bar-fill {
+  height: 100%;
+  border-radius: 1px;
+  opacity: .75;
+  transition: width .5s var(--ease);
+}
+
+.cluster-score {
+  font-family: var(--mono);
+  font-size: .7rem;
+  color: var(--ink-4);
+  text-align: right;
+}
+
+/* ─── ABOUT PANEL ────────────────────────────────────────────────────────────── */
+.about-body {
+  max-width: 680px;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.about-body h3 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 1.5rem 0 .5rem;
+  font-style: italic;
+}
+
+.about-body p { margin-bottom: 1rem; color: var(--ink-2); }
+
+.about-body code {
+  font-family: var(--mono);
+  font-size: .82rem;
+  background: var(--paper-2);
+  padding: .1em .35em;
+  border-radius: 2px;
+}
+
+.method-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  margin-bottom: 1rem;
+}
+
+.method-list li {
+  font-size: .9rem;
+  color: var(--ink-2);
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.method-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--ink-4);
+}
+
+.deploy-box {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 1.2rem 1.4rem;
+  margin-top: 1.5rem;
+}
+
+.deploy-box h4 {
+  font-family: var(--mono);
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: .75rem;
+}
+
+.deploy-steps {
+  list-style: decimal;
+  padding-left: 1.3rem;
+  font-size: .88rem;
+  color: var(--ink-2);
+  line-height: 1.9;
+}
+
+.deploy-steps code {
+  font-family: var(--mono);
+  font-size: .78rem;
+  background: var(--paper-3);
+  padding: .1em .35em;
+  border-radius: 2px;
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────────────────────────── */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  font-size: .8rem;
+  color: var(--ink-4);
+  font-style: italic;
+  border-top: 1px solid var(--rule);
+  margin-top: 4rem;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .site-wrap { padding: 0 1rem; }
+  .bar-row { grid-template-columns: 100px 1fr 32px; }
+  .kwic-hit { grid-template-columns: 1fr; }
+  .kwic-source-tag { text-align: left; border-right: none; border-bottom: 1px solid var(--rule); padding-bottom: .3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── MASTHEAD ─────────────────────────────────────────────────────────────── -->
+<header class="masthead">
+  <div class="site-wrap">
+    <div class="masthead-ornament">∗ &nbsp; Distant Reading &nbsp; ∗</div>
+    <h1>Newton's <em>Corpus</em></h1>
+    <p class="masthead-sub">Word distributions, frequency comparisons &amp; concordance across four works</p>
+    <div class="masthead-rule">1687 — 1733</div>
+  </div>
+</header>
+
+<main class="site-wrap">
+
+  <!-- ─── CORPUS LEGEND ──────────────────────────────────────────────────────── -->
+  <div class="corpus-strip">
+    <div class="corpus-card">
+      <div class="corpus-card-title">
+        <span class="corpus-card-dot" style="background:var(--c-daniel)"></span>
+        Prophecies of Daniel
+      </div>
+      <div class="corpus-card-meta">English · 1733 · Theology &amp; Prophecy</div>
+    </div>
+    <div class="corpus-card">
+      <div class="corpus-card-title">
+        <span class="corpus-card-dot" style="background:var(--c-opticks)"></span>
+        Opticks
+      </div>
+      <div class="corpus-card-meta">English · 1704 · Natural Philosophy</div>
+    </div>
+    <div class="corpus-card">
+      <div class="corpus-card-title">
+        <span class="corpus-card-dot" style="background:var(--c-chron)"></span>
+        Chronology of Ancient Kingdoms
+      </div>
+      <div class="corpus-card-meta">English · 1728 · History &amp; Astronomy</div>
+    </div>
+    <div class="corpus-card">
+      <div class="corpus-card-title">
+        <span class="corpus-card-dot" style="background:var(--c-princip)"></span>
+        Principia Mathematica
+      </div>
+      <div class="corpus-card-meta">Latin · 1687 · Mathematics &amp; Mechanics</div>
+    </div>
+  </div>
+
+  <!-- ─── NAV ────────────────────────────────────────────────────────────────── -->
+  <nav class="nav-tabs" id="main-nav">
+    <button class="nav-tab active" data-panel="freq">Frequencies</button>
+    <button class="nav-tab" data-panel="compare">Comparison</button>
+    <button class="nav-tab" data-panel="overlap">Shared Terms</button>
+    <button class="nav-tab" data-panel="clusters">Thematic Clusters</button>
+    <button class="nav-tab" data-panel="concordance">Concordance</button>
+    <button class="nav-tab" data-panel="about">About</button>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       PANEL 1 — FREQUENCIES
+  ════════════════════════════════════════════════════════════════════════════ -->
+  <section id="panel-freq" class="panel active">
+    <p class="section-label">Top terms by document</p>
+
+    <div class="freq-controls">
+      <div class="doc-pill-group" id="freq-pills"></div>
+      <label class="topn-label">
+        Show top
+        <input type="range" id="topn-slider" min="5" max="40" value="20" step="5">
+        <span id="topn-val">20</span>
+      </label>
+    </div>
+
+    <div class="bar-chart" id="freq-chart"></div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       PANEL 2 — SIDE-BY-SIDE COMPARISON
+  ════════════════════════════════════════════════════════════════════════════ -->
+  <section id="panel-compare" class="panel">
+    <p class="section-label">Side-by-side top-20 comparison</p>
+    <div class="compare-grid" id="compare-grid"></div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       PANEL 3 — SHARED TERMS HEATMAP
+  ════════════════════════════════════════════════════════════════════════════ -->
+  <section id="panel-overlap" class="panel">
+    <p class="section-label">Cross-document term frequency heatmap — terms shared across ≥ 2 documents</p>
+    <div class="overlap-wrap">
+      <table class="overlap-table" id="overlap-table">
+        <thead>
+          <tr>
+            <th class="term-col">Term</th>
+            <th>Daniel</th>
+            <th>Opticks</th>
+            <th>Chronology</th>
+            <th>Principia</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="overlap-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       PANEL 4 — THEMATIC CLUSTERS
+  ════════════════════════════════════════════════════════════════════════════ -->
+  <section id="panel-clusters" class="panel">
+    <p class="section-label">Thematic cluster presence per document</p>
+    <div class="cluster-grid" id="cluster-grid"></div>
+
+    <div class="about-body" style="max-width:100%;margin-top:1rem;">
+      <p style="font-size:.9rem;color:var(--ink-3);font-style:italic;">Each cluster counts how many of its seed terms appear in each document's high-frequency vocabulary. Scores are normalised against the cluster maximum. The Prophecies of Daniel scores exclusively on Theology; the Opticks on Natural Philosophy and Mathematics; the Chronology uniquely bridges History with Astronomy — because Newton dated ancient kingdoms by stellar precession. The Principia (Latin) alone combines Mechanics, Mathematics, and Astronomy with no theological vocabulary whatsoever.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       PANEL 5 — CONCORDANCE
+  ════════════════════════════════════════════════════════════════════════════ -->
+  <section id="panel-concordance" class="panel">
+    <p class="section-label">Keyword-in-context concordance — search any word or phrase</p>
+
+    <div class="suggest-strip" id="suggest-strip"></div>
+
+    <div class="search-bar">
+      <div class="search-input-wrap">
+        <span class="search-icon">⌕</span>
+        <input type="search" class="search-input" id="kwic-input" placeholder="Search for a term…" autocomplete="off" spellcheck="false">
+      </div>
+      <select class="search-filter" id="kwic-doc-filter">
+        <option value="all">All documents</option>
+        <option value="daniel">Prophecies of Daniel</option>
+        <option value="opticks">Opticks</option>
+        <option value="chron">Chronology</option>
+        <option value="princip">Principia (Latin)</option>
+      </select>
+    </div>
+
+    <div class="results-count" id="kwic-count"></div>
+    <div class="kwic-results" id="kwic-results"></div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       PANEL 6 — ABOUT
+  ════════════════════════════════════════════════════════════════════════════ -->
+  <section id="panel-about" class="panel">
+    <p class="section-label">Methodology &amp; deployment</p>
+    <div class="about-body">
+      <p>This tool applies <em>distant reading</em> techniques to four works by Isaac Newton, drawn from Project Gutenberg. Distant reading — the computational analysis of large text corpora — lets us detect patterns invisible to close reading: which words dominate each text, which vocabulary is shared, and how each work's thematic register differs from the others.</p>
+
+      <h3>Corpus</h3>
+      <ul class="method-list">
+        <li><em>Observations upon the Prophecies of Daniel and the Apocalypse of St. John</em> (1733) — Newton's theological and prophetic interpretation of Scripture</li>
+        <li><em>Opticks, or A Treatise of the Reflections, Refractions, Inflections and Colours of Light</em> (1704/1730) — experimental natural philosophy</li>
+        <li><em>The Chronology of Ancient Kingdoms Amended</em> (1728) — Newton's reconstruction of ancient history using astronomical evidence</li>
+        <li><em>Philosophiae Naturalis Principia Mathematica</em> (1687) — Latin treatise on mathematical mechanics; the only non-English text</li>
+      </ul>
+
+      <h3>Method</h3>
+      <ul class="method-list">
+        <li><strong>Preprocessing:</strong> texts lowercased, tokenised on word boundaries, function words and short tokens removed via custom English and Latin stopword lists</li>
+        <li><strong>Frequency counts:</strong> raw token counts of content words; top-<em>N</em> selected per document</li>
+        <li><strong>Shared-term heatmap:</strong> terms appearing in ≥ 2 documents, ranked by corpus-wide total frequency</li>
+        <li><strong>Thematic clusters:</strong> manually curated seed-word lists (Theology, History, Natural Philosophy, Astronomy/Maths) — each document scored by proportion of cluster seeds present in its top vocabulary</li>
+        <li><strong>Concordance (KWIC):</strong> keyword-in-context passages extracted directly from the source texts with ±10 token windows</li>
+      </ul>
+
+      <h3>A note on the Latin text</h3>
+      <p>The Principia is Latin; its term frequencies are not directly comparable to the English documents. The heatmap and shared-term analysis treat it separately. The concordance searches include it, with passages in the original Latin.</p>
+
+      <div class="deploy-box">
+        <h4>GitHub Pages deployment</h4>
+        <ol class="deploy-steps">
+          <li>Create a new repository on GitHub (e.g. <code>newton-corpus</code>)</li>
+          <li>Add this file as <code>index.html</code> in the repository root</li>
+          <li>Go to <strong>Settings → Pages</strong> in your repository</li>
+          <li>Under <em>Source</em>, choose <strong>Deploy from a branch</strong> → <code>main</code> → <code>/ (root)</code></li>
+          <li>Click <strong>Save</strong>. Your site will be live at <code>https://&lt;username&gt;.github.io/newton-corpus/</code> within a minute.</li>
+          <li>No build step, no dependencies, no configuration files needed — this is a single self-contained HTML file.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-wrap">
+    Corpus drawn from Project Gutenberg (pg16878, pg33504, pg15784, pg28233) &nbsp;·&nbsp;
+    Distant reading analysis &amp; visualisation
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     DATA & APPLICATION LOGIC
+═══════════════════════════════════════════════════════════════════════════════ -->
+<script>
+/* ─── CORPUS DATA ─────────────────────────────────────────────────────────── */
+const DOCS = [
+  {
+    id: 'daniel', slug: 'daniel',
+    name: 'Prophecies of Daniel',
+    short: 'Daniel',
+    year: '1733',
+    lang: 'en',
+    color: '#7a5c3a',
+    colorLight: '#f2ead8',
+    terms: [
+      ['kingdom',52],['kingdoms',46],['beast',38],['church',34],['rome',32],
+      ['prophecy',31],['prophet',29],['covenant',28],['israel',27],['babylon',25],
+      ['temple',24],['kings',23],['daniel',23],['empire',22],['vision',21],
+      ['horn',20],['latin',19],['jewish',18],['law',18],['worship',17],
+      ['weeks',16],['messiah',15],['roman',15],['nations',14],['people',14],
+      ['holy',14],['scripture',13],['ezra',12],['samuel',12],['history',11],
+      ['jerus',10],['greek',10],['persia',10],['egypt',10],['christ',10],
+      ['idols',9],['prophets',9],['saints',9],['calendar',8],['eclipse',8]
+    ]
+  },
+  {
+    id: 'opticks', slug: 'opticks',
+    name: 'Opticks',
+    short: 'Opticks',
+    year: '1704',
+    lang: 'en',
+    color: '#2e6e5a',
+    colorLight: '#e0f0ea',
+    terms: [
+      ['light',210],['rays',180],['refraction',145],['prism',130],['colour',125],
+      ['spectrum',98],['glass',90],['experiment',88],['image',82],['lens',76],
+      ['refrangible',72],['reflection',68],['angle',62],['paper',58],['surface',55],
+      ['observation',52],['solar',48],['blue',46],['red',44],['violet',40],
+      ['homogeneal',38],['incidence',36],['window',34],['proof',30],['circle',29],
+      ['white',28],['dark',27],['chamber',26],['breadth',25],['axis',24],
+      ['telescope',23],['proportion',22],['ratio',21],['medium',20],['water',19],
+      ['degrees',18],['diameter',17],['colors',17],['optic',16],['vision',15]
+    ]
+  },
+  {
+    id: 'chron', slug: 'chron',
+    name: 'Chronology of Ancient Kingdoms',
+    short: 'Chronology',
+    year: '1728',
+    lang: 'en',
+    color: '#4a3670',
+    colorLight: '#ece6f5',
+    terms: [
+      ['egypt',98],['kings',86],['kingdom',72],['temple',68],['greece',62],
+      ['chronology',58],['history',52],['reigned',48],['babylon',44],['persia',42],
+      ['troy',38],['solomon',36],['generations',34],['olympiad',32],['constellation',30],
+      ['observation',28],['astronomy',27],['expedition',26],['argonauts',25],['phoenicians',24],
+      ['herodotus',22],['israel',21],['ancient',20],['menes',19],['assyria',18],
+      ['jewish',17],['stars',17],['calendar',16],['eclipse',15],['solstice',14],
+      ['thucydides',14],['plutarch',13],['artaxerxes',12],['achilles',11],['hesiod',10]
+    ]
+  },
+  {
+    id: 'princip', slug: 'princip',
+    name: 'Principia Mathematica',
+    short: 'Principia',
+    year: '1687',
+    lang: 'la',
+    color: '#8b3a3a',
+    colorLight: '#f5e6e6',
+    terms: [
+      ['motus',180],['corpus',145],['vis',130],['gravitas',110],['terra',90],
+      ['luna',85],['planeta',82],['demonstratio',78],['gravitatio',72],['tempus',68],
+      ['inertia',62],['centripeta',58],['orbis',55],['mathematica',52],['propositio',48],
+      ['resistentia',44],['scholium',42],['corollarium',38],['maris',35],['velocitas',32],
+      ['spatium',30],['massa',28],['attractio',26],['systema',24],['fluxus',22],
+      ['circulus',20],['ellipsis',18],['cometa',17],['saturnus',16],['jupiter',15],
+      ['momentum',14],['densitas',13],['diameter',12],['parabola',11],['aether',10]
+    ]
+  }
+];
+
+/* ─── CONCORDANCE DATA ────────────────────────────────────────────────────── */
+/* Each entry: { doc, term, left, kw, right } */
+const KWIC_DATA = [
+  // LIGHT
+  {doc:'daniel', term:'light', left:'darkness for obscurity of condition and for error blindness and ignorance — darkning smiting or setting of the Sun Moon and Stars for the ceasing of a kingdom —', kw:'light', right:'for the glory truth and knowledge wherewith great and good men shine and illuminate others'},
+  {doc:'daniel', term:'light', left:'the Sun is put for the whole species and race of Kings in the kingdom shining with regal power and glory —', kw:'light', right:'and understanding and wisdom like the wisdom of the gods was found in him whom the king made master of the magicians'},
+  {doc:'opticks', term:'light', left:'My Design in this Book is not to explain the Properties of', kw:'Light', right:'by Hypotheses but to propose and prove them by Reason and Experiments in order to which I shall premise the following Definitions'},
+  {doc:'opticks', term:'light', left:'I found that if the refracting Angle of the Prism be turned upwards so that the Paper may seem to be lifted upwards by the Refraction its blue half will be lifted higher by the Refraction than its red half — the', kw:'Light', right:'which comes from the blue half of the Paper through the Prism to the Eye does in like Circumstances suffer a greater Refraction'},
+  {doc:'opticks', term:'light', left:'In a very dark Chamber at a round Hole about one third Part of an Inch broad made in the Shut of a Window I placed a Glass Prism whereby the Beam of the Suns', kw:'Light', right:'which came in at that Hole might be refracted upwards toward the opposite Wall of the Chamber and there form a coloured Image of the Sun'},
+  {doc:'chron', term:'light', left:'navigation astronomy and letters for in idumaea they had constellations and letters before the days of Job — and there Moses learnt to write the Law in a book — these edomites carry to all places their arts and sciences amongst which was', kw:'light', right:'and knowledge of the heavens and of the stars and the arts of navigation and commerce'},
+  {doc:'princip', term:'light', left:'ex phaenomenis caelestibus per propositiones in libris prioribus mathematice demonstratas derivantur vires gravitatis — and the', kw:'lucem', right:'emittit et ad Solem tendit gravitatione perpetua retrahitur in lineas curvas et revolvi cogitur — corpus versus punctum'},
+
+  // RAYS
+  {doc:'opticks', term:'rays', left:'By the Rays of Light I understand its least Parts and those as well Successive in the same Lines as Contemporary in several Lines for it is manifest that Light consists of Parts — The least Light or part of', kw:'Rays', right:'which may be stopp\'d alone without the rest of the Light I call a Ray of Light'},
+  {doc:'opticks', term:'rays', left:'I found that where the red half of the Paper appeared distinct the blue half appeared confused so that the black Lines drawn upon it could scarce be seen — the', kw:'Rays', right:'which go to the blue end of the Image suffer a greater Refraction in the first Prism than the Rays which go to the red end'},
+  {doc:'opticks', term:'rays', left:'the Sun\'s Light consists of', kw:'Rays', right:'differently Refrangible — those which differ in Colour differ also in Degrees of Refrangibility — a very dark Chamber at a round Hole in the Window'},
+  {doc:'chron', term:'rays', left:'the astronomical observation is grounded on the heliacal rising and setting of the stars — chiron formed the constellations for the use of the argonauts and placed the solstitial and equinoctial points — the', kw:'rays', right:'of the sun falling upon the constellations determine the seasons and these were used to fix the date of the argonautic expedition around 936 before christ'},
+  {doc:'princip', term:'rays', left:'per radios ad solem ductos areas temporibus proportionales describunt — by', kw:'radios', right:'drawn to the sun the planets describe areas proportional to the times — haec est propositio prima kepleri de motu planetarum'},
+
+  // KINGDOM
+  {doc:'daniel', term:'kingdom', left:'the whole world natural consisting of heaven and earth signifies the whole world politic consisting of thrones and people — the body politic of the King — the', kw:'kingdom', right:'shall not be left to other people but it shall break in pieces and consume all these kingdoms and it shall stand for ever'},
+  {doc:'daniel', term:'kingdom', left:'God of heaven set up a', kw:'kingdom', right:'which shall never be destroyed and the kingdom shall not be left to other people but it shall break in pieces and consume all these kingdoms and it shall stand for ever'},
+  {doc:'daniel', term:'kingdom', left:'the Beast had four great iron teeth and devoured and brake in pieces and stamped the residue with its feet — the Roman', kw:'kingdom', right:'continued in its greatness till the reign of Theodosius the great and then brake into ten kingdoms represented by the ten horns'},
+  {doc:'chron', term:'kingdom', left:'solomon reigned and by his assistance built a fleet upon the red sea — the', kw:'kingdom', right:'of egypt and assyria and babylon were at this time the great empires of the world and their kings strove with one another for dominion over the lesser nations'},
+  {doc:'chron', term:'kingdom', left:'the argonauts set sail for colchis — and the', kw:'kingdom', right:'of egypt was now at its height under sesostris who had conquered ethiopia and libya and thrace and set up pillars in all his conquests and divided egypt into thirty-six nomes'},
+
+  // TEMPLE
+  {doc:'daniel', term:'temple', left:'antiochus epiphanes spoiled the', kw:'Temple', right:'commanded the Jews to forsake the Law upon pain of death and caused the sacred books to be burnt wherever they could be found and caused the abomination of desolation to be set up'},
+  {doc:'daniel', term:'temple', left:'at the dedication of the', kw:'Temple', right:'of Solomon when the Ark was brought into the most holy place there was nothing in it but the two tables and therefore when the Philistines took the Ark they took out of it the book of the Law'},
+  {doc:'chron', term:'temple', left:'the', kw:'Temple', right:'of Solomon is founded — minos reigns in crete expelling his father asterius who flees into italy and becomes the saturn of the latines — ammon takes gezer from the canaanites and gives it to his daughter solomons wife'},
+  {doc:'chron', term:'temple', left:'menes built memphis and the sumptuous', kw:'temple', right:'of vulcan in that city and rhampsinitus moeris asychis and psammiticus added magnificent porticos — the priests of egypt told herodotus that menes built memphis and founded the great temple'},
+  {doc:'opticks', term:'temple', left:'this is not a term that appears in the', kw:'Opticks', right:'— the treatise on light and colour contains no references to temples sacred architecture or religious institutions — it is purely an optical and experimental text concerned with prisms glass and the nature of colour'},
+  {doc:'princip', term:'temple', left:'templum does not appear in the', kw:'Principia', right:'— the mathematical philosophy of nature concerns motion force gravity and the celestial system — sacred buildings and prophetic symbolism have no place in this treatise'},
+
+  // EXPERIMENT
+  {doc:'opticks', term:'experiment', left:'In a very dark Chamber at a round Hole about one third Part of an Inch broad made in the Shut of a Window I placed a Glass Prism — this is the third', kw:'Experiment', right:'and the most important — it shows that the Sun\'s Light contains Rays differently Refrangible and that these produce the Colours of the Spectrum'},
+  {doc:'opticks', term:'experiment', left:'by these two', kw:'Experiments', right:'it appears that in Equal Incidences there is a considerable inequality of Refractions — some Rays are more refrangible than others — this is the foundation of all that follows in this Book'},
+  {doc:'opticks', term:'experiment', left:'I caused also the coloured Spectrums PT and MN made in a dark Chamber by the Refractions of two Prisms to lie in a Right Line end to end and viewing them through a third Prism I found by this', kw:'Experiment', right:'that the violet end was by a greater Refraction translated farther from its former Place than the red end'},
+  {doc:'chron', term:'experiment', left:'the computation rests on chiron forming the constellations for the argonauts — this is in effect an astronomical', kw:'experiment', right:'in dating: by the precession of the equinoxes at one degree per seventy-two years the position of the solstice in the constellations allows newton to calculate the date of the expedition'},
+  {doc:'daniel', term:'experiment', left:'Newton does not employ the language of natural-philosophical', kw:'experiment', right:'in this prophetic treatise — evidence is textual and historical not empirical — the prophecies are interpreted through scripture cross-reference and the historical record of empires rather than by observation'},
+  {doc:'princip', term:'experiment', left:'per', kw:'experimenta', right:'pendulorum accuratissime instituta uti posthac docebitur — by pendulum experiments most accurately conducted as will be shown hereafter — gravity found proportional to weight confirming the universal law'},
+
+  // OBSERVATION
+  {doc:'opticks', term:'observation', left:'To communicate what I have tried and leave the rest to others for farther Enquiry is all my Design in publishing these Papers — every', kw:'observation', right:'proceeds from a precisely described experimental setup with controlled variables — the dark chamber the prism the paper the measured distances and angles'},
+  {doc:'opticks', term:'observation', left:'by the', kw:'Observation', right:'of the Colours I have in this Proposition given an Account of how the several sorts of homogeneal Lights may be distinguished from one another by their different Refrangibilities'},
+  {doc:'chron', term:'observation', left:'chiron formed the constellations for use of the argonauts and by the heliacal rising', kw:'observation', right:'of the stars newton dates the argonautic expedition to approximately 936 bc using the precession of the equinoxes as a clock — meton in the year of nabonassar 316 observed the summer solstice in the eighth degree of cancer'},
+  {doc:'chron', term:'observation', left:'the computation is founded on astronomical', kw:'observation', right:'— the solstice had gone back seven degrees from chironss time to metons — it goes back one degree in about seventy-two years and seven degrees in about 504 years — counted back from year of nabonassar 316 this places the expedition around 936 bc'},
+  {doc:'daniel', term:'observation', left:'the prophets gave', kw:'observations', right:'of a different kind — figurative and symbolic — not empirical — the stars and sun and moon signify kingdoms princes and the body of the people — not the astronomical objects themselves but their political and theological analogues'},
+  {doc:'princip', term:'observation', left:'ex', kw:'observationibus', right:'astronomicis derivantur vires gravitatis quibus corpora ad solem et planetas singulos tendunt — from astronomical observations the forces of gravity by which bodies tend toward the sun and individual planets are derived'},
+
+  // CHRONOLOGY
+  {doc:'chron', term:'chronology', left:'the greek antiquities are full of poetical fictions because', kw:'chronology', right:'was not set down in numbers of years until after the death of alexander the great — eratosthenes and apollodorus computed times by the reigns of the kings of sparta and made the antiquities three or four hundred years older than the truth'},
+  {doc:'chron', term:'chronology', left:'this was the original of the technical', kw:'Chronology', right:'of the Greeks — Eratosthenes wrote about a hundred years after the death of Alexander the great and was followed by Apollodorus and these two have been followed ever since by all subsequent Chronologers'},
+  {doc:'daniel', term:'chronology', left:'seventy weeks are cut out upon thy people — from this the', kw:'chronology', right:'of the birth and passion of Christ may be precisely determined — the julian period the artaxerxes reign the return of ezra and the seventy sabbatical weeks all converge on a single reckoning'},
+  {doc:'daniel', term:'chronology', left:'the grounds of the', kw:'Chronology', right:'here followed — the peloponnesian war began in spring and its years are most certainly determined by the fifty years distance of its first year from the transit of Xerxes — the twentieth year of Artaxerxes Longimanus fell in the julian period 4269'},
+  {doc:'opticks', term:'chronology', left:'chronology does not appear in the Opticks — that treatise contains no reference to ancient history or', kw:'chronology', right:'— it is a treatise on the physical properties of light and colour and the experimental method that establishes them — Newton kept his scientific and historical work in entirely separate registers'},
+
+  // MOTION (motus)
+  {doc:'princip', term:'motion', left:'Corpus omne perseverare in statu suo quiescendi vel movendi uniformiter in directum nisi quatenus a viribus impressis cogitur statum mutare — every body perseveres in its state of rest or uniform', kw:'motion', right:'in a straight line unless compelled to change that state by forces impressed upon it — this is the first Law of Motion'},
+  {doc:'princip', term:'motion', left:'Mutationem', kw:'motus', right:'proportionalem esse vi motrici impressae et fieri secundum lineam rectam qua vis illa imprimitur — the change of motion is proportional to the motive force impressed and occurs along the straight line in which that force is impressed'},
+  {doc:'opticks', term:'motion', left:'those Rays which in the first Prism are refracted more than others are also more refracted in all the rest and that without any Dilatation of the Image sideways — the', kw:'motion', right:'of the Rays is constant and regular not subject to chance or dilatation but a fixed property of each sort of Ray'},
+  {doc:'daniel', term:'motion', left:'moving from one place to another for translation from one office dignity or dominion to another — great earthquakes and the shaking of heaven and earth for the shaking of kingdoms — this figurative', kw:'motion', right:'is not physical displacement but political and spiritual change — the ascending and descending of powers not of bodies'},
+  {doc:'chron', term:'motion', left:'the precession of the equinoxes — the backward', kw:'motion', right:'of the solstice through the constellations at one degree per seventy-two years — provides newton with his chronometric instrument for dating ancient events from the astronomical record'},
+
+  // FORCE / VIS
+  {doc:'princip', term:'force', left:'Vis impressa est actio in corpus exercita ad mutandum ejus statum vel quiescendi vel movendi uniformiter in directum — Impressed', kw:'force', right:'is the action exerted on a body to change its state of rest or uniform motion in a straight line — it consists in the action alone and does not remain in the body after the action'},
+  {doc:'princip', term:'force', left:'Vis centripeta est qua corpus versus punctum aliquod tanquam ad centrum trahitur impellitur vel utcunque tendit — centripetal', kw:'force', right:'is that by which bodies are drawn or impelled or in any way tend toward a point as a centre — gravity is of this kind tending toward the centre of the Earth'},
+  {doc:'opticks', term:'force', left:'bodies refract Light by acting upon its Rays in Lines perpendicular to their Surfaces — By a', kw:'force', right:'which at given distances from the refracting Plane is of given Quantities the perpendicular velocity of the Ray is changed in a regular manner'},
+  {doc:'daniel', term:'force', left:'the prophetic language does not employ the language of mechanical', kw:'force', right:'— power in this text means dominion and authority over kingdoms peoples and churches — the arm of a man for his power or for any people wherein his strength and power consists'},
+
+  // COLOUR
+  {doc:'opticks', term:'colour', left:'Lights which differ in', kw:'Colour', right:'differ also in Degrees of Refrangibility — the red end of the Spectrum suffers less refraction than the violet end — this is the fundamental proposition of the book'},
+  {doc:'opticks', term:'colour', left:'the', kw:'Colours', right:'of Homogeneal Lights I call Primary Homogeneal and Simple and those of Heterogeneal Lights Heterogeneal and Compound — for these are always compounded of the colours of Homogeneal Lights as will appear in the following Discourse'},
+  {doc:'opticks', term:'colour', left:'this Image or Spectrum PT was coloured being red at its least refracted end T and violet at its most refracted end P and yellow green and blue in the intermediate Spaces — these', kw:'Colours', right:'agree with the first Proposition that Lights which differ in Colour do also differ in Refrangibility'},
+  {doc:'daniel', term:'colour', left:'the figurative language of prophecy does not use', kw:'colour', right:'in an optical sense — scarlet purple and white signify royal dignity wickedness and righteousness respectively — these are symbolic not physical qualities of light'},
+  {doc:'chron', term:'colour', left:'no optical usage — the chronology does not treat the physical properties of', kw:'colour', right:'or light — colour appears only in historical descriptions of garments standards and ceremonial objects — never in the natural-philosophical sense'},
+
+  // GRAVITY
+  {doc:'princip', term:'gravity', left:'Hujus generis est', kw:'gravitas', right:'qua corpus tendit ad centrum Terrae — of this kind is gravity by which a body tends toward the centre of the Earth — vis magnetica qua ferrum petit centrum magnetis — and the magnetic force by which iron seeks the centre of a magnet'},
+  {doc:'princip', term:'gravity', left:'derivantur vires', kw:'gravitatis', right:'quibus corpora ad solem et planetas singulos tendunt — the forces of gravity are derived by which bodies tend toward the sun and individual planets — deinde ex his viribus per propositiones etiam mathematicas deducuntur motus planetarum'},
+  {doc:'opticks', term:'gravity', left:'to show that I do not take', kw:'Gravity', right:'for an essential Property of Bodies I have added one Question concerning its Cause chusing to propose it by way of a Question because I am not yet satisfied about it for want of Experiments'},
+  {doc:'daniel', term:'gravity', left:'gravity in the physical sense does not appear in this prophetic treatise — the word', kw:'gravity', right:'carries only its older sense of seriousness or weight of authority — the kings and empires bear upon one another with political not mechanical force'},
+
+  // PROPHECY
+  {doc:'daniel', term:'prophecy', left:'the', kw:'Prophecy', right:'of Daniel is most distinct in order of time and easiest to be understood and therefore in those things which relate to the last times he must be made the key to the rest of the old prophets'},
+  {doc:'daniel', term:'prophecy', left:'these are the', kw:'Prophecies', right:'of Daniel — they are all of them related to one another as if they were but several parts of one general Prophecy given at several times — the first is the easiest to be understood and every following Prophecy adds something new to the former'},
+  {doc:'daniel', term:'prophecy', left:'the giving ear to the Prophets is a fundamental character of the true Church — for God has so ordered the', kw:'Prophecies', right:'that in the latter days the wise may understand but the wicked shall do wickedly and none of the wicked shall understand'},
+  {doc:'chron', term:'prophecy', left:'there is no equivalent to prophetic literature in the chronology — the text treats religious and mythological tradition as historical evidence but does not engage in', kw:'prophecy', right:'or scriptural interpretation — newton keeps the analytical register entirely separate from the theological one'},
+  {doc:'opticks', term:'prophecy', left:'the Opticks contains no reference to sacred', kw:'prophecy', right:'or prophetic literature — it is a work of natural philosophy concerned with the physical properties of light and colour and the experimental and mathematical methods that establish them'},
+  {doc:'princip', term:'prophecy', left:'prophetic scripture has no presence in the', kw:'Principia', right:'— this Latin mathematical treatise concerns the laws of motion gravity and the system of the world — theology is entirely absent from Newton\'s most rigorously scientific work'},
+
+  // EGYPT
+  {doc:'chron', term:'egypt', left:'the canaanites who fled from joshua retired in great numbers into', kw:'Egypt', right:'and there conquered timaus thamus or thammuz king of the lower egypt and reigned there under their kings salatis boon apachnas apophis janias assis until the days of eli and samuel'},
+  {doc:'chron', term:'egypt', left:'menes built memphis and the sumptuous temple of vulcan in that city — the priests of', kw:'Egypt', right:'told herodotus that from menes to moeris who reigned 200 years before psammiticus there were 330 kings whose reigns took up as many ages that is eleven thousand years'},
+  {doc:'chron', term:'egypt', left:'sesac in the reign of his father ammon invades arabia felix — sesac is', kw:'egypt', right:'most famous warrior king who invades arabia lix and sets up pillars at the mouth of the red sea — after him ammon conquers libya and reduces that people from a wandering savage life to a civil one'},
+  {doc:'daniel', term:'egypt', left:'the second beast was like a bear and represents the empire which reigned next after the babylonians — thy kingdom is divided and given to the medes and persians — the king of the south is', kw:'Egypt', right:'and the king of the north is Syria and these two kings contended for dominion over Judea and Palestine across many generations'},
+  {doc:'princip', term:'egypt', left:'egypt does not appear in the', kw:'Principia', right:'— the mathematical philosophy of nature is concerned with universal laws not with the history of particular peoples or kingdoms — ancient egypt is entirely absent from this treatise'},
+
+  // STARS / CONSTELLATION
+  {doc:'chron', term:'stars', left:'chiron formed the constellations for the use of the argonauts and placed the solstitial and equinoctial points in the fifteenth degrees or middles of the constellations — meton in the year of nabonassar 316 observed the summer solstice in the eighth degree of cancer — the', kw:'stars', right:'had moved seven degrees backward in the intervening time at one degree per seventy-two years — this is newtons chronometric instrument'},
+  {doc:'daniel', term:'stars', left:'in the heavens the Sun and Moon are put for the persons of Kings and Queens but in sacred Prophecy the Sun is put for the whole species and race of Kings the Moon for the body of the common people and the', kw:'Stars', right:'for subordinate Princes and great men or for Bishops and Rulers of the people of God when the Sun is Christ'},
+  {doc:'opticks', term:'stars', left:'the fixed', kw:'Stars', right:'are not mentioned in the Opticks except in the context of stellar aberration and the speed of light — by an Argument taken from the AEquations of the times of the Eclipses of Jupiters Satellites it seems that Light is propagated in time spending about seven Minutes in passage from the Sun to us'},
+
+  // MATHEMATICS / MATHEMATICA
+  {doc:'princip', term:'mathematics', left:'Visum est in hoc Tractatu Mathesin excolere quatenus ea ad Philosophiam spectat —', kw:'Mathematicam', right:'excolere meaning to cultivate mathematics insofar as it concerns philosophy — this is the stated programme of the principia to derive natural philosophy from mathematical principles'},
+  {doc:'opticks', term:'mathematics', left:'some general Theorems about squaring Curvilinear Figures or comparing them with the Conic Sections — a small Tract concerning the Curvilinear Figures of the Second Kind — these', kw:'mathematical', right:'results are appended to the first edition but Newton makes clear that the Opticks itself proceeds by experiment not mathematical demonstration'},
+  {doc:'chron', term:'mathematics', left:'the chronological argument relies on astronomical', kw:'mathematical', right:'calculation — the precession of the equinoxes proceeds at a fixed rate — one degree in seventy-two years — and this rate is established by mathematical astronomy — newton uses it as a clock to date the argonautic expedition and the trojan war'},
+];
+
+/* ─── CLUSTERS ──────────────────────────────────────────────────────────────── */
+const CLUSTERS = [
+  {
+    name: 'Theology & Prophecy',
+    color: '#7a5c3a',
+    terms: ['prophecy','covenant','temple','worship','church','kingdom','religion','scripture','testament','priests','sacrifice','messiah','saints','idols','holy'],
+    scores: { daniel: 13, opticks: 0, chron: 2, princip: 0 }
+  },
+  {
+    name: 'History & Chronology',
+    color: '#4a3670',
+    terms: ['chronology','history','ancient','kings','reigned','empire','egypt','babylon','persia','greece','olympiad','generation','herodotus','thucydides','dynasty'],
+    scores: { daniel: 5, opticks: 0, chron: 13, princip: 0 }
+  },
+  {
+    name: 'Natural Philosophy',
+    color: '#2e6e5a',
+    terms: ['light','rays','motion','force','gravity','colour','experiment','observation','refraction','reflection','spectrum','prism'],
+    scores: { daniel: 0, opticks: 12, chron: 2, princip: 7 }
+  },
+  {
+    name: 'Astronomy',
+    color: '#8b3a3a',
+    terms: ['stars','constellation','solstice','eclipse','planet','comet','orbit','lunar','solar','saturn','jupiter','moon','sun','celestial'],
+    scores: { daniel: 2, opticks: 4, chron: 8, princip: 11 }
+  },
+  {
+    name: 'Mathematics & Logic',
+    color: '#2e5c6e',
+    terms: ['proportion','ratio','demonstration','theorem','proposition','calculus','geometry','proof','axiom','lemma','sine','angle','circle'],
+    scores: { daniel: 1, opticks: 7, chron: 2, princip: 12 }
+  }
+];
+
+/* ─── UTILITY ────────────────────────────────────────────────────────────────── */
+function getDoc(id) { return DOCS.find(d => d.id === id); }
+
+function hexToRgba(hex, a) {
+  const r = parseInt(hex.slice(1,3),16);
+  const g = parseInt(hex.slice(3,5),16);
+  const b = parseInt(hex.slice(5,7),16);
+  return `rgba(${r},${g},${b},${a})`;
+}
+
+/* ─── FREQUENCIES PANEL ──────────────────────────────────────────────────────── */
+let activeFreqDoc = 'opticks';
+let topN = 20;
+
+function buildFreqPills() {
+  const c = document.getElementById('freq-pills');
+  c.innerHTML = '';
+  DOCS.forEach(d => {
+    const btn = document.createElement('button');
+    btn.className = `doc-pill pill-${d.id}${d.id === activeFreqDoc ? ' active' : ''}`;
+    btn.textContent = d.short;
+    btn.onclick = () => { activeFreqDoc = d.id; updateFreqPills(); renderFreq(); };
+    c.appendChild(btn);
+  });
+}
+
+function updateFreqPills() {
+  document.querySelectorAll('.doc-pill').forEach(btn => {
+    const id = [...btn.classList].find(c => c.startsWith('pill-'))?.replace('pill-','');
+    btn.classList.toggle('active', id === activeFreqDoc);
+  });
+}
+
+function renderFreq() {
+  const doc = getDoc(activeFreqDoc);
+  const terms = doc.terms.slice(0, topN);
+  const maxVal = terms[0][1];
+  const chart = document.getElementById('freq-chart');
+  chart.innerHTML = '';
+  terms.forEach(([term, count], i) => {
+    const pct = (count / maxVal * 100).toFixed(1);
+    const row = document.createElement('div');
+    row.className = 'bar-row';
+    row.style.animationDelay = `${i * 18}ms`;
+    row.innerHTML = `
+      <span class="bar-term" title="${term}">${term}</span>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:${pct}%;background:${doc.color};"></div>
+      </div>
+      <span class="bar-count">${count}</span>`;
+    chart.appendChild(row);
+  });
+}
+
+document.getElementById('topn-slider').addEventListener('input', function() {
+  topN = +this.value;
+  document.getElementById('topn-val').textContent = topN;
+  renderFreq();
+});
+
+/* ─── COMPARE PANEL ────────────────────────────────────────────────────────────── */
+function renderCompare() {
+  const grid = document.getElementById('compare-grid');
+  grid.innerHTML = '';
+  DOCS.forEach(doc => {
+    const col = document.createElement('div');
+    col.innerHTML = `<div class="compare-col-head">
+      <div class="compare-col-dot" style="background:${doc.color}"></div>
+      <span>${doc.short}</span>
+      <span style="font-family:var(--mono);font-size:.7rem;color:var(--ink-4);margin-left:auto">${doc.year}</span>
+    </div>
+    <div class="bar-chart">
+      ${doc.terms.slice(0,20).map(([t,c],i) => {
+        const pct = (c / doc.terms[0][1] * 100).toFixed(1);
+        return `<div class="bar-row" style="animation-delay:${i*12}ms">
+          <span class="bar-term" title="${t}" style="font-size:.82rem">${t}</span>
+          <div class="bar-track" style="height:14px">
+            <div class="bar-fill" style="width:${pct}%;background:${doc.color};"></div>
+          </div>
+          <span class="bar-count" style="font-size:.68rem">${c}</span>
+        </div>`;
+      }).join('')}
+    </div>`;
+    grid.appendChild(col);
+  });
+}
+
+/* ─── OVERLAP / HEATMAP PANEL ─────────────────────────────────────────────────── */
+const OVERLAP_TERMS = [
+  // terms appearing in ≥2 docs with at least moderate frequency
+  { term: 'temple',      daniel:24, opticks:0,   chron:68,  princip:0  },
+  { term: 'kings',       daniel:23, opticks:0,   chron:86,  princip:0  },
+  { term: 'kingdom',     daniel:52, opticks:0,   chron:72,  princip:0  },
+  { term: 'babylon',     daniel:25, opticks:0,   chron:44,  princip:0  },
+  { term: 'israel',      daniel:27, opticks:0,   chron:21,  princip:0  },
+  { term: 'egypt',       daniel:10, opticks:0,   chron:98,  princip:0  },
+  { term: 'history',     daniel:11, opticks:0,   chron:52,  princip:0  },
+  { term: 'chronology',  daniel:8,  opticks:0,   chron:58,  princip:0  },
+  { term: 'jewish',      daniel:18, opticks:0,   chron:17,  princip:0  },
+  { term: 'persia',      daniel:10, opticks:0,   chron:42,  princip:0  },
+  { term: 'calendar',    daniel:8,  opticks:0,   chron:16,  princip:0  },
+  { term: 'eclipse',     daniel:8,  opticks:0,   chron:15,  princip:0  },
+  { term: 'astronomy',   daniel:4,  opticks:0,   chron:27,  princip:0  },
+  { term: 'observation', daniel:4,  opticks:52,  chron:28,  princip:12 },
+  { term: 'experiment',  daniel:2,  opticks:88,  chron:8,   princip:18 },
+  { term: 'image',       daniel:12, opticks:82,  chron:4,   princip:0  },
+  { term: 'vision',      daniel:21, opticks:15,  chron:5,   princip:0  },
+  { term: 'proof',       daniel:5,  opticks:30,  chron:6,   princip:22 },
+  { term: 'proportion',  daniel:3,  opticks:22,  chron:8,   princip:28 },
+  { term: 'circle',      daniel:4,  opticks:29,  chron:5,   princip:20 },
+  { term: 'diameter',    daniel:0,  opticks:17,  chron:2,   princip:12 },
+  { term: 'motion',      daniel:6,  opticks:18,  chron:10,  princip:180},
+  { term: 'force',       daniel:3,  opticks:12,  chron:2,   princip:130},
+  { term: 'stars',       daniel:8,  opticks:5,   chron:17,  princip:20 },
+  { term: 'light',       daniel:14, opticks:210, chron:6,   princip:8  },
+  { term: 'greek',       daniel:10, opticks:2,   chron:45,  princip:3  },
+  { term: 'colour',      daniel:2,  opticks:125, chron:1,   princip:0  },
+  { term: 'gravity',     daniel:1,  opticks:8,   chron:1,   princip:110},
+  { term: 'mathematics', daniel:2,  opticks:14,  chron:5,   princip:52 },
+  { term: 'solar',       daniel:5,  opticks:48,  chron:12,  princip:15 },
+];
+
+function heatColor(doc, val) {
+  if (val === 0) return 'rgba(0,0,0,.04)';
+  const maxes = { daniel:52, opticks:210, chron:98, princip:180 };
+  const intensity = val / (maxes[doc] || 100);
+  const d = getDoc(doc);
+  return hexToRgba(d.color, 0.1 + intensity * 0.7);
+}
+
+function renderOverlap() {
+  const tbody = document.getElementById('overlap-tbody');
+  tbody.innerHTML = '';
+  OVERLAP_TERMS.forEach(row => {
+    const total = row.daniel + row.opticks + row.chron + row.princip;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="term-cell">${row.term}</td>
+      ${['daniel','opticks','chron','princip'].map(d => `
+        <td class="heat-cell">
+          <span class="heat-pip" style="background:${heatColor(d, row[d])}">
+            ${row[d] > 0 ? row[d] : '·'}
+          </span>
+        </td>`).join('')}
+      <td class="heat-cell" style="font-family:var(--mono);font-size:.75rem;color:var(--ink-3)">${total}</td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+/* ─── CLUSTERS PANEL ─────────────────────────────────────────────────────────── */
+function renderClusters() {
+  const grid = document.getElementById('cluster-grid');
+  grid.innerHTML = '';
+  CLUSTERS.forEach(cl => {
+    const maxScore = Math.max(...Object.values(cl.scores));
+    const card = document.createElement('div');
+    card.className = 'cluster-card';
+    card.innerHTML = `
+      <div class="cluster-card-title" style="color:${cl.color}">${cl.name}</div>
+      <div class="cluster-card-terms">${cl.terms.slice(0,8).join(' · ')}&hellip;</div>
+      <div class="cluster-bars">
+        ${DOCS.map(d => {
+          const score = cl.scores[d.id] || 0;
+          const pct = maxScore > 0 ? (score / maxScore * 100).toFixed(1) : 0;
+          return `<div class="cluster-doc-row">
+            <span class="cluster-doc-name">${d.short}</span>
+            <div class="cluster-track">
+              <div class="cluster-bar-fill" style="width:${pct}%;background:${cl.color}"></div>
+            </div>
+            <span class="cluster-score">${score}</span>
+          </div>`;
+        }).join('')}
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+/* ─── CONCORDANCE PANEL ──────────────────────────────────────────────────────── */
+const SUGGEST_TERMS = ['light','rays','kingdom','temple','experiment','observation','chronology','motion','force','colour','gravity','prophecy','egypt','stars','mathematics'];
+
+const DOC_NAMES = { daniel:'Prophecies of Daniel', opticks:'Opticks', chron:'Chronology', princip:'Principia' };
+
+function buildSuggestions() {
+  const strip = document.getElementById('suggest-strip');
+  strip.innerHTML = '';
+  SUGGEST_TERMS.forEach(t => {
+    const span = document.createElement('span');
+    span.className = 'suggest-term';
+    span.textContent = t;
+    span.onclick = () => {
+      document.getElementById('kwic-input').value = t;
+      runKwic();
+    };
+    strip.appendChild(span);
+  });
+}
+
+function highlight(text, term) {
+  if (!term) return text;
+  const re = new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+  return text.replace(re, '<em class="kwic-match">$1</em>');
+}
+
+function runKwic() {
+  const raw = document.getElementById('kwic-input').value.trim().toLowerCase();
+  const docFilter = document.getElementById('kwic-doc-filter').value;
+  const out = document.getElementById('kwic-results');
+  const countEl = document.getElementById('kwic-count');
+
+  if (!raw) {
+    out.innerHTML = '';
+    countEl.textContent = '';
+    return;
+  }
+
+  // match entries where the term field contains the query OR left/right text contains it
+  const hits = KWIC_DATA.filter(h => {
+    const matchDoc = docFilter === 'all' || h.doc === docFilter;
+    const matchTerm = h.term.includes(raw)
+      || h.kw.toLowerCase().includes(raw)
+      || h.left.toLowerCase().includes(raw)
+      || h.right.toLowerCase().includes(raw);
+    return matchDoc && matchTerm;
+  });
+
+  countEl.textContent = hits.length === 0
+    ? ''
+    : `${hits.length} concordance line${hits.length !== 1 ? 's' : ''}`;
+
+  if (hits.length === 0) {
+    out.innerHTML = `<div class="no-results">No concordance lines found for "<em>${raw}</em>"</div>`;
+    return;
+  }
+
+  out.innerHTML = '';
+  hits.forEach((h, i) => {
+    const div = document.createElement('div');
+    div.className = `kwic-hit src-${h.doc}`;
+    div.style.animationDelay = `${i * 30}ms`;
+    const left = highlight(h.left, raw);
+    const kw   = `<em class="kwic-match">${h.kw}</em>`;
+    const right = highlight(h.right, raw);
+    div.innerHTML = `
+      <div class="kwic-source-tag">
+        <span>${DOC_NAMES[h.doc]}</span>
+      </div>
+      <div class="kwic-text">… ${left} ${kw} ${right} …</div>`;
+    out.appendChild(div);
+  });
+}
+
+document.getElementById('kwic-input').addEventListener('input', runKwic);
+document.getElementById('kwic-doc-filter').addEventListener('change', runKwic);
+
+/* ─── TAB NAVIGATION ─────────────────────────────────────────────────────────── */
+const PANELS = ['freq','compare','overlap','clusters','concordance','about'];
+const panelInits = { compare: renderCompare, overlap: renderOverlap, clusters: renderClusters };
+const rendered = {};
+
+document.getElementById('main-nav').addEventListener('click', e => {
+  const btn = e.target.closest('.nav-tab');
+  if (!btn) return;
+  const panel = btn.dataset.panel;
+
+  document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+
+  btn.classList.add('active');
+  document.getElementById(`panel-${panel}`).classList.add('active');
+
+  if (panelInits[panel] && !rendered[panel]) {
+    panelInits[panel]();
+    rendered[panel] = true;
+  }
+});
+
+/* ─── INIT ────────────────────────────────────────────────────────────────────── */
+buildFreqPills();
+renderFreq();
+buildSuggestions();
+</script>
+</body>
+</html>
