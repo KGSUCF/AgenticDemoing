@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animals I've Seen</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    :root {
+      --sky: #87CEEB;
+      --grass: #4a7c59;
+      --dark-green: #2d5a27;
+      --sun-yellow: #FFD700;
+      --cloud-white: #f0f0f0;
+      --text-dark: #1a1a2e;
+      --card-bg: #fefefe;
+      --accent: #e76f51;
+      --border: #264653;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #1a1a2e;
+      font-family: 'Press Start 2P', monospace, sans-serif;
+      color: var(--text-dark);
+    }
+
+    /* ── Header ── */
+    #header-banner {
+      position: relative;
+      width: 100%;
+    }
+
+    #p5-canvas-container canvas {
+      display: block;
+      width: 100% !important;
+      image-rendering: pixelated;
+    }
+
+    .site-title {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .site-title h1 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(14px, 3vw, 28px);
+      color: #fff;
+      text-shadow:
+        3px 3px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000;
+      white-space: nowrap;
+      letter-spacing: 2px;
+    }
+
+    .site-title p {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(7px, 1.2vw, 11px);
+      color: #ffe08a;
+      text-shadow: 2px 2px 0 #000;
+      margin-top: 10px;
+      letter-spacing: 1px;
+    }
+
+    /* ── Gallery Section ── */
+    #gallery-section {
+      background: #1a1a2e;
+      padding: 40px 24px 60px;
+    }
+
+    #gallery-section h2 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(10px, 2vw, 16px);
+      color: #ffe08a;
+      text-align: center;
+      margin-bottom: 36px;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .animal-card {
+      background: #16213e;
+      border: 3px solid #e76f51;
+      box-shadow: 4px 4px 0 #000;
+      transition: transform 0.1s, box-shadow 0.1s;
+      cursor: default;
+      overflow: hidden;
+    }
+
+    .animal-card:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 #000;
+      border-color: #FFD700;
+    }
+
+    .card-img-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #0f3460;
+    }
+
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+
+    .animal-card:hover .card-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .card-body {
+      padding: 16px;
+    }
+
+    .common-name {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(8px, 1.4vw, 11px);
+      color: #e2e2e2;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .sci-name {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(6px, 1vw, 9px);
+      color: #a8dadc;
+      font-style: italic;
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    details {
+      border-top: 2px dashed #264653;
+      padding-top: 10px;
+    }
+
+    details summary {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(6px, 0.9vw, 8px);
+      color: #ffe08a;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      outline: none;
+      user-select: none;
+    }
+
+    details summary::before {
+      content: '▶';
+      font-size: 7px;
+      transition: transform 0.2s;
+      display: inline-block;
+    }
+
+    details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    details p {
+      font-family: Georgia, serif;
+      font-size: 13px;
+      color: #b0b8c1;
+      line-height: 1.7;
+      margin-top: 10px;
+      padding-left: 4px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #0f0f1a;
+      text-align: center;
+      padding: 20px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      color: #4a4a6a;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="header-banner">
+  <div id="p5-canvas-container"></div>
+  <div class="site-title">
+    <h1>Animals I've Seen</h1>
+    <p>A personal wildlife gallery</p>
+  </div>
+</div>
+
+<section id="gallery-section">
+  <h2>★ The Collection ★</h2>
+  <div class="gallery-grid">
+
+    <article class="animal-card">
+      <div class="card-img-wrap">
+        <img src="hamadryas_baboon.png"
+             alt="A Hamadryas Baboon crouched on a dirt and wood-chip ground, possibly at a zoo. The animal displays the species' characteristic mane of grey-brown fur around the head and shoulders. Its pink-red facial skin is visible as it hunches forward. Leafy greens and scattered food fragments are visible nearby." />
+      </div>
+      <div class="card-body">
+        <div class="common-name">Hamadryas Baboon</div>
+        <div class="sci-name">Papio hamadryas</div>
+        <details>
+          <summary>Description</summary>
+          <p>A Hamadryas Baboon crouched on a dirt and wood-chip ground, possibly at a zoo. The animal displays the species' characteristic mane of grey-brown fur around the head and shoulders. Its pink-red facial skin is visible as it hunches forward. Leafy greens and scattered food fragments are visible nearby.</p>
+        </details>
+      </div>
+    </article>
+
+    <article class="animal-card">
+      <div class="card-img-wrap">
+        <img src="american_goldfinch.png"
+             alt="A brilliantly yellow American Goldfinch perched on a slender bare branch against a clear blue sky. The bird is in its vivid breeding plumage, showing the bright lemon-yellow body and black wing typical of the male." />
+      </div>
+      <div class="card-body">
+        <div class="common-name">American Goldfinch</div>
+        <div class="sci-name">Spinus tristis</div>
+        <details>
+          <summary>Description</summary>
+          <p>A brilliantly yellow American Goldfinch perched on a slender bare branch against a clear blue sky. The bird is in its vivid breeding plumage, showing the bright lemon-yellow body and black wing typical of the male.</p>
+        </details>
+      </div>
+    </article>
+
+    <article class="animal-card">
+      <div class="card-img-wrap">
+        <img src="eastern_tiger_swallowtail.png"
+             alt="An Eastern Tiger Swallowtail butterfly resting on flowering shrubs. Its large wings display the classic yellow and black tiger-stripe pattern with blue and orange accents near the hindwing tails. The wings are fully spread, revealing the complete pattern." />
+      </div>
+      <div class="card-body">
+        <div class="common-name">Eastern Tiger Swallowtail</div>
+        <div class="sci-name">Papilio glaucus</div>
+        <details>
+          <summary>Description</summary>
+          <p>An Eastern Tiger Swallowtail butterfly resting on flowering shrubs. Its large wings display the classic yellow and black tiger-stripe pattern with blue and orange accents near the hindwing tails. The wings are fully spread, revealing the complete pattern.</p>
+        </details>
+      </div>
+    </article>
+
+    <article class="animal-card">
+      <div class="card-img-wrap">
+        <img src="african_bush_elephant.png"
+             alt="A young African Bush Elephant walking along a dry dirt road in savanna habitat. The juvenile elephant's wrinkled grey skin, large ears, and downward-curving trunk are prominent. A second elephant is partially visible in the background, and sparse scrub vegetation lines the road." />
+      </div>
+      <div class="card-body">
+        <div class="common-name">African Bush Elephant</div>
+        <div class="sci-name">Loxodonta africana</div>
+        <details>
+          <summary>Description</summary>
+          <p>A young African Bush Elephant walking along a dry dirt road in savanna habitat. The juvenile elephant's wrinkled grey skin, large ears, and downward-curving trunk are prominent. A second elephant is partially visible in the background, and sparse scrub vegetation lines the road.</p>
+        </details>
+      </div>
+    </article>
+
+    <article class="animal-card">
+      <div class="card-img-wrap">
+        <img src="masai_giraffe.png"
+             alt="A lone Masai Giraffe standing in open African savanna with scattered trees and shrubs. The animal's characteristic irregular, jagged brown patches on a cream background are clearly visible. It stands tall with its long neck raised, surveying the landscape." />
+      </div>
+      <div class="card-body">
+        <div class="common-name">Masai Giraffe</div>
+        <div class="sci-name">Giraffa tippelskirchi</div>
+        <details>
+          <summary>Description</summary>
+          <p>A lone Masai Giraffe standing in open African savanna with scattered trees and shrubs. The animal's characteristic irregular, jagged brown patches on a cream background are clearly visible. It stands tall with its long neck raised, surveying the landscape.</p>
+        </details>
+      </div>
+    </article>
+
+    <article class="animal-card">
+      <div class="card-img-wrap">
+        <img src="paper_wasp.png"
+             alt="A paper wasp actively subduing a grasshopper on rocky ground. The wasp's yellow-and-black-banded abdomen and orange-tinted wings are visible as it grasps the much larger green grasshopper. This image captures an example of predatory insect behavior in the wild." />
+      </div>
+      <div class="card-body">
+        <div class="common-name">Paper Wasp</div>
+        <div class="sci-name">Polistes sp. (preying on grasshopper)</div>
+        <details>
+          <summary>Description</summary>
+          <p>A paper wasp actively subduing a grasshopper on rocky ground. The wasp's yellow-and-black-banded abdomen and orange-tinted wings are visible as it grasps the much larger green grasshopper. This image captures an example of predatory insect behavior in the wild.</p>
+        </details>
+      </div>
+    </article>
+
+    <article class="animal-card">
+      <div class="card-img-wrap">
+        <img src="african_lioness.png"
+             alt="An African lioness sitting on bare, dry ground in a savanna setting. She is caught mid-yawn, her mouth wide open to display her large canine teeth. Her tawny, short-furred coat, muscular build, and alert amber eyes are characteristic of the species." />
+      </div>
+      <div class="card-body">
+        <div class="common-name">African Lioness</div>
+        <div class="sci-name">Panthera leo</div>
+        <details>
+          <summary>Description</summary>
+          <p>An African lioness sitting on bare, dry ground in a savanna setting. She is caught mid-yawn, her mouth wide open to display her large canine teeth. Her tawny, short-furred coat, muscular build, and alert amber eyes are characteristic of the species.</p>
+        </details>
+      </div>
+    </article>
+
+    <article class="animal-card">
+      <div class="card-img-wrap">
+        <img src="red_panda.png"
+             alt="A Red Panda resting on a wooden log or fence rail, likely in a zoo enclosure. The animal's distinctive rust-red fur, white-lined ears, and dark underbelly are clearly visible. The Red Panda is often mistaken for a giant panda but is a distinct species in its own family." />
+      </div>
+      <div class="card-body">
+        <div class="common-name">Red Panda</div>
+        <div class="sci-name">Ailurus fulgens</div>
+        <details>
+          <summary>Description</summary>
+          <p>A Red Panda resting on a wooden log or fence rail, likely in a zoo enclosure. The animal's distinctive rust-red fur, white-lined ears, and dark underbelly are clearly visible. The Red Panda is often mistaken for a giant panda but is a distinct species in its own family.</p>
+        </details>
+      </div>
+    </article>
+
+    <article class="animal-card">
+      <div class="card-img-wrap">
+        <img src="california_sea_lion.png"
+             alt="A California Sea Lion resting on a white sandy beach. The animal is posed in a classic upright posture, balancing on its front flippers with its sleek dark-brown body and whiskered muzzle raised. The background is a flat expanse of pale sand." />
+      </div>
+      <div class="card-body">
+        <div class="common-name">California Sea Lion</div>
+        <div class="sci-name">Zalophus californianus</div>
+        <details>
+          <summary>Description</summary>
+          <p>A California Sea Lion resting on a white sandy beach. The animal is posed in a classic upright posture, balancing on its front flippers with its sleek dark-brown body and whiskered muzzle raised. The background is a flat expanse of pale sand.</p>
+        </details>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<footer>made with p5.js &nbsp;·&nbsp; 9 species &nbsp;·&nbsp; 2026</footer>
+
+<script>
+// ── P5.js Retro Scene ──────────────────────────────────────────────
+new p5(function(p) {
+
+  const PIXEL = 4; // pixel art scale factor
+
+  // Sun
+  let sunX, sunY, sunR;
+  let sunPulse = 0;
+
+  // Clouds
+  let clouds = [];
+
+  // Flowers
+  let flowers = [];
+
+  // Ground hills
+  let hillOffset = 0;
+
+  // Canvas dimensions
+  let W, H;
+
+  // Palette
+  const SKY_TOP    = p.color(34, 85, 160);
+  const SKY_BOT    = p.color(100, 190, 230);
+  const SUN_COL    = p.color(255, 220, 30);
+  const SUN_GLOW   = p.color(255, 240, 120, 80);
+  const CLOUD_COL  = p.color(240, 240, 255);
+  const CLOUD_SHD  = p.color(180, 190, 210);
+  const GRASS_DARK = p.color(42, 90, 50);
+  const GRASS_MID  = p.color(72, 140, 72);
+  const GRASS_LIT  = p.color(110, 190, 80);
+  const STEM_COL   = p.color(50, 110, 50);
+
+  const FLOWER_PALETTES = [
+    [p.color(255, 80, 120),  p.color(255, 200, 50)],  // pink / yellow
+    [p.color(255, 165, 0),   p.color(255, 240, 100)], // orange / pale yellow
+    [p.color(200, 80, 220),  p.color(255, 220, 50)],  // purple / yellow
+    [p.color(255, 230, 50),  p.color(255, 120, 30)],  // yellow / orange
+    [p.color(80, 180, 255),  p.color(255, 255, 200)], // blue / cream
+  ];
+
+  // ── Setup ──────────────────────────────────────────────────────
+  p.setup = function() {
+    W = p.windowWidth;
+    H = Math.round(W * 0.32);
+    H = p.constrain(H, 180, 380);
+
+    let cnv = p.createCanvas(W, H);
+    cnv.parent('p5-canvas-container');
+    p.noSmooth();
+    p.pixelDensity(1);
+
+    sunX = W * 0.82;
+    sunY = H * 0.22;
+    sunR = pxSnap(H * 0.13);
+
+    spawnClouds();
+    spawnFlowers();
+  };
+
+  p.windowResized = function() {
+    W = p.windowWidth;
+    H = p.constrain(Math.round(W * 0.32), 180, 380);
+    p.resizeCanvas(W, H);
+    sunX = W * 0.82;
+    sunY = H * 0.22;
+    sunR = pxSnap(H * 0.13);
+    spawnClouds();
+    spawnFlowers();
+  };
+
+  // ── Draw ───────────────────────────────────────────────────────
+  p.draw = function() {
+    drawSky();
+    updateClouds();
+    drawClouds();
+    drawSun();
+    drawGround();
+    drawFlowers();
+  };
+
+  // ── Sky gradient (banded, retro) ───────────────────────────────
+  function drawSky() {
+    let bands = 10;
+    for (let i = 0; i < bands; i++) {
+      let t = i / bands;
+      let c = p.lerpColor(SKY_TOP, SKY_BOT, t);
+      p.fill(c);
+      p.noStroke();
+      p.rect(0, pxSnap(t * H * 0.72), W, pxSnap(H * 0.72 / bands) + 1);
+    }
+  }
+
+  // ── Sun ────────────────────────────────────────────────────────
+  function drawSun() {
+    sunPulse += 0.025;
+    let pulse = p.sin(sunPulse) * PIXEL;
+
+    // Outer glow rings (pixel-rounded circles)
+    p.noStroke();
+    for (let r = sunR + pulse + PIXEL * 8; r > sunR + pulse; r -= PIXEL * 2) {
+      let a = p.map(r, sunR + pulse, sunR + pulse + PIXEL * 8, 60, 0);
+      p.fill(255, 230, 80, a);
+      pixelCircle(sunX, sunY, r);
+    }
+
+    // Rays — 8 directions, pixel-style
+    p.fill(255, 215, 0, 180);
+    for (let i = 0; i < 8; i++) {
+      let angle = (i / 8) * p.TWO_PI + sunPulse * 0.3;
+      let rx1 = sunX + p.cos(angle) * (sunR + PIXEL * 2);
+      let ry1 = sunY + p.sin(angle) * (sunR + PIXEL * 2);
+      let rx2 = sunX + p.cos(angle) * (sunR + PIXEL * 9 + pulse);
+      let ry2 = sunY + p.sin(angle) * (sunR + PIXEL * 9 + pulse);
+      p.strokeWeight(PIXEL * 2);
+      p.stroke(255, 215, 0, 200);
+      p.line(pxSnap(rx1), pxSnap(ry1), pxSnap(rx2), pxSnap(ry2));
+    }
+    p.noStroke();
+
+    // Sun body
+    p.fill(SUN_COL);
+    pixelCircle(sunX, sunY, sunR + pulse);
+
+    // Pixel highlight
+    p.fill(255, 255, 200, 200);
+    pixelCircle(sunX - sunR * 0.28, sunY - sunR * 0.28, sunR * 0.28);
+  }
+
+  // ── Clouds ─────────────────────────────────────────────────────
+  function spawnClouds() {
+    clouds = [];
+    let n = 4 + Math.floor(W / 250);
+    for (let i = 0; i < n; i++) {
+      clouds.push(makeCloud(p.random(W), p.random(H * 0.08, H * 0.42)));
+    }
+  }
+
+  function makeCloud(x, y) {
+    return {
+      x, y,
+      speed: p.random(0.25, 0.7),
+      w: pxSnap(p.random(70, 160)),
+      h: pxSnap(p.random(26, 48)),
+      bumps: Math.floor(p.random(3, 6))
+    };
+  }
+
+  function updateClouds() {
+    for (let c of clouds) {
+      c.x -= c.speed;
+      if (c.x + c.w < 0) {
+        c.x = W + c.w;
+        c.y = p.random(H * 0.08, H * 0.42);
+      }
+    }
+  }
+
+  function drawClouds() {
+    for (let c of clouds) {
+      // Shadow
+      p.fill(CLOUD_SHD);
+      p.noStroke();
+      drawCloudShape(c.x + PIXEL, c.y + PIXEL * 2, c.w, c.h, c.bumps);
+      // Body
+      p.fill(CLOUD_COL);
+      drawCloudShape(c.x, c.y, c.w, c.h, c.bumps);
+    }
+  }
+
+  function drawCloudShape(x, y, w, h, bumps) {
+    // Base rectangle
+    p.rect(pxSnap(x), pxSnap(y + h * 0.4), pxSnap(w), pxSnap(h * 0.6));
+    // Bumps along the top
+    for (let i = 0; i < bumps; i++) {
+      let bx = x + (w / (bumps)) * i + w / bumps / 2;
+      let by = y + h * 0.38;
+      let br = (h * 0.42) + (i === Math.floor(bumps / 2) ? h * 0.12 : 0);
+      pixelCircle(bx, by, br);
+    }
+  }
+
+  // ── Ground ─────────────────────────────────────────────────────
+  function drawGround() {
+    let groundY = H * 0.70;
+    let bandH   = H * 0.06;
+
+    // Dark base
+    p.fill(GRASS_DARK);
+    p.noStroke();
+    p.rect(0, pxSnap(groundY + bandH), W, H);
+
+    // Mid grass band with bumpy hills
+    p.fill(GRASS_MID);
+    drawHillBand(groundY, bandH, 0.018, 0);
+
+    // Bright top highlight
+    p.fill(GRASS_LIT);
+    drawHillBand(groundY - bandH * 0.3, bandH * 0.35, 0.022, 60);
+  }
+
+  function drawHillBand(baseY, bH, freq, phaseOff) {
+    p.beginShape();
+    p.vertex(0, H);
+    for (let x = 0; x <= W; x += PIXEL) {
+      let y = baseY + p.sin((x + hillOffset + phaseOff) * freq) * PIXEL * 4;
+      p.vertex(pxSnap(x), pxSnap(y));
+    }
+    p.vertex(W, H);
+    p.endShape(p.CLOSE);
+    hillOffset += 0.4;
+  }
+
+  // ── Flowers ────────────────────────────────────────────────────
+  function spawnFlowers() {
+    flowers = [];
+    let n = 12 + Math.floor(W / 80);
+    for (let i = 0; i < n; i++) {
+      let x = p.random(W);
+      flowers.push(makeFlower(x));
+    }
+    flowers.sort((a, b) => a.x - b.x);
+  }
+
+  function makeFlower(x) {
+    let palette = FLOWER_PALETTES[Math.floor(p.random(FLOWER_PALETTES.length))];
+    let size = pxSnap(p.random(14, 28));
+    return {
+      x: pxSnap(x),
+      stemH: pxSnap(p.random(28, 60)),
+      size,
+      petalCol: palette[0],
+      centerCol: palette[1],
+      wobble: p.random(p.TWO_PI),
+      wobbleSpeed: p.random(0.02, 0.05),
+      type: Math.floor(p.random(3)) // 0=round, 1=star, 2=daisy
+    };
+  }
+
+  function drawFlowers() {
+    let groundY = H * 0.70;
+
+    for (let f of flowers) {
+      f.wobble += f.wobbleSpeed;
+      let sway = p.sin(f.wobble) * PIXEL * 1.5;
+
+      let baseY = pxSnap(groundY + H * 0.04);
+      let tipX  = pxSnap(f.x + sway);
+      let tipY  = pxSnap(baseY - f.stemH);
+
+      // Stem
+      p.stroke(STEM_COL);
+      p.strokeWeight(PIXEL);
+      p.line(f.x, baseY, tipX, tipY);
+      p.noStroke();
+
+      // Petals
+      p.fill(f.petalCol);
+      drawFlowerHead(f.type, tipX, tipY, f.size);
+
+      // Center
+      p.fill(f.centerCol);
+      pixelCircle(tipX, tipY, f.size * 0.35);
+    }
+  }
+
+  function drawFlowerHead(type, x, y, r) {
+    if (type === 0) {
+      // Round blob petals (4 cardinal)
+      let offsets = [[0, -1], [1, 0], [0, 1], [-1, 0]];
+      for (let [dx, dy] of offsets) {
+        pixelCircle(x + dx * r * 0.7, y + dy * r * 0.7, r * 0.55);
+      }
+    } else if (type === 1) {
+      // Star / diamond petals (8 dir)
+      for (let i = 0; i < 8; i++) {
+        let a = (i / 8) * p.TWO_PI;
+        let px2 = x + p.cos(a) * r * 0.8;
+        let py2 = y + p.sin(a) * r * 0.8;
+        pixelCircle(px2, py2, r * 0.38);
+      }
+    } else {
+      // Daisy — elongated petals
+      for (let i = 0; i < 6; i++) {
+        let a = (i / 6) * p.TWO_PI;
+        let px2 = x + p.cos(a) * r;
+        let py2 = y + p.sin(a) * r;
+        p.fill(p.red(p.color(255, 255, 255)) > 200 ? p.color(255, 255, 255) : arguments.callee);
+        pixelRect(pxSnap(px2 - PIXEL), pxSnap(py2 - PIXEL), PIXEL * 2, PIXEL * 2);
+      }
+    }
+  }
+
+  // ── Pixel helpers ──────────────────────────────────────────────
+  function pxSnap(v) {
+    return Math.round(v / PIXEL) * PIXEL;
+  }
+
+  function pixelCircle(cx, cy, r) {
+    let pr = pxSnap(r);
+    let pcx = pxSnap(cx);
+    let pcy = pxSnap(cy);
+    p.ellipse(pcx, pcy, pr * 2, pr * 2);
+  }
+
+  function pixelRect(x, y, w, h) {
+    p.rect(pxSnap(x), pxSnap(y), pxSnap(w), pxSnap(h));
+  }
+
+});
+</script>
+</body>
+</html>
