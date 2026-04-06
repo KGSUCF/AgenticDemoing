@@ -1,0 +1,23 @@
+GERTRUDE SHELL — PHOTO PLACEHOLDER INSTRUCTIONS
+================================================
+
+This folder is where you place the photo image files for the main board.
+
+Expected files:
+  gertrude.jpg  (or gertrude.png)
+      — A portrait photo of Gertrude to display on the main board.
+
+  marty.jpg  (or marty.png)
+      — A portrait photo of Marty to display on the main board.
+
+Supported formats: JPEG (.jpg / .jpeg), PNG (.png), GIF (.gif), BMP (.bmp)
+
+Recommended size: 200 x 200 pixels (will be resized automatically if needed).
+
+If these files are absent the shell will display a grey placeholder rectangle
+with the person's name label instead — the app will still run normally.
+
+Placement:
+  Place the finished files directly in this folder:
+    prototypes/prototype2-python-webview/photos/gertrude.jpg
+    prototypes/prototype2-python-webview/photos/marty.jpg

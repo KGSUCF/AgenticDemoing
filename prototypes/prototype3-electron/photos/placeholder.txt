@@ -1,0 +1,24 @@
+GERTRUDE SHELL - PHOTO INSTRUCTIONS
+=====================================
+
+This folder is where Gertrude's photos go.
+
+WHAT TO ADD:
+  gertrude.jpg   - A photo of Gertrude (displayed on the main board)
+  marty.jpg      - A photo of Marty (displayed on the main board)
+
+RECOMMENDED SIZES:
+  - 300x300 pixels or larger (will be displayed at ~200x200 in the UI)
+  - JPEG or PNG format
+  - Portrait orientation works best
+
+HOW TO ADD THEM:
+  1. Copy your photo files into this folder (photos/).
+  2. Name them exactly: gertrude.jpg and marty.jpg
+  3. Restart the app — the photos will appear automatically on the home board.
+
+If the photo files are missing, the app shows a placeholder silhouette image
+so the app still works perfectly without photos.
+
+NOTE: If you want to use a different filename (e.g., gertrude.png), update the
+`photoPaths` object in main.js accordingly.

@@ -1,0 +1,8 @@
+# Gertrude Shell - Prototype 2 Requirements
+# Install with: pip install -r requirements.txt
+
+# Embedded browser (WebView2 on Windows 10/11, WKWebView on macOS, WebKitGTK on Linux)
+pywebview>=4.4.1
+
+# Image handling for photo display
+Pillow>=10.0.0
