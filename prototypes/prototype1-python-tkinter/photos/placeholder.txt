@@ -1,0 +1,23 @@
+How to add real photos to Gertrude Shell
+=========================================
+
+Place photo files in this directory (photos/) with these exact filenames:
+
+    gertrude.jpg   - Photo of Gertrude (displayed on the left)
+    marty.jpg      - Photo of Marty    (displayed on the right)
+
+Photo requirements:
+    - Supported formats: JPEG (.jpg), PNG (.png)
+    - Recommended size: at least 150x150 pixels (the app resizes to 150x150)
+    - Square photos work best; rectangular photos will be cropped to fit
+    - The app requires Pillow to display real photos:
+        pip install Pillow
+
+If no photo files are found (or Pillow is not installed), the app shows
+gray placeholder boxes with the person's name instead. The app will run
+perfectly fine without photos - this is optional personalisation.
+
+Tip for caregivers:
+    Use any recent photos. Smartphone photos (JPEG from iPhone or Android)
+    work perfectly. Just copy the file into this folder and rename it to
+    gertrude.jpg or marty.jpg.

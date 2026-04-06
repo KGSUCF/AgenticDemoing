@@ -1,0 +1,509 @@
+/*
+ * renderer/style.css
+ * Gertrude Shell — Warm, accessible styles.
+ *
+ * Design principles:
+ *   - Warm peach/cream palette — easy on elderly eyes
+ *   - Minimum 20px body text; button labels even larger
+ *   - High-contrast interactive elements
+ *   - 3D bevel effect via CSS box-shadow
+ *   - No tiny click targets — everything 60px+ tall
+ */
+
+/* ── Reset & Base ─────────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cream:        #FFF8F0;
+  --peach:        #FFE4C8;
+  --peach-dark:   #F5C8A0;
+  --brown:        #8B5E3C;
+  --brown-light:  #C49A6C;
+  --red:          #CC2222;
+  --red-hover:    #AA1111;
+  --blue-fb:      #1877F2;
+  --blue-google:  #4285F4;
+  --red-aol:      #E02020;
+  --indigo:       #5C6BC0;
+  --white:        #FFFFFF;
+  --shadow:       rgba(100, 60, 20, 0.25);
+  --header-h:     80px;
+  --radius:       16px;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 20px;
+  background: var(--cream);
+  color: #3a2010;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ── Shell Layout ─────────────────────────────────────────────────────────── */
+
+#shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* ── Header Bar ───────────────────────────────────────────────────────────── */
+
+#header {
+  flex: 0 0 var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: linear-gradient(135deg, #C8813A 0%, #A0622A 100%);
+  box-shadow:
+    0 4px 8px var(--shadow),
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 -2px 0 rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 100;
+}
+
+#header-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+  white-space: nowrap;
+}
+
+#header-context {
+  flex: 1;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: #FFF0D8;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  padding: 0 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── END Button ───────────────────────────────────────────────────────────── */
+
+#end-btn {
+  flex: 0 0 auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #FF4444, var(--red) 60%, #880000);
+  border: 3px solid #660000;
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.4),
+    inset 0 2px 4px rgba(255,200,200,0.4),
+    inset 0 -2px 4px rgba(0,0,0,0.3);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+  transition: transform 0.1s, box-shadow 0.1s;
+  -webkit-app-region: no-drag;
+}
+
+#end-btn:hover {
+  background: radial-gradient(circle at 35% 35%, #FF6666, var(--red-hover) 60%, #660000);
+  box-shadow:
+    0 6px 12px rgba(0,0,0,0.5),
+    inset 0 2px 4px rgba(255,200,200,0.5),
+    inset 0 -2px 4px rgba(0,0,0,0.3);
+  transform: scale(1.05);
+}
+
+#end-btn:active {
+  transform: scale(0.95);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.4),
+    inset 0 2px 6px rgba(0,0,0,0.4);
+}
+
+/* Hidden by default — only shown when a site is open */
+#end-btn.hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ── Content Area ─────────────────────────────────────────────────────────── */
+
+#content {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  background: var(--cream);
+}
+
+/* ── Main Board ───────────────────────────────────────────────────────────── */
+
+#main-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 24px 20px 20px;
+  gap: 24px;
+  overflow-y: auto;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(255, 220, 170, 0.5) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 90%, rgba(255, 200, 140, 0.4) 0%, transparent 60%),
+    var(--cream);
+}
+
+/* ── Photos Row ───────────────────────────────────────────────────────────── */
+
+#photos-row {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.photo-frame img,
+.photo-placeholder {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 5px solid var(--peach-dark);
+  box-shadow:
+    0 6px 16px var(--shadow),
+    inset 0 2px 4px rgba(255,255,255,0.6);
+  object-fit: cover;
+  background: var(--peach);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 72px;
+  overflow: hidden;
+}
+
+.photo-caption {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--brown);
+  text-align: center;
+}
+
+/* ── Clock ────────────────────────────────────────────────────────────────── */
+
+#clock {
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--brown);
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* ── App Buttons Grid ─────────────────────────────────────────────────────── */
+
+#apps-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  width: 100%;
+}
+
+.app-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 145px;
+  min-height: 130px;
+  padding: 16px 10px;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  box-shadow:
+    0 6px 12px rgba(0,0,0,0.25),
+    inset 0 2px 4px rgba(255,255,255,0.35),
+    inset 0 -3px 6px rgba(0,0,0,0.25);
+  transition: transform 0.1s, box-shadow 0.1s, filter 0.1s;
+  line-height: 1.2;
+  text-align: center;
+  white-space: pre-line;
+  -webkit-app-region: no-drag;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sheen overlay */
+.app-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.28) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.app-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow:
+    0 10px 20px rgba(0,0,0,0.3),
+    inset 0 2px 4px rgba(255,255,255,0.4),
+    inset 0 -3px 6px rgba(0,0,0,0.25);
+  filter: brightness(1.08);
+}
+
+.app-btn:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow:
+    0 3px 6px rgba(0,0,0,0.25),
+    inset 0 3px 8px rgba(0,0,0,0.3);
+  filter: brightness(0.92);
+}
+
+.app-btn-icon {
+  font-size: 42px;
+  line-height: 1;
+}
+
+.app-btn-label {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+/* Individual button colors */
+.app-btn.facebook  { background: linear-gradient(160deg, #2196F3 0%, #1877F2 60%, #1255C1 100%); }
+.app-btn.milo      { background: linear-gradient(160deg, #66BB6A 0%, #43A047 60%, #2E7D32 100%); }
+.app-btn.aolnews   { background: linear-gradient(160deg, #EF5350 0%, #E02020 60%, #B71C1C 100%); }
+.app-btn.aolmail   { background: linear-gradient(160deg, #FF7043 0%, #E02020 60%, #B71C1C 100%); }
+.app-btn.desktop   { background: linear-gradient(160deg, #7986CB 0%, #5C6BC0 60%, #3949AB 100%); }
+
+/* ── Blocked URL Dialog ────────────────────────────────────────────────────── */
+
+#blocked-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+#blocked-overlay.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+#blocked-dialog {
+  background: var(--cream);
+  border: 4px solid var(--red);
+  border-radius: var(--radius);
+  padding: 32px 36px;
+  max-width: 460px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+  animation: popIn 0.2s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+#blocked-dialog h2 {
+  font-size: 26px;
+  color: var(--red);
+  margin-bottom: 14px;
+}
+
+#blocked-dialog p {
+  font-size: 20px;
+  color: #4a2a10;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+#blocked-ok-btn {
+  background: linear-gradient(160deg, #EF5350 0%, var(--red) 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 48px;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: filter 0.1s, transform 0.1s;
+}
+
+#blocked-ok-btn:hover {
+  filter: brightness(1.1);
+  transform: scale(1.03);
+}
+
+#blocked-ok-btn:active {
+  transform: scale(0.97);
+}
+
+/* ── First-Run Setup Modal ─────────────────────────────────────────────────── */
+
+#setup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(50, 25, 0, 0.7);
+  z-index: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#setup-overlay.hidden {
+  display: none;
+}
+
+#setup-dialog {
+  background: var(--cream);
+  border: 4px solid var(--brown-light);
+  border-radius: var(--radius);
+  padding: 36px 40px;
+  max-width: 520px;
+  width: 92%;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+  box-sizing: border-box;
+}
+
+#setup-dialog h2 {
+  font-size: 28px;
+  color: var(--brown);
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+#setup-dialog .setup-subtitle {
+  font-size: 18px;
+  color: #7a5030;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.setup-section {
+  margin-bottom: 24px;
+}
+
+.setup-section h3 {
+  font-size: 20px;
+  color: var(--brown);
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--peach-dark);
+  padding-bottom: 6px;
+}
+
+.field-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.field-row label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #5a3010;
+}
+
+.field-row input {
+  font-size: 20px;
+  padding: 10px 14px;
+  border: 2px solid var(--brown-light);
+  border-radius: 8px;
+  background: var(--white);
+  color: #3a2010;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.field-row input:focus {
+  border-color: var(--brown);
+  box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.2);
+}
+
+#setup-save-btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(160deg, #C8813A, #A0622A);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  margin-top: 8px;
+  transition: filter 0.1s, transform 0.1s;
+}
+
+#setup-save-btn:hover {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+}
+
+#setup-save-btn:active {
+  transform: scale(0.98);
+}
+
+/* ── Bevel Frame ──────────────────────────────────────────────────────────── */
+/* The entire shell window has a subtle 3-D bevel */
+
+body {
+  border: 4px solid var(--peach-dark);
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,0.8),
+    inset 4px 4px 8px rgba(255,255,255,0.5),
+    inset -4px -4px 8px rgba(100,60,20,0.2);
+}
+
+/* ── Utility ──────────────────────────────────────────────────────────────── */
+
+.hidden { display: none !important; }
+
+/* Scrollbar styling for main board */
+#main-board::-webkit-scrollbar { width: 8px; }
+#main-board::-webkit-scrollbar-track { background: var(--peach); border-radius: 4px; }
+#main-board::-webkit-scrollbar-thumb { background: var(--brown-light); border-radius: 4px; }
+#main-board::-webkit-scrollbar-thumb:hover { background: var(--brown); }
