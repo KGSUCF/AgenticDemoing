@@ -241,7 +241,10 @@ class SetupDialog(tk.Toplevel):
         self.destroy()
 
     def _on_close(self):
+        # Mark first_run done even if user just closed the dialog,
+        # so it never appears automatically again.
         self.config["first_run"] = False
+        shell_logic.save_config(self.config, CONFIG_PATH)
         self.result = self.config
         self.destroy()
 
@@ -321,6 +324,14 @@ class GertrudeShell(tk.Tk):
         tk.Label(bar, text="Gertrude's Computer",
                  font=FONT_TITLE, bg=BG_BEVEL_OUTER,
                  fg="#FFFFFF", padx=16).pack(side=tk.LEFT)
+
+        # Small ⚙ Settings button for caregiver access (left of END)
+        tk.Button(bar, text="⚙", font=("Segoe UI", 12),
+                  bg=BG_BEVEL_OUTER, fg="#FFFFFF",
+                  activebackground="#A08050", activeforeground="#FFFFFF",
+                  relief=tk.FLAT, bd=0, padx=6, pady=4,
+                  cursor="hand2", command=self._show_setup
+                  ).pack(side=tk.RIGHT, padx=(0, 4), pady=4)
 
         self._end_button = tk.Button(
             bar, text="END", font=FONT_END,
@@ -482,36 +493,36 @@ class GertrudeShell(tk.Tk):
             self._show_desktop()
             return
 
-        self._launch_chrome(url)
-
-        # Hide the board content so only the title bar remains visible,
-        # then shrink the window to just the banner height and float on top.
-        # Chrome opens maximised and appears to fill the space below.
-        self._board_content.pack_forget()
-        self.after(80, self._shrink_to_banner)
-
         self._active_url = url
         friendly = shell_logic.get_app_display_name(url)
         self._greeting_var.set(f"Now open: {friendly}")
 
-    def _shrink_to_banner(self):
-        """Collapse the window to just the title-bar strip and float on top."""
+        # 1. Hide the board content (greeting/photo/buttons)
+        self._board_content.pack_forget()
         self.update_idletasks()
-        # Save current full geometry so END can restore it
-        if platform.system() == "Windows":
-            # On Windows "zoomed" means maximised; save that state
-            self._was_zoomed = (self.state() == "zoomed")
-            if self._was_zoomed:
-                self.state("normal")
-                self.update_idletasks()
 
+        # 2. Save state and un-maximise so we can resize
+        self._was_zoomed = (platform.system() == "Windows"
+                            and self.state() == "zoomed")
+        if self._was_zoomed:
+            self.state("normal")
+            self.update_idletasks()
         self._full_geometry = self.geometry()
 
-        screen_w  = self.winfo_screenwidth()
-        bar_h     = self._outer_frame.winfo_reqheight()
-        # Place the slim banner at the top of the screen, full width
-        self.geometry(f"{screen_w}x{bar_h + 16}+0+0")
+        # 3. Collapse to a slim banner at top of screen
+        screen_w = self.winfo_screenwidth()
+        screen_h = self.winfo_screenheight()
+        self.geometry(f"{screen_w}x90+0+0")
         self.attributes("-topmost", True)
+        self.update_idletasks()
+
+        # 4. Now measure the actual rendered banner height and launch
+        #    Chrome positioned to fill the space immediately below it
+        banner_h = self.winfo_height()
+        self._launch_chrome(url,
+                            pos_y=banner_h,
+                            win_w=screen_w,
+                            win_h=screen_h - banner_h)
 
     def _on_end_button(self):
         """Close all Chrome windows and restore the full board."""
@@ -533,7 +544,10 @@ class GertrudeShell(tk.Tk):
 
         self._greeting_var.set(shell_logic.get_greeting(datetime.now().hour))
 
-    def _launch_chrome(self, url: str):
+    def _launch_chrome(self, url: str,
+                       pos_y: int = 0,
+                       win_w: int = 0,
+                       win_h: int = 0):
         chrome_path = find_chrome()
         if not chrome_path:
             messagebox.showwarning(
@@ -542,15 +556,23 @@ class GertrudeShell(tk.Tk):
                 "Please install Chrome, or ask a family member for help.")
             return
 
+        args = [chrome_path, f"--user-data-dir={PROFILE_DIR}", "--new-window"]
+
+        if pos_y and win_w and win_h:
+            # Position Chrome to start exactly below the banner strip
+            args += [
+                f"--window-position=0,{pos_y}",
+                f"--window-size={win_w},{win_h}",
+            ]
+        else:
+            args.append("--start-maximized")
+
+        args.append(f"--app={url}")
+
         try:
-            proc = subprocess.Popen(
-                [chrome_path,
-                 f"--user-data-dir={PROFILE_DIR}",
-                 "--start-maximized",
-                 "--new-window",
-                 f"--app={url}"],
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL)
+            proc = subprocess.Popen(args,
+                                    stdout=subprocess.DEVNULL,
+                                    stderr=subprocess.DEVNULL)
             self._chrome_procs.append(proc)
         except OSError as exc:
             messagebox.showerror("Could Not Open",
