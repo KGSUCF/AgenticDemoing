@@ -1,0 +1,19 @@
+{
+  "first_run": true,
+  "user_name": "Gertrude",
+  "whitelist": [
+    "facebook.com",
+    "photos.google.com",
+    "google.com",
+    "aol.com",
+    "mail.aol.com"
+  ],
+  "apps_enabled": [
+    "facebook",
+    "milo",
+    "aol_news",
+    "aol_mail",
+    "desktop"
+  ],
+  "credentials": {}
+}

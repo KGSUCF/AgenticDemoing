@@ -1,0 +1,32 @@
+{
+    "first_run": true,
+    "apps": {
+        "facebook": {
+            "enabled": true,
+            "label": "Facebook"
+        },
+        "milo": {
+            "enabled": true,
+            "label": "Milo (Google Photos)"
+        },
+        "aol_news": {
+            "enabled": true,
+            "label": "AOL News"
+        },
+        "aol_mail": {
+            "enabled": true,
+            "label": "AOL Mail"
+        },
+        "desktop": {
+            "enabled": true,
+            "label": "Desktop"
+        }
+    },
+    "credentials": {
+        "_note": "Credentials below are base64-encoded (obfuscation only, NOT encryption). Decode with: python3 -c \"import base64; print(base64.b64decode('VALUE').decode())\"",
+        "facebook_user": "",
+        "facebook_pass": "",
+        "aol_user": "",
+        "aol_pass": ""
+    }
+}
