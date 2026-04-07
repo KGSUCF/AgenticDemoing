@@ -285,10 +285,6 @@ class GertrudeShell(tk.Tk):
         os.makedirs(PROFILE_DIR, exist_ok=True)
 
         self._build_ui()
-
-        if self._config.get("first_run", True):
-            self.after(100, self._show_setup)
-
         self._refresh_greeting()
 
     # ------------------------------------------------------------------ #
@@ -334,12 +330,14 @@ class GertrudeShell(tk.Tk):
                   ).pack(side=tk.RIGHT, padx=(0, 4), pady=4)
 
         self._end_button = tk.Button(
-            bar, text="END", font=FONT_END,
+            bar, text="END",
+            font=("Segoe UI", 18, "bold"),
             bg="#CC0000", fg="#FFFFFF",
-            activebackground="#FF0000", activeforeground="#FFFFFF",
-            relief=tk.RAISED, bd=4, padx=12, pady=6,
+            activebackground="#FF3333", activeforeground="#FFFFFF",
+            relief=tk.RAISED, bd=5,
+            padx=22, pady=10,
             cursor="hand2", command=self._on_end_button)
-        self._end_button.pack(side=tk.RIGHT, padx=12, pady=4)
+        self._end_button.pack(side=tk.RIGHT, padx=16, pady=6)
 
     def _build_greeting(self):
         self._greeting_var = tk.StringVar()
@@ -509,15 +507,18 @@ class GertrudeShell(tk.Tk):
             self.update_idletasks()
         self._full_geometry = self.geometry()
 
-        # 3. Collapse to a slim banner at top of screen
+        # 3. Collapse to a slim full-width banner flush with the top of the screen.
+        #    Strip the outer frame's decorative margins so the banner spans edge-to-edge
+        #    and nothing is offset to the right.
         screen_w = self.winfo_screenwidth()
         screen_h = self.winfo_screenheight()
-        self.geometry(f"{screen_w}x90+0+0")
+        self._outer_frame.pack_configure(padx=0, pady=0)
+        BANNER_H = 110          # tall enough for the title + big END button
+        self.geometry(f"{screen_w}x{BANNER_H}+0+0")
         self.attributes("-topmost", True)
-        self.update_idletasks()
+        self.update()           # full redraw so winfo_height() is accurate
 
-        # 4. Now measure the actual rendered banner height and launch
-        #    Chrome positioned to fill the space immediately below it
+        # 4. Launch Chrome positioned to fill the space immediately below the banner
         banner_h = self.winfo_height()
         self._launch_chrome(url,
                             pos_y=banner_h,
@@ -539,7 +540,8 @@ class GertrudeShell(tk.Tk):
         elif self._full_geometry:
             self.geometry(self._full_geometry)
 
-        # Show board content again
+        # Restore outer frame margins and show board content again
+        self._outer_frame.pack_configure(padx=20, pady=20)
         self._board_content.pack(fill=tk.BOTH, expand=True)
 
         self._greeting_var.set(shell_logic.get_greeting(datetime.now().hour))
