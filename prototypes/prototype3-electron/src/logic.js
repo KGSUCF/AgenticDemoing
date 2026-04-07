@@ -41,7 +41,8 @@ const APPS = [
     id: 'milo',
     label: 'Milo\n(Photos)',
     displayName: 'Milo (Google Photos)',
-    url: 'https://photos.google.com',
+    // Gertrude's grandchild Milo — specific shared album
+    url: 'https://photos.google.com/share/AF1QipNJPdaXpqnpWA4lwzgMgta8gjcUI3OORBzlSv9Ny9QHVte3s4c16CSE8GHf0pNssw?key=TTBGSzR5QU0xblJXR3hQY05JNnBMNDNxUmhHWGxn',
     icon: '📸',
     color: '#4285F4',
     textColor: '#ffffff',

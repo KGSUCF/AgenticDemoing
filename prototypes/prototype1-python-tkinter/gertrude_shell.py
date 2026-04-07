@@ -77,7 +77,8 @@ ALL_APPS = [
     {
         "key":   "milo",
         "label": "Milo\n(Google Photos)",
-        "url":   "https://photos.google.com",
+        # Gertrude's grandchild Milo — specific shared album
+        "url":   "https://photos.google.com/share/AF1QipNJPdaXpqnpWA4lwzgMgta8gjcUI3OORBzlSv9Ny9QHVte3s4c16CSE8GHf0pNssw?key=TTBGSzR5QU0xblJXR3hQY05JNnBMNDNxUmhHWGxn",
         "color": "#34A853",   # Google green
         "fg":    "#FFFFFF",
     },
@@ -474,64 +475,87 @@ class GertrudeShell(tk.Tk):
 
     def _build_photo_row(self):
         """
-        Photo row with two 150×150 placeholder canvases labelled
-        'Gertrude' and 'Marty'.  If real photos exist in the photos/
-        directory (gertrude.jpg / marty.jpg) and Pillow is available,
-        the real images are shown instead.
+        Photo area showing the combined Gertrude & Marty portrait.
+        Looks for gertrude_and_marty.jpg (or fallbacks) in the photos/
+        directory. When found and Pillow is available, the real image
+        is displayed. Otherwise a warm placeholder is shown.
         """
         row = tk.Frame(self._board, bg=BG_BOARD)
         row.pack(pady=(0, 16))
 
-        self._make_photo_widget(row, "Gertrude", "gertrude.jpg")
-
-        # Spacer
-        tk.Frame(row, bg=BG_BOARD, width=60).pack(side=tk.LEFT)
-
-        self._make_photo_widget(row, "Marty", "marty.jpg")
+        self._make_photo_widget(row, "Gertrude & Marty",
+                                "gertrude_and_marty.jpg",
+                                width=260, height=320)
 
     def _make_photo_widget(self, parent: tk.Frame,
                            label_text: str,
-                           filename: str):
+                           filename: str,
+                           width: int = 260,
+                           height: int = 320):
         """
-        Create a photo display widget (Canvas placeholder or real image).
+        Create a photo display widget (real image or warm placeholder).
+
+        Tries ``filename`` first, then falls back to common variant names
+        so adding the photo later is as simple as copying a file.
 
         Args:
-            parent:     The parent frame to pack into.
-            label_text: Caption to display below / on the placeholder.
-            filename:   Photo filename to look for in the photos/ directory.
+            parent:     Parent frame to pack into.
+            label_text: Caption shown below / on the placeholder.
+            filename:   Primary filename to look for in photos/.
+            width:      Display width in pixels.
+            height:     Display height in pixels.
         """
         container = tk.Frame(parent, bg=BG_BOARD)
         container.pack(side=tk.LEFT)
 
         photo_loaded = False
-        photo_path   = os.path.join(PHOTOS_DIR, filename)
 
-        if PILLOW_AVAILABLE and os.path.isfile(photo_path):
-            try:
-                img = Image.open(photo_path).resize((150, 150), Image.LANCZOS)
-                tk_img = ImageTk.PhotoImage(img)
-                lbl = tk.Label(container, image=tk_img,
-                               bg=BG_BOARD, bd=3, relief=tk.GROOVE)
-                lbl.image = tk_img   # Keep reference to prevent GC
-                lbl.pack()
-                photo_loaded = True
-            except Exception:
-                photo_loaded = False
+        # Try primary filename, then common fallbacks
+        candidates = [filename]
+        base, _ext = os.path.splitext(filename)
+        for ext in (".jpg", ".jpeg", ".png"):
+            alt = base + ext
+            if alt not in candidates:
+                candidates.append(alt)
+
+        if PILLOW_AVAILABLE:
+            for name in candidates:
+                photo_path = os.path.join(PHOTOS_DIR, name)
+                if os.path.isfile(photo_path):
+                    try:
+                        img = Image.open(photo_path).resize(
+                            (width, height), Image.LANCZOS
+                        )
+                        tk_img = ImageTk.PhotoImage(img)
+                        lbl = tk.Label(container, image=tk_img,
+                                       bg=BG_BOARD, bd=4, relief=tk.GROOVE)
+                        lbl.image = tk_img   # Keep reference to prevent GC
+                        lbl.pack()
+                        photo_loaded = True
+                        break
+                    except Exception:
+                        continue
 
         if not photo_loaded:
-            # Gray placeholder canvas
+            # Warm placeholder canvas
             canvas = tk.Canvas(
                 container,
-                width=150, height=150,
-                bg="#B0B0B0",
-                highlightthickness=3,
-                highlightbackground="#888888"
+                width=width, height=height,
+                bg="#B8A090",
+                highlightthickness=4,
+                highlightbackground="#A09070"
             )
             canvas.pack()
-            # Centered text label on the placeholder
-            canvas.create_rectangle(0, 0, 150, 150, fill="#B0B0B0", outline="")
+            canvas.create_rectangle(0, 0, width, height, fill="#B8A090", outline="")
             canvas.create_text(
-                75, 75,
+                width // 2, height // 2 - 20,
+                text="\U0001f491",   # 💑 emoji
+                font=("Segoe UI Emoji", 48),
+                fill=FG_PHOTO_LABEL,
+                anchor=tk.CENTER
+            )
+            canvas.create_text(
+                width // 2, height // 2 + 30,
                 text=label_text,
                 font=FONT_PHOTO,
                 fill=FG_PHOTO_LABEL,
@@ -545,7 +569,7 @@ class GertrudeShell(tk.Tk):
             font=FONT_PHOTO,
             bg=BG_BOARD,
             fg=FG_GREETING
-        ).pack(pady=(4, 0))
+        ).pack(pady=(6, 0))
 
     def _build_app_buttons(self):
         """
@@ -682,9 +706,21 @@ class GertrudeShell(tk.Tk):
             )
             return
 
+        # Use a dedicated Chrome profile directory so sessions (cookies, logins)
+        # persist between runs — Gertrude stays logged in to Facebook and AOL.
+        if platform.system() == "Windows":
+            _appdata = os.environ.get("APPDATA", os.path.expanduser("~"))
+            profile_dir = os.path.join(_appdata, "GertrudeShell", "ChromeProfile")
+        else:
+            profile_dir = os.path.join(os.path.expanduser("~"), ".gertrude_shell", "chrome_profile")
+        os.makedirs(profile_dir, exist_ok=True)
+
         try:
             proc = subprocess.Popen(
-                [chrome_path, "--new-window", f"--app={url}"],
+                [chrome_path,
+                 f"--user-data-dir={profile_dir}",
+                 "--new-window",
+                 f"--app={url}"],
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL
             )

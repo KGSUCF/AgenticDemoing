@@ -1,24 +1,26 @@
-GERTRUDE SHELL - PHOTO INSTRUCTIONS
+GERTRUDE SHELL — PHOTO INSTRUCTIONS
 =====================================
 
-This folder is where Gertrude's photos go.
+Place the Gertrude & Marty portrait photo in this folder (photos/)
+with this filename:
 
-WHAT TO ADD:
-  gertrude.jpg   - A photo of Gertrude (displayed on the main board)
-  marty.jpg      - A photo of Marty (displayed on the main board)
+    gertrude_and_marty.jpg
 
-RECOMMENDED SIZES:
-  - 300x300 pixels or larger (will be displayed at ~200x200 in the UI)
+(The beautiful WWII-era portrait of Gertrude and Marty together)
+
+RECOMMENDED SIZE:
+  - At least 260 × 320 pixels (portrait orientation)
   - JPEG or PNG format
-  - Portrait orientation works best
 
-HOW TO ADD THEM:
-  1. Copy your photo files into this folder (photos/).
-  2. Name them exactly: gertrude.jpg and marty.jpg
-  3. Restart the app — the photos will appear automatically on the home board.
+HOW TO ADD:
+  1. Copy the photo file into this folder (photos/).
+  2. Name it exactly: gertrude_and_marty.jpg
+  3. Restart the app — the photo appears automatically on the main board.
 
-If the photo files are missing, the app shows a placeholder silhouette image
-so the app still works perfectly without photos.
+If the file is missing the app shows a warm placeholder — it still works
+perfectly without the photo. Adding it is optional personalisation.
 
-NOTE: If you want to use a different filename (e.g., gertrude.png), update the
-`photoPaths` object in main.js accordingly.
+Also accepted (fallbacks, in order):
+  gertrude_and_marty.png
+  gertrude.jpg
+  gertrude.png

@@ -24,9 +24,16 @@ from typing import Any
 
 # Mapping from URL to friendly display name.
 # Extend this dict to add new apps without touching GUI code.
+_MILO_URL = (
+    "https://photos.google.com/share/"
+    "AF1QipNJPdaXpqnpWA4lwzgMgta8gjcUI3OORBzlSv9Ny9QHVte3s4c16CSE8GHf0pNssw"
+    "?key=TTBGSzR5QU0xblJXR3hQY05JNnBMNDNxUmhHWGxn"
+)
+
 URL_DISPLAY_NAMES: dict[str, str] = {
     "https://www.facebook.com":  "Facebook",
     "https://photos.google.com": "Milo (Google Photos)",
+    _MILO_URL:                   "Milo (Google Photos)",
     "https://www.aol.com":       "AOL News",
     "https://mail.aol.com":      "AOL Mail",
     "desktop":                   "Desktop",

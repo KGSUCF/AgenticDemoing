@@ -49,7 +49,8 @@ APP_REGISTRY = [
         "id": "milo",
         "label": "Milo\n(Photos)",
         "display_name": "Milo (Photos)",
-        "url": "https://photos.google.com",
+        # Gertrude's grandchild Milo — specific shared album
+        "url": "https://photos.google.com/share/AF1QipNJPdaXpqnpWA4lwzgMgta8gjcUI3OORBzlSv9Ny9QHVte3s4c16CSE8GHf0pNssw?key=TTBGSzR5QU0xblJXR3hQY05JNnBMNDNxUmhHWGxn",
         "domain_key": "photos.google.com",
         "emoji": "\U0001f4f7",
         "bg_color": "#34A853",

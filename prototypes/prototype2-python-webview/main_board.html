@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gertrude's Computer</title>
+  <style>
+    /* ── Reset & base ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #F5E6D0;          /* warm parchment behind the board */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* ── Outer bevel ──────────────────────────────────────────────── */
+    .bevel-outer {
+      width: calc(100vw - 32px);
+      height: calc(100vh - 32px);
+      background: #C8A97A;
+      border-radius: 10px;
+      /* 3-D raised effect */
+      box-shadow:
+        inset 0  3px 6px rgba(255,255,255,0.55),
+        inset 0 -3px 6px rgba(0,0,0,0.35),
+        0 6px 24px rgba(0,0,0,0.5);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Title bar (always visible in bevel) ─────────────────────── */
+    .title-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px 8px 16px;
+      flex-shrink: 0;
+    }
+
+    .title-text {
+      font-size: clamp(18px, 2.2vw, 28px);
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+
+    /* END button — always visible, upper-right, red circle */
+    .end-button {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 38% 35%, #FF3333, #AA0000);
+      color: #fff;
+      border: 3px solid rgba(255,255,255,0.8);
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.55), inset 0 1px 3px rgba(255,255,255,0.4);
+      transition: transform 0.1s, box-shadow 0.1s;
+      flex-shrink: 0;
+    }
+    .end-button:hover  { transform: scale(1.07); }
+    .end-button:active { transform: scale(0.95); box-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+
+    /* ── Inner board ──────────────────────────────────────────────── */
+    .board {
+      flex: 1;
+      background: #FFF3E0;
+      border-radius: 6px;
+      /* 3-D sunken inset */
+      box-shadow:
+        inset 3px 3px 8px rgba(0,0,0,0.25),
+        inset -2px -2px 6px rgba(255,255,255,0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 16px;
+      overflow: hidden;
+    }
+
+    /* ── Greeting / context label ─────────────────────────────────── */
+    .greeting {
+      font-size: clamp(20px, 2.8vw, 34px);
+      font-weight: bold;
+      color: #6B3A10;
+      text-align: center;
+      line-height: 1.3;
+      min-height: 1.3em;
+    }
+
+    /* ── Photo frame ──────────────────────────────────────────────── */
+    .photo-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .photo-frame {
+      width: min(260px, 30vw);
+      height: min(320px, 28vh);
+      border: 5px solid #C8A97A;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #B0A090;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 3px 3px 10px rgba(0,0,0,0.4), inset 1px 1px 4px rgba(255,255,255,0.3);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      padding: 12px;
+    }
+
+    .photo-placeholder .placeholder-icon {
+      font-size: 48px;
+      opacity: 0.8;
+    }
+
+    .photo-caption {
+      font-size: 16px;
+      font-weight: bold;
+      color: #7A4A1A;
+      font-style: italic;
+    }
+
+    /* ── App button grid ──────────────────────────────────────────── */
+    .app-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 860px;
+    }
+
+    .app-button {
+      min-width: 150px;
+      min-height: 68px;
+      padding: 14px 22px;
+      font-size: clamp(16px, 1.8vw, 22px);
+      font-weight: bold;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      line-height: 1.25;
+      text-align: center;
+      /* 3-D raised sheen */
+      box-shadow:
+        0 4px 8px rgba(0,0,0,0.4),
+        inset 0 1px 3px rgba(255,255,255,0.35);
+      transition: transform 0.1s, box-shadow 0.1s, filter 0.1s;
+    }
+    .app-button:hover {
+      filter: brightness(1.12);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.4), inset 0 1px 3px rgba(255,255,255,0.35);
+    }
+    .app-button:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.35), inset 0 2px 4px rgba(0,0,0,0.2);
+      filter: brightness(0.95);
+    }
+
+    /* ── First-run setup modal ────────────────────────────────────── */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    .modal-backdrop.hidden { display: none; }
+
+    .modal {
+      background: #FFF8F0;
+      border-radius: 10px;
+      padding: 28px 32px;
+      max-width: 520px;
+      width: 90%;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal h2 {
+      font-size: 22px;
+      color: #4A2C0A;
+      margin-bottom: 6px;
+    }
+
+    .modal p.subtitle {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 18px;
+    }
+
+    .setup-section { margin-bottom: 20px; }
+    .setup-section h3 { font-size: 17px; color: #5A3010; margin-bottom: 10px; }
+
+    .app-checkbox-row {
+      display: flex; align-items: center; gap: 10px;
+      margin: 6px 0; font-size: 16px; color: #4A2C0A;
+    }
+    .app-checkbox-row input[type=checkbox] { width: 20px; height: 20px; cursor: pointer; }
+
+    .field-row { margin-bottom: 12px; }
+    .field-row label { display: block; font-size: 15px; color: #4A2C0A; margin-bottom: 4px; }
+    .field-row input {
+      width: 100%; padding: 9px 12px;
+      font-size: 16px; border-radius: 6px;
+      border: 2px solid #C8A97A; background: #FFFAF4;
+      outline: none;
+    }
+    .field-row input:focus { border-color: #8B5A2B; }
+
+    .note {
+      font-size: 12px;
+      color: #999;
+      font-style: italic;
+      margin-top: -8px;
+      margin-bottom: 12px;
+    }
+
+    .save-btn {
+      width: 100%; padding: 14px;
+      font-size: 18px; font-weight: bold;
+      background: #4CAF50; color: #fff;
+      border: none; border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      transition: filter 0.1s;
+    }
+    .save-btn:hover { filter: brightness(1.1); }
+
+    /* ── Security warning ────────────────────────────────────────── */
+    .security-modal .modal {
+      border: 4px solid #CC0000;
+    }
+    .security-modal h2 { color: #CC0000; }
+
+    .security-buttons {
+      display: flex; gap: 12px; margin-top: 18px;
+    }
+    .security-buttons button {
+      flex: 1; padding: 12px;
+      font-size: 16px; font-weight: bold;
+      border: none; border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn-go-back  { background: #4CAF50; color: #fff; }
+    .btn-continue { background: #aaa; color: #fff; }
+  </style>
+</head>
+<body>
+
+<!-- ── Outer bevel + title bar ──────────────────────────────────────── -->
+<div class="bevel-outer">
+  <div class="title-bar">
+    <span class="title-text">Gertrude's Computer</span>
+    <button class="end-button" id="endBtn" title="Return to main board">END</button>
+  </div>
+
+  <!-- ── Main board ──────────────────────────────────────────────────── -->
+  <div class="board" id="mainBoard">
+
+    <!-- Greeting / context label -->
+    <div class="greeting" id="greetingLabel">Loading…</div>
+
+    <!-- Photo -->
+    <div class="photo-section">
+      <div class="photo-frame" id="photoFrame">
+        <div class="photo-placeholder">
+          <span class="placeholder-icon">💑</span>
+          <span>Gertrude &amp; Marty</span>
+        </div>
+      </div>
+      <span class="photo-caption">Gertrude &amp; Marty</span>
+    </div>
+
+    <!-- App buttons — populated dynamically from Python -->
+    <div class="app-grid" id="appGrid">
+      <!-- Buttons inserted by buildAppButtons() below -->
+    </div>
+
+  </div><!-- /.board -->
+</div><!-- /.bevel-outer -->
+
+
+<!-- ── First-run setup modal ────────────────────────────────────────── -->
+<div class="modal-backdrop hidden" id="setupModal">
+  <div class="modal">
+    <h2>Welcome to Gertrude's Computer!</h2>
+    <p class="subtitle">
+      Please choose which apps to show and enter login details once.
+      After this Gertrude will stay signed in automatically.
+    </p>
+
+    <div class="setup-section">
+      <h3>Apps to show</h3>
+      <div id="appCheckboxes"><!-- filled by JS --></div>
+    </div>
+
+    <div class="setup-section">
+      <h3>Facebook login</h3>
+      <div class="field-row">
+        <label>Email or username</label>
+        <input type="text" id="fbUser" autocomplete="username">
+      </div>
+      <div class="field-row">
+        <label>Password</label>
+        <input type="password" id="fbPass" autocomplete="current-password">
+      </div>
+    </div>
+
+    <div class="setup-section">
+      <h3>AOL Mail login</h3>
+      <div class="field-row">
+        <label>Email or username</label>
+        <input type="text" id="aolUser" autocomplete="username">
+      </div>
+      <div class="field-row">
+        <label>Password</label>
+        <input type="password" id="aolPass" autocomplete="current-password">
+      </div>
+      <p class="note">
+        Note: credentials are stored with basic encoding (not full encryption).
+        Once Gertrude is signed in, the browser remembers her sessions
+        automatically — she will not need to sign in again.
+      </p>
+    </div>
+
+    <button class="save-btn" id="saveSetupBtn">Save &amp; Start</button>
+  </div>
+</div>
+
+
+<!-- ── Security warning modal ───────────────────────────────────────── -->
+<div class="modal-backdrop hidden security-modal" id="securityModal">
+  <div class="modal">
+    <h2>⚠️ Website Blocked</h2>
+    <p id="securityReason" style="font-size:16px;color:#333;margin:12px 0;">
+      This website is not on the approved list.
+    </p>
+    <p style="font-size:15px;color:#555;">
+      To keep Gertrude safe, this website has been blocked.
+      Would you like to go back to the main board?
+    </p>
+    <div class="security-buttons">
+      <button class="btn-go-back"  id="secGoBack">Go Back (Safe)</button>
+      <button class="btn-continue" id="secContinue">Continue Anyway</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  'use strict';
+
+  /* ── Utility: wait for pywebview bridge ──────────────────────────── */
+  function whenReady(fn) {
+    if (window.pywebview && window.pywebview.api) {
+      fn();
+    } else {
+      window.addEventListener('pywebviewready', fn, { once: true });
+    }
+  }
+
+  /* ── Greeting ────────────────────────────────────────────────────── */
+  function refreshGreeting() {
+    window.pywebview.api.get_full_greeting().then(function (text) {
+      document.getElementById('greetingLabel').textContent = text;
+    });
+  }
+
+  /* ── Photo ───────────────────────────────────────────────────────── */
+  function loadPhoto() {
+    window.pywebview.api.get_photo_data().then(function (dataUri) {
+      if (!dataUri) { return; }
+      var frame = document.getElementById('photoFrame');
+      var img = document.createElement('img');
+      img.src = dataUri;
+      img.alt = 'Gertrude and Marty';
+      frame.innerHTML = '';
+      frame.appendChild(img);
+    });
+  }
+
+  /* ── App buttons ─────────────────────────────────────────────────── */
+  var APP_COLORS = {
+    facebook: { bg: '#1877F2', fg: '#fff' },
+    milo:     { bg: '#34A853', fg: '#fff' },
+    aol_news: { bg: '#FF0000', fg: '#fff' },
+    aol_mail: { bg: '#FF6600', fg: '#fff' },
+    desktop:  { bg: '#5C5C8A', fg: '#fff' },
+  };
+
+  var PENDING_NAV_URL = null;  // used by security modal
+
+  function buildAppButtons(apps) {
+    var grid = document.getElementById('appGrid');
+    grid.innerHTML = '';
+    apps.forEach(function (app) {
+      var c = APP_COLORS[app.id] || { bg: '#888', fg: '#fff' };
+      var btn = document.createElement('button');
+      btn.className = 'app-button';
+      btn.innerHTML = app.label.replace('\n', '<br>');
+      btn.style.background = c.bg;
+      btn.style.color       = c.fg;
+      btn.onclick = function () { openApp(app.id); };
+      grid.appendChild(btn);
+    });
+  }
+
+  function openApp(appId) {
+    window.pywebview.api.navigate_to_app(appId).then(function (result) {
+      if (!result.success) {
+        showSecurityWarning(result.reason, null);
+      }
+      // On success the window navigates away; we get the injected header there.
+    });
+  }
+
+  /* ── END button ──────────────────────────────────────────────────── */
+  document.getElementById('endBtn').addEventListener('click', function () {
+    window.pywebview.api.go_home();
+  });
+
+  /* ── Security modal ──────────────────────────────────────────────── */
+  function showSecurityWarning(reason, url) {
+    PENDING_NAV_URL = url;
+    document.getElementById('securityReason').textContent =
+      reason || 'This website is not on the approved list.';
+    document.getElementById('securityModal').classList.remove('hidden');
+  }
+
+  document.getElementById('secGoBack').addEventListener('click', function () {
+    document.getElementById('securityModal').classList.add('hidden');
+    PENDING_NAV_URL = null;
+  });
+
+  document.getElementById('secContinue').addEventListener('click', function () {
+    document.getElementById('securityModal').classList.add('hidden');
+    if (PENDING_NAV_URL && window.pywebview) {
+      window.location.href = PENDING_NAV_URL;
+    }
+    PENDING_NAV_URL = null;
+  });
+
+  /* ── First-run setup modal ───────────────────────────────────────── */
+  function showSetup(setupInfo) {
+    // Build checkboxes
+    var box = document.getElementById('appCheckboxes');
+    box.innerHTML = '';
+    setupInfo.all_apps.forEach(function (app) {
+      var row = document.createElement('label');
+      row.className = 'app-checkbox-row';
+      var cb = document.createElement('input');
+      cb.type    = 'checkbox';
+      cb.value   = app.id;
+      cb.checked = setupInfo.apps_enabled.includes(app.id);
+      cb.id      = 'cb_' + app.id;
+      row.appendChild(cb);
+      row.appendChild(document.createTextNode(' ' + app.label));
+      box.appendChild(row);
+    });
+    document.getElementById('setupModal').classList.remove('hidden');
+  }
+
+  document.getElementById('saveSetupBtn').addEventListener('click', function () {
+    var enabled = Array.from(
+      document.querySelectorAll('#appCheckboxes input[type=checkbox]:checked')
+    ).map(function (cb) { return cb.value; });
+
+    window.pywebview.api.save_setup(
+      enabled,
+      document.getElementById('fbUser').value,
+      document.getElementById('fbPass').value,
+      document.getElementById('aolUser').value,
+      document.getElementById('aolPass').value
+    ).then(function () {
+      document.getElementById('setupModal').classList.add('hidden');
+      // Reload app buttons to reflect selection
+      window.pywebview.api.get_apps().then(buildAppButtons);
+    });
+  });
+
+  /* ── Initialise once pywebview bridge is ready ───────────────────── */
+  whenReady(function () {
+    refreshGreeting();
+    loadPhoto();
+
+    window.pywebview.api.get_setup_info().then(function (info) {
+      if (info.first_run) {
+        showSetup(info);
+      }
+    });
+
+    window.pywebview.api.get_apps().then(buildAppButtons);
+
+    // Refresh greeting every minute
+    setInterval(refreshGreeting, 60000);
+  });
+</script>
+</body>
+</html>
