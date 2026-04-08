@@ -111,6 +111,7 @@ FONT_END      = ("Segoe UI", 13, "bold")
 FONT_SETUP    = ("Segoe UI", 13)
 
 GREETING_REFRESH_MS = 60_000
+BANNER_H = 220          # Height of the floating banner strip in pixels
 
 
 # ---------------------------------------------------------------------------
@@ -500,8 +501,8 @@ class GertrudeShell(tk.Tk):
         self._active_url = url
         friendly = shell_logic.get_app_display_name(url)
 
-        # Hide the main board and float a small always-on-top banner.
-        # Chrome launches maximized independently — no coordinate math needed.
+        # Hide the main board, show the banner, then open Chrome positioned
+        # to start exactly below the banner so no content is obscured.
         self.withdraw()
         self._open_banner(friendly)
         self._launch_chrome(url)
@@ -521,8 +522,7 @@ class GertrudeShell(tk.Tk):
         win.overrideredirect(True)          # No OS title bar on the banner itself
 
         screen_w = win.winfo_screenwidth()
-        banner_h = 220                      # Tall, comfortable banner strip
-        win.geometry(f"{screen_w}x{banner_h}+0+0")
+        win.geometry(f"{screen_w}x{BANNER_H}+0+0")
         win.attributes("-topmost", True)
         win.configure(bg=BG_BEVEL_OUTER)
 
@@ -584,13 +584,16 @@ class GertrudeShell(tk.Tk):
                 "Please install Chrome, or ask a family member for help.")
             return
 
-        # --start-maximized fills the whole screen; the always-on-top banner
-        # floats above it so there is no gap or offset to calculate.
+        # Position Chrome to start exactly at the bottom edge of the banner
+        # so the top of the page is never hidden behind it.
+        screen_w = self.winfo_screenwidth()
+        screen_h = self.winfo_screenheight()
         args = [
             chrome_path,
             f"--user-data-dir={PROFILE_DIR}",
             "--new-window",
-            "--start-maximized",
+            f"--window-position=0,{BANNER_H}",
+            f"--window-size={screen_w},{screen_h - BANNER_H}",
             f"--app={url}",
         ]
 
