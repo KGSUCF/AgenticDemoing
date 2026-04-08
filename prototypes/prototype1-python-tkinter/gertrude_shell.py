@@ -327,14 +327,6 @@ class GertrudeShell(tk.Tk):
                  font=FONT_TITLE, bg=BG_BEVEL_OUTER,
                  fg="#FFFFFF", padx=16).pack(side=tk.LEFT)
 
-        # Small ⚙ Settings button for caregiver access (left of END)
-        tk.Button(bar, text="⚙", font=("Segoe UI", 12),
-                  bg=BG_BEVEL_OUTER, fg="#FFFFFF",
-                  activebackground="#A08050", activeforeground="#FFFFFF",
-                  relief=tk.FLAT, bd=0, padx=6, pady=4,
-                  cursor="hand2", command=self._show_setup
-                  ).pack(side=tk.RIGHT, padx=(0, 4), pady=4)
-
         self._end_button = tk.Button(
             bar, text="END",
             font=("Segoe UI", 18, "bold"),
