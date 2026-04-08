@@ -268,8 +268,9 @@ class GertrudeShell(tk.Tk):
     def __init__(self):
         super().__init__()
 
-        # Hide until fully built — prevents the empty-window flash at startup
-        self.withdraw()
+        # Make fully transparent while building — more reliable than withdraw()
+        # on Windows because state("zoomed") can un-withdraw a withdrawn window.
+        self.wm_attributes("-alpha", 0)
 
         self._config = shell_logic.load_config(CONFIG_PATH)
         self._chrome_procs: list[subprocess.Popen] = []
@@ -278,11 +279,6 @@ class GertrudeShell(tk.Tk):
 
         self.title("Gertrude Shell")
         self.configure(bg=BG_MAIN)
-
-        if platform.system() == "Windows":
-            self.state("zoomed")
-        else:
-            self.geometry("1024x768")
         self.resizable(True, True)
 
         os.makedirs(PROFILE_DIR, exist_ok=True)
@@ -290,8 +286,12 @@ class GertrudeShell(tk.Tk):
         self._build_ui()
         self._refresh_greeting()
 
-        # Show fully formed
-        self.deiconify()
+        # Show fully formed, maximised
+        if platform.system() == "Windows":
+            self.state("zoomed")
+        else:
+            self.geometry("1024x768")
+        self.wm_attributes("-alpha", 1)
 
     # ------------------------------------------------------------------ #
     # UI construction                                                      #
@@ -500,23 +500,13 @@ class GertrudeShell(tk.Tk):
         self._active_url = url
         friendly = shell_logic.get_app_display_name(url)
 
-        screen_w = self.winfo_screenwidth()
-        screen_h = self.winfo_screenheight()
-        BANNER_H  = 200          # tall enough to be comfortable; user wanted ~2×
-
-        # Hide the main board and float a dedicated banner window instead.
-        # Using a separate Toplevel avoids DPI/geometry quirks when resizing
-        # the root window and guarantees the banner lands at exactly x=0, y=0.
+        # Hide the main board and float a small always-on-top banner.
+        # Chrome launches maximized independently — no coordinate math needed.
         self.withdraw()
-        self._open_banner(friendly, screen_w, BANNER_H)
+        self._open_banner(friendly)
+        self._launch_chrome(url)
 
-        # Launch Chrome to fill the space below the banner
-        self._launch_chrome(url,
-                            pos_y=BANNER_H,
-                            win_w=screen_w,
-                            win_h=screen_h - BANNER_H)
-
-    def _open_banner(self, app_name: str, screen_w: int, banner_h: int):
+    def _open_banner(self, app_name: str):
         """Create a full-width always-on-top banner showing the app name + END button."""
         if self._banner_win is not None:
             try:
@@ -524,34 +514,40 @@ class GertrudeShell(tk.Tk):
             except Exception:
                 pass
 
-        win = tk.Toplevel(self)
+        # Standalone Toplevel (no parent) so it is never affected by the
+        # parent window being withdrawn — this is the most reliable way to
+        # keep the banner visible and correctly positioned on Windows.
+        win = tk.Toplevel()
         win.overrideredirect(True)          # No OS title bar on the banner itself
+
+        screen_w = win.winfo_screenwidth()
+        banner_h = 220                      # Tall, comfortable banner strip
         win.geometry(f"{screen_w}x{banner_h}+0+0")
         win.attributes("-topmost", True)
         win.configure(bg=BG_BEVEL_OUTER)
 
         # Inner padding frame
         inner = tk.Frame(win, bg=BG_BEVEL_OUTER)
-        inner.pack(fill=tk.BOTH, expand=True, padx=14, pady=10)
+        inner.pack(fill=tk.BOTH, expand=True, padx=14, pady=16)
 
         # Title on the left
         tk.Label(inner, text="Gertrude's Computer",
-                 font=("Segoe UI", 22, "bold"),
+                 font=("Segoe UI", 26, "bold"),
                  bg=BG_BEVEL_OUTER, fg="#FFFFFF",
                  padx=12).pack(side=tk.LEFT)
 
         # App name in the centre
         tk.Label(inner, text=f"Now open: {app_name}",
-                 font=("Segoe UI", 18),
+                 font=("Segoe UI", 20),
                  bg=BG_BEVEL_OUTER, fg="#FFF5CC").pack(side=tk.LEFT, padx=20)
 
         # Big red END button on the right
         tk.Button(inner, text="END",
-                  font=("Segoe UI", 22, "bold"),
+                  font=("Segoe UI", 26, "bold"),
                   bg="#CC0000", fg="#FFFFFF",
                   activebackground="#FF3333", activeforeground="#FFFFFF",
                   relief=tk.RAISED, bd=5,
-                  padx=30, pady=16,
+                  padx=36, pady=20,
                   cursor="hand2",
                   command=self._on_end_button
                   ).pack(side=tk.RIGHT, padx=16)
@@ -579,10 +575,7 @@ class GertrudeShell(tk.Tk):
 
         self._greeting_var.set(shell_logic.get_greeting(datetime.now().hour))
 
-    def _launch_chrome(self, url: str,
-                       pos_y: int = 0,
-                       win_w: int = 0,
-                       win_h: int = 0):
+    def _launch_chrome(self, url: str):
         chrome_path = find_chrome()
         if not chrome_path:
             messagebox.showwarning(
@@ -591,18 +584,15 @@ class GertrudeShell(tk.Tk):
                 "Please install Chrome, or ask a family member for help.")
             return
 
-        args = [chrome_path, f"--user-data-dir={PROFILE_DIR}", "--new-window"]
-
-        if pos_y and win_w and win_h:
-            # Position Chrome to start exactly below the banner strip
-            args += [
-                f"--window-position=0,{pos_y}",
-                f"--window-size={win_w},{win_h}",
-            ]
-        else:
-            args.append("--start-maximized")
-
-        args.append(f"--app={url}")
+        # --start-maximized fills the whole screen; the always-on-top banner
+        # floats above it so there is no gap or offset to calculate.
+        args = [
+            chrome_path,
+            f"--user-data-dir={PROFILE_DIR}",
+            "--new-window",
+            "--start-maximized",
+            f"--app={url}",
+        ]
 
         try:
             proc = subprocess.Popen(args,
