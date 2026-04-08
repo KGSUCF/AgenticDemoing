@@ -82,13 +82,6 @@ ALL_APPS = [
         "color": "#FF6600",
         "fg":    "#FFFFFF",
     },
-    {
-        "key":   "desktop",
-        "label": "Desktop",
-        "url":   "desktop",
-        "color": "#5C5C8A",
-        "fg":    "#FFFFFF",
-    },
 ]
 
 # ---------------------------------------------------------------------------
