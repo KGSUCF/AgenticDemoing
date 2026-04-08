@@ -17,6 +17,8 @@ import sys
 import os
 import subprocess
 import platform
+import threading
+import urllib.request
 import tkinter as tk
 from tkinter import messagebox
 from datetime import datetime
@@ -104,7 +106,9 @@ FONT_END      = ("Segoe UI", 13, "bold")
 FONT_SETUP    = ("Segoe UI", 13)
 
 GREETING_REFRESH_MS = 60_000
-BANNER_H = 220          # Height of the floating banner strip in pixels
+BANNER_H            = 220           # Height of the floating banner strip in pixels
+WEATHER_LOCATION    = "19095"       # Wyncote, PA
+WEATHER_REFRESH_MS  = 1_800_000     # Refresh weather every 30 minutes
 
 
 # ---------------------------------------------------------------------------
@@ -279,6 +283,7 @@ class GertrudeShell(tk.Tk):
 
         self._build_ui()
         self._refresh_greeting()
+        self._refresh_weather()
 
         # Show fully formed, maximised
         if platform.system() == "Windows":
@@ -310,6 +315,7 @@ class GertrudeShell(tk.Tk):
         self._board_content.pack(fill=tk.BOTH, expand=True)
 
         self._build_greeting()
+        self._build_info_bar()
         self._build_photo_row()
         self._build_app_buttons()
 
@@ -347,6 +353,23 @@ class GertrudeShell(tk.Tk):
             font=("Segoe UI", 22, "bold"),
             bg=BG_BOARD, fg=FG_GREETING, pady=10)
         self._greeting_label.pack(fill=tk.X, padx=16)
+
+    def _build_info_bar(self):
+        """Date/time line and weather line below the greeting."""
+        info = tk.Frame(self._board_content, bg=BG_BOARD)
+        info.pack(fill=tk.X, padx=20, pady=(0, 8))
+
+        self._datetime_var = tk.StringVar(value="")
+        tk.Label(info, textvariable=self._datetime_var,
+                 font=("Segoe UI", 17),
+                 bg=BG_BOARD, fg=FG_GREETING,
+                 anchor=tk.W).pack(fill=tk.X)
+
+        self._weather_var = tk.StringVar(value="Weather loading\u2026")
+        tk.Label(info, textvariable=self._weather_var,
+                 font=("Segoe UI", 15),
+                 bg=BG_BOARD, fg=FG_GREETING,
+                 anchor=tk.W).pack(fill=tk.X)
 
     def _build_photo_row(self):
         row = tk.Frame(self._board_content, bg=BG_BOARD)
@@ -469,12 +492,41 @@ class GertrudeShell(tk.Tk):
     # ------------------------------------------------------------------ #
 
     def _refresh_greeting(self):
+        now = datetime.now()
         if self._active_url is None:
-            self._greeting_var.set(shell_logic.get_greeting(datetime.now().hour))
+            self._greeting_var.set(shell_logic.get_greeting(now.hour))
         else:
             friendly = shell_logic.get_app_display_name(self._active_url)
             self._greeting_var.set(f"Now open: {friendly}")
+
+        # Date and time — str(now.day) avoids platform-specific %-d / %#d
+        day_str  = now.strftime("%A")                                 # "Tuesday"
+        date_str = now.strftime("%B ") + str(now.day) + now.strftime(", %Y")  # "April 8, 2026"
+        time_str = now.strftime("%I:%M %p").lstrip("0")               # "9:47 AM"
+        self._datetime_var.set(f"{day_str}, {date_str}  \u00b7  {time_str}")
+
         self.after(GREETING_REFRESH_MS, self._refresh_greeting)
+
+    def _refresh_weather(self):
+        """Start a background weather fetch, then reschedule for 30 minutes later."""
+        threading.Thread(target=self._fetch_weather_thread, daemon=True).start()
+        self.after(WEATHER_REFRESH_MS, self._refresh_weather)
+
+    def _fetch_weather_thread(self):
+        """Fetch current conditions from wttr.in and post result to the UI thread."""
+        try:
+            url = f"http://wttr.in/{WEATHER_LOCATION}?format=%C+%t"
+            req = urllib.request.Request(
+                url, headers={"User-Agent": "GertrudeShell/1.0"})
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                raw = resp.read().decode("utf-8", errors="replace").strip()
+                # wttr.in prefixes positive temps with "+" — remove it
+                text = raw.replace("+", "").strip()
+                self.after(0, lambda t=text: self._weather_var.set(
+                    f"Wyncote, PA  \u00b7  {t}"))
+        except Exception:
+            # Network unavailable — keep whatever is currently displayed
+            self.after(0, lambda: self._weather_var.set("Weather unavailable"))
 
     # ------------------------------------------------------------------ #
     # Button callbacks                                                     #
