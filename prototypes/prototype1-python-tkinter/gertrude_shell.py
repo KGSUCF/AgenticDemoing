@@ -268,10 +268,13 @@ class GertrudeShell(tk.Tk):
     def __init__(self):
         super().__init__()
 
+        # Hide until fully built — prevents the empty-window flash at startup
+        self.withdraw()
+
         self._config = shell_logic.load_config(CONFIG_PATH)
         self._chrome_procs: list[subprocess.Popen] = []
         self._active_url: Optional[str] = None
-        self._full_geometry: Optional[str] = None   # saved when collapsing to banner
+        self._banner_win: Optional[tk.Toplevel] = None
 
         self.title("Gertrude Shell")
         self.configure(bg=BG_MAIN)
@@ -286,6 +289,9 @@ class GertrudeShell(tk.Tk):
 
         self._build_ui()
         self._refresh_greeting()
+
+        # Show fully formed
+        self.deiconify()
 
     # ------------------------------------------------------------------ #
     # UI construction                                                      #
@@ -493,56 +499,83 @@ class GertrudeShell(tk.Tk):
 
         self._active_url = url
         friendly = shell_logic.get_app_display_name(url)
-        self._greeting_var.set(f"Now open: {friendly}")
 
-        # 1. Hide the board content (greeting/photo/buttons)
-        self._board_content.pack_forget()
-        self.update_idletasks()
-
-        # 2. Save state and un-maximise so we can resize
-        self._was_zoomed = (platform.system() == "Windows"
-                            and self.state() == "zoomed")
-        if self._was_zoomed:
-            self.state("normal")
-            self.update_idletasks()
-        self._full_geometry = self.geometry()
-
-        # 3. Collapse to a slim full-width banner flush with the top of the screen.
-        #    Strip the outer frame's decorative margins so the banner spans edge-to-edge
-        #    and nothing is offset to the right.
         screen_w = self.winfo_screenwidth()
         screen_h = self.winfo_screenheight()
-        self._outer_frame.pack_configure(padx=0, pady=0)
-        BANNER_H = 110          # tall enough for the title + big END button
-        self.geometry(f"{screen_w}x{BANNER_H}+0+0")
-        self.attributes("-topmost", True)
-        self.update()           # full redraw so winfo_height() is accurate
+        BANNER_H  = 200          # tall enough to be comfortable; user wanted ~2×
 
-        # 4. Launch Chrome positioned to fill the space immediately below the banner
-        banner_h = self.winfo_height()
+        # Hide the main board and float a dedicated banner window instead.
+        # Using a separate Toplevel avoids DPI/geometry quirks when resizing
+        # the root window and guarantees the banner lands at exactly x=0, y=0.
+        self.withdraw()
+        self._open_banner(friendly, screen_w, BANNER_H)
+
+        # Launch Chrome to fill the space below the banner
         self._launch_chrome(url,
-                            pos_y=banner_h,
+                            pos_y=BANNER_H,
                             win_w=screen_w,
-                            win_h=screen_h - banner_h)
+                            win_h=screen_h - BANNER_H)
+
+    def _open_banner(self, app_name: str, screen_w: int, banner_h: int):
+        """Create a full-width always-on-top banner showing the app name + END button."""
+        if self._banner_win is not None:
+            try:
+                self._banner_win.destroy()
+            except Exception:
+                pass
+
+        win = tk.Toplevel(self)
+        win.overrideredirect(True)          # No OS title bar on the banner itself
+        win.geometry(f"{screen_w}x{banner_h}+0+0")
+        win.attributes("-topmost", True)
+        win.configure(bg=BG_BEVEL_OUTER)
+
+        # Inner padding frame
+        inner = tk.Frame(win, bg=BG_BEVEL_OUTER)
+        inner.pack(fill=tk.BOTH, expand=True, padx=14, pady=10)
+
+        # Title on the left
+        tk.Label(inner, text="Gertrude's Computer",
+                 font=("Segoe UI", 22, "bold"),
+                 bg=BG_BEVEL_OUTER, fg="#FFFFFF",
+                 padx=12).pack(side=tk.LEFT)
+
+        # App name in the centre
+        tk.Label(inner, text=f"Now open: {app_name}",
+                 font=("Segoe UI", 18),
+                 bg=BG_BEVEL_OUTER, fg="#FFF5CC").pack(side=tk.LEFT, padx=20)
+
+        # Big red END button on the right
+        tk.Button(inner, text="END",
+                  font=("Segoe UI", 22, "bold"),
+                  bg="#CC0000", fg="#FFFFFF",
+                  activebackground="#FF3333", activeforeground="#FFFFFF",
+                  relief=tk.RAISED, bd=5,
+                  padx=30, pady=16,
+                  cursor="hand2",
+                  command=self._on_end_button
+                  ).pack(side=tk.RIGHT, padx=16)
+
+        win.update_idletasks()
+        self._banner_win = win
 
     def _on_end_button(self):
-        """Close all Chrome windows and restore the full board."""
+        """Close all Chrome windows, destroy the banner, restore the full board."""
         self._close_all_chrome()
         self._active_url = None
 
-        # Stop floating on top
-        self.attributes("-topmost", False)
+        # Destroy the floating banner
+        if self._banner_win is not None:
+            try:
+                self._banner_win.destroy()
+            except Exception:
+                pass
+            self._banner_win = None
 
-        # Restore window to full size
+        # Restore main window
         self.deiconify()
-        if platform.system() == "Windows" and getattr(self, "_was_zoomed", True):
+        if platform.system() == "Windows":
             self.state("zoomed")
-        elif self._full_geometry:
-            self.geometry(self._full_geometry)
-
-        # Restore outer frame margins and show board content again
-        self._outer_frame.pack_configure(padx=20, pady=20)
-        self._board_content.pack(fill=tk.BOTH, expand=True)
 
         self._greeting_var.set(shell_logic.get_greeting(datetime.now().hour))
 
