@@ -57,15 +57,15 @@ CHROME_PATHS_WINDOWS = [
 
 ALL_APPS = [
     {
-        "key":   "facebook",
-        "label": "Facebook",
-        "url":   "https://www.facebook.com",
-        "color": "#1877F2",
+        "key":   "aol_mail",
+        "label": "AOL Mail",
+        "url":   "https://mail.aol.com",
+        "color": "#FF6600",
         "fg":    "#FFFFFF",
     },
     {
         "key":   "milo",
-        "label": "Milo\n(Google Photos)",
+        "label": "Milo",
         "url":   "https://photos.google.com/share/AF1QipNJPdaXpqnpWA4lwzgMgta8gjcUI3OORBzlSv9Ny9QHVte3s4c16CSE8GHf0pNssw?key=TTBGSzR5QU0xblJXR3hQY05JNnBMNDNxUmhHWGxn",
         "color": "#34A853",
         "fg":    "#FFFFFF",
@@ -78,10 +78,10 @@ ALL_APPS = [
         "fg":    "#FFFFFF",
     },
     {
-        "key":   "aol_mail",
-        "label": "AOL Mail",
-        "url":   "https://mail.aol.com",
-        "color": "#FF6600",
+        "key":   "facebook",
+        "label": "Facebook",
+        "url":   "https://www.facebook.com",
+        "color": "#1877F2",
         "fg":    "#FFFFFF",
     },
 ]
@@ -469,8 +469,15 @@ class GertrudeShell(tk.Tk):
             return
 
         COLS = 3
+        last_row_start = (len(active_apps) // COLS) * COLS
+        last_row_count  = len(active_apps) - last_row_start
+        center_offset   = (COLS - last_row_count) // 2 if last_row_count < COLS else 0
+
         for idx, app in enumerate(active_apps):
-            row, col = idx // COLS, idx % COLS
+            row = idx // COLS
+            col = idx % COLS
+            if idx >= last_row_start:
+                col += center_offset   # shift lone/partial last row to centre
             btn = tk.Button(
                 self._buttons_frame,
                 text=app["label"],
