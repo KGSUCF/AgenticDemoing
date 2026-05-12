@@ -337,6 +337,15 @@ class GertrudeShell(tk.Tk):
             cursor="hand2", command=self._on_end_button)
         self._end_button.pack(side=tk.RIGHT, padx=16, pady=6)
 
+        tk.Button(bar, text="Turn Off\nComputer",
+                  font=("Segoe UI", 13, "bold"),
+                  bg="#334455", fg="#FFFFFF",
+                  activebackground="#556677", activeforeground="#FFFFFF",
+                  relief=tk.RAISED, bd=4,
+                  padx=16, pady=6,
+                  cursor="hand2", command=self._on_turn_off
+                  ).pack(side=tk.RIGHT, padx=(0, 4), pady=6)
+
     def _build_greeting(self):
         self._greeting_var = tk.StringVar()
         self._greeting_label = tk.Label(
@@ -618,6 +627,24 @@ class GertrudeShell(tk.Tk):
             self.state("zoomed")
 
         self._greeting_var.set(shell_logic.get_greeting(datetime.now().hour))
+
+    def _on_turn_off(self):
+        """Ask for confirmation, then shut the PC down."""
+        answer = messagebox.askyesno(
+            "Turn Off Computer",
+            "Are you sure you want to turn off the computer?",
+            icon="question",
+            default=messagebox.NO)
+        if not answer:
+            return
+        self._close_all_chrome()
+        if platform.system() == "Windows":
+            subprocess.run(["shutdown", "/s", "/t", "5"],
+                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        else:
+            subprocess.run(["shutdown", "-h", "now"],
+                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        self.destroy()
 
     def _launch_chrome(self, url: str):
         chrome_path = find_chrome()
