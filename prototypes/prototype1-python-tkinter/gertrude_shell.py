@@ -328,19 +328,19 @@ class GertrudeShell(tk.Tk):
                  fg="#FFFFFF", padx=16).pack(side=tk.LEFT)
 
         self._end_button = tk.Button(
-            bar, text="END",
-            font=("Segoe UI", 18, "bold"),
-            bg="#CC0000", fg="#FFFFFF",
-            activebackground="#FF3333", activeforeground="#FFFFFF",
+            bar, text="Go Back to\nMain Page",
+            font=("Segoe UI", 14, "bold"),
+            bg="#2E7D32", fg="#FFFFFF",
+            activebackground="#43A047", activeforeground="#FFFFFF",
             relief=tk.RAISED, bd=5,
-            padx=22, pady=10,
+            padx=18, pady=8,
             cursor="hand2", command=self._on_end_button)
         self._end_button.pack(side=tk.RIGHT, padx=16, pady=6)
 
         tk.Button(bar, text="Turn Off\nComputer",
                   font=("Segoe UI", 13, "bold"),
-                  bg="#334455", fg="#FFFFFF",
-                  activebackground="#556677", activeforeground="#FFFFFF",
+                  bg="#CC0000", fg="#FFFFFF",
+                  activebackground="#FF3333", activeforeground="#FFFFFF",
                   relief=tk.RAISED, bd=4,
                   padx=16, pady=6,
                   cursor="hand2", command=self._on_turn_off
@@ -454,6 +454,10 @@ class GertrudeShell(tk.Tk):
                  bg=BG_BOARD, fg=FG_GREETING).pack(pady=(6, 0))
 
     def _build_app_buttons(self):
+        tk.Label(self._board_content,
+                 text="What would you like to look at today, Gertrude?",
+                 font=("Segoe UI", 18, "italic"),
+                 bg=BG_BOARD, fg=FG_GREETING).pack(pady=(4, 0))
         self._buttons_frame = tk.Frame(self._board_content, bg=BG_BOARD)
         self._buttons_frame.pack(pady=16, expand=True)
         self._redraw_app_buttons()
@@ -594,13 +598,13 @@ class GertrudeShell(tk.Tk):
                  font=("Segoe UI", 20),
                  bg=BG_BEVEL_OUTER, fg="#FFF5CC").pack(side=tk.LEFT, padx=20)
 
-        # Big red END button on the right
-        tk.Button(inner, text="END",
-                  font=("Segoe UI", 26, "bold"),
-                  bg="#CC0000", fg="#FFFFFF",
-                  activebackground="#FF3333", activeforeground="#FFFFFF",
+        # Green "Go Back" button on the right
+        tk.Button(inner, text="Go Back to\nMain Page",
+                  font=("Segoe UI", 22, "bold"),
+                  bg="#2E7D32", fg="#FFFFFF",
+                  activebackground="#43A047", activeforeground="#FFFFFF",
                   relief=tk.RAISED, bd=5,
-                  padx=36, pady=20,
+                  padx=30, pady=16,
                   cursor="hand2",
                   command=self._on_end_button
                   ).pack(side=tk.RIGHT, padx=16)
