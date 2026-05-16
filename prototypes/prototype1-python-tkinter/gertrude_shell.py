@@ -379,7 +379,7 @@ class GertrudeShell(tk.Tk):
         row.pack(pady=(0, 4))
         self._make_photo_widget(row, "Gertrude & Marty",
                                 "gertrude_and_marty.jpg",
-                                width=200, height=180)
+                                width=160, height=220)
 
     def _make_photo_widget(self, parent, label_text, filename,
                            width=260, height=320):
@@ -402,7 +402,8 @@ class GertrudeShell(tk.Tk):
                 path = os.path.join(PHOTOS_DIR, name)
                 if os.path.isfile(path):
                     try:
-                        img = Image.open(path).resize((width, height), Image.LANCZOS)
+                        img = Image.open(path)
+                        img.thumbnail((width, height), Image.LANCZOS)
                         tk_img = ImageTk.PhotoImage(img)
                         lbl = tk.Label(container, image=tk_img,
                                        bg=BG_BOARD, bd=4, relief=tk.GROOVE)
