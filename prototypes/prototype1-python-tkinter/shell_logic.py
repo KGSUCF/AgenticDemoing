@@ -37,7 +37,8 @@ URL_DISPLAY_NAMES: dict[str, str] = {
     "https://photos.google.com": "Milo (Google Photos)",
     _MILO_URL:                   "Milo (Google Photos)",
     "https://www.aol.com":       "AOL News",
-    "https://mail.aol.com":      "AOL Mail",
+    "https://mail.aol.com":             "AOL Mail",
+    "https://mail.aol.com/d/folders/1": "AOL Mail",
     "desktop":                   "Desktop",
 }
 

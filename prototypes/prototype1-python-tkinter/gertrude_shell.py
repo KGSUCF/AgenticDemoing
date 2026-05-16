@@ -61,7 +61,7 @@ ALL_APPS = [
     {
         "key":   "aol_mail",
         "label": "AOL Mail",
-        "url":   "https://mail.aol.com",
+        "url":   "https://mail.aol.com/d/folders/1",
         "color": "#FF6600",
         "fg":    "#FFFFFF",
     },
