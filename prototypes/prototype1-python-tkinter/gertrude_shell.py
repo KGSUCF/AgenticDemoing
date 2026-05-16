@@ -303,7 +303,7 @@ class GertrudeShell(tk.Tk):
         self._outer_frame = tk.Frame(self, bg=BG_BEVEL_OUTER,
                                      relief=tk.RIDGE, bd=6,
                                      padx=6, pady=6)
-        self._outer_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=20)
+        self._outer_frame.pack(fill=tk.BOTH, expand=True, padx=8, pady=8)
 
         # Inner board
         self._board = tk.Frame(self._outer_frame, bg=BG_BOARD,
@@ -354,13 +354,13 @@ class GertrudeShell(tk.Tk):
             self._board_content,
             textvariable=self._greeting_var,
             font=("Segoe UI", 22, "bold"),
-            bg=BG_BOARD, fg=FG_GREETING, pady=10)
+            bg=BG_BOARD, fg=FG_GREETING, pady=4)
         self._greeting_label.pack(fill=tk.X, padx=16)
 
     def _build_info_bar(self):
         """Date/time line and weather line below the greeting."""
         info = tk.Frame(self._board_content, bg=BG_BOARD)
-        info.pack(fill=tk.X, padx=20, pady=(0, 8))
+        info.pack(fill=tk.X, padx=20, pady=(0, 2))
 
         self._datetime_var = tk.StringVar(value="")
         tk.Label(info, textvariable=self._datetime_var,
@@ -376,10 +376,10 @@ class GertrudeShell(tk.Tk):
 
     def _build_photo_row(self):
         row = tk.Frame(self._board_content, bg=BG_BOARD)
-        row.pack(pady=(0, 16))
+        row.pack(pady=(0, 4))
         self._make_photo_widget(row, "Gertrude & Marty",
                                 "gertrude_and_marty.jpg",
-                                width=260, height=320)
+                                width=200, height=180)
 
     def _make_photo_widget(self, parent, label_text, filename,
                            width=260, height=320):
