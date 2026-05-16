@@ -11,6 +11,8 @@ Usage:
     greeting = shell_logic.get_greeting(datetime.now().hour)
 """
 
+from __future__ import annotations
+
 import json
 import os
 import base64

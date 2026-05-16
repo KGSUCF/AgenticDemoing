@@ -13,6 +13,8 @@ Compatibility:
     Windows 7, 8, 10, 11
 """
 
+from __future__ import annotations
+
 import sys
 import os
 import subprocess
